@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>blog @bilelz</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/plugins/unveilhooks/ls.unveilhooks.min.js" defer></script>
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+
+  <body>
+    <div id="template">
+      Loading from
+      <a href="https://bilelz.blogspot.com" target="_parent">blog.bilelz.fr</a>
+      ...
+    </div>
+
+    <template>
+      <a
+        class="post img lazyload"
+        target="_parent"
+        href="${item.link[item.link.length-1].href}"
+        data-bg="${(item.media$thumbnail) ? item.media$thumbnail.url : ''}"
+      >
+        <div class="blabla">
+          <div class="category">${(item.category) ? item.category.map(function(cat) {return `<span>#${cat.term}</span> `}).join(''):''}</div>
+          <h1>${item.title.$t}</h1>
+        </div>
+      </a>
+    </template>
+
+    <!--
+            data-style="${(item.media$thumbnail) ? 'background-image:url('+item.media$thumbnail.url+')' : ''}">
+  -->
+
+    <script>
+      window.lazySizesConfig = window.lazySizesConfig || {};
+      window.lazySizesConfig.loadMode = 1;
+      window.lazySizesConfig.expand = 0;
+
+      const template = document.querySelector("template").innerHTML;
+      readData = function (data) {
+        document.querySelector("#template").innerHTML = "";
+        const feed = data.feed.entry.slice(0, 10);
+
+        for (const item of feed) {
+          // search thumbmail in HTML content
+          if (!item.media$thumbnail) {
+            var tmp = document.createElement("div");
+            tmp.innerHTML = item.content.$t;
+            if (tmp.querySelectorAll("img").length > 0) {
+              // increase img size & ensure HTTPS
+              item.media$thumbnail = {
+                url: tmp.querySelectorAll("img")[0].src.replace("s72-c", "s300-c").replace("http://", "https://"),
+              };
+            }
+          } else {
+            // increase img size & ensure HTTPS
+            item.media$thumbnail.url = item.media$thumbnail.url.replace("s72-c", "s300-c").replace("http://", "https://");
+          }
+          document.querySelector("#template").innerHTML += eval("`" + template + "`");
+        }
+      };
+    </script>
+    <script src="https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readData"></script>
+  </body>
+</html>

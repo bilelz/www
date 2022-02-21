@@ -1,0 +1,26 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "portfolio",
+  "main": "bs-config.js",
+  "scripts": {
+    "test": "echo \"All good (((o(*ﾟ▽ﾟ*)o)))\" && exit 0",
+    "start": "browser-sync start --config bs-config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bilelz/web.git"
+  },
+  "keywords": [
+    "blog",
+    "portfolio",
+    "bilelz",
+    "web"
+  ],
+  "author": "bilelz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bilelz/web/issues"
+  },
+  "homepage": "https://github.com/bilelz/web#readme"
+}

@@ -1,0 +1,136 @@
+/* body {
+  scrollbar-width: thin;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  font-weight: lighter;
+} */
+
+/* #template {
+      white-space: nowrap;
+      padding: 0 45px;
+      overflow-y: auto;
+      scroll-snap-type: x mandatory;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+  } */
+
+#template {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  width: calc(100% - 4rem);
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  height: 300px;
+  margin: 0 2rem;
+}
+
+.post {
+  display: inline-flex;
+  align-items: flex-start;
+  scroll-snap-align: start;
+  justify-content: space-between;
+  height: 250px;
+  width: 270px;
+  box-sizing: border-box;
+  vertical-align: top;
+  text-align: left;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #9a9a9a;
+  transition: 0.3s;
+  margin: 3px;
+  position: relative;
+  z-index: 1;
+  align-content: space-between;
+  flex-direction: column;
+}
+
+.post__header {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+.post__header img {
+  border-radius: 28px;
+  margin-right: 5px;
+}
+
+.post__header .tags {
+  display: inline-block;
+  vertical-align: super;
+}
+
+.post__header .tags span {
+  box-shadow: 0 0 0 1px darkgrey;
+  border-radius: 1rem;
+  display: inline-block;
+  padding: 3px;
+  margin: 0 5px 5px 0;
+  backdrop-filter: blur(10px);
+  background: #ffffff73;
+  vertical-align: middle;
+  color: black;
+}
+
+.img {
+  /* height: 150px; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: midnightblue;
+}
+
+.post .blabla {
+  color: white;
+  background-image: linear-gradient(360deg, #000000, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  display: block;
+  margin-bottom: -30px;
+  transition: 0.3s;
+  white-space: normal;
+  padding: 10px;
+  padding-bottom: 40px;
+  width: 100%;
+}
+
+h3 {
+  /* background-image: linear-gradient(to top left, #673ab7, #00bcd4); */
+  margin: 0;
+  padding: 0 5px;
+  font-size: 24px;
+  font-weight: lighter;
+  text-shadow: 0px 0px 12px black;
+  font-family: monospace, comic sans ms, arial;
+}
+
+.post:hover,
+.post:focus,
+.post.active {
+  transform: scale(1.1);
+  z-index: 2;
+}
+
+a {
+  text-decoration: none;
+}
+
+.lazyload,
+.lazyloading {
+  opacity: 0;
+}
+
+.lazyloaded {
+  opacity: 1;
+}
