@@ -57,8 +57,7 @@ THE WEB
               <span class="match">100% Match</span>
               <span class="secondary">2006</span>
               <span class="level">PG-3</span>
-              <span class="secondary">16 Seasons</span>
-              <!-- {{Date.now() - 2006}} -->
+              <span class="secondary" id="nbSeasons">16 Seasons</span>
               <span class="quality">4K</span>
               <span class="quality">2.0</span>
               <span class="quality">VOSTFR</span>
@@ -66,7 +65,9 @@ THE WEB
 
             <div class="social-container">
               <div class="video-btn">
-                <a href="#" id="play" onclick="play(event)"><span class="play">▶ Play</span> <span class="pause">⏸ Pause</span> </a>
+                <a href="#" id="play" onclick="play(event)"
+                  ><span class="play">▶ Play</span> <span class="pause">⏸ Pause</span> <span class="loading"></span>
+                </a>
                 <a href="#" id="close" onclick="stop(event)">❌ Close </a>
               </div>
               <div class="social hide-when-playing">
@@ -92,17 +93,6 @@ THE WEB
               possimus earum quos porro harum? Recusandae dolorem reiciendis ducimus excepturi?.
             </p>
           </div>
-          <!-- <div class="twitter">
-          <a class="twitter-timeline" href="https://twitter.com/bilelz" data-tweet-limit="1" data-theme="dark">🐦 Twitter</a>
-        </div>
-        <button
-            type="button"
-            id="showTweet"
-            hidden
-            onclick="var script = document.createElement('script');script.src = 'https://platform.twitter.com/widgets.js';document.head.appendChild(script);this.style.display = 'none'"
-          >
-            Voir le dernier tweet
-          </button> -->
         </div>
 
         <div id="player-container">
@@ -110,19 +100,10 @@ THE WEB
             <div id="player"></div>
           </div>
         </div>
-        <!-- <iframe
-          width="560"
-          height="315"
-          data-src="https://www.youtube-nocookie.com/embed/uGEFVMdoG74?start=220&mute=1&autoplay=1"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe> -->
       </div>
     </section>
 
-    <section id="📝" class="lazyload" data-bg="img/gouraya_1200.webp">
+    <section id="📝" class="lazyload" data-bg="img/queyras_1200.webp">
       <div class="container">
         <h2 class="anchor">Blog</h2>
       </div>
@@ -133,18 +114,16 @@ THE WEB
       </div>
 
       <template>
-        <a
-          class="post img lazyload"
-          target="_parent"
-          href="${item.link[item.link.length-1].href}"
-          data-bg="${(item.media$thumbnail) ? item.media$thumbnail.url : ''}"
-        >
-          <div class="post__header">
-            <img src="img/avatar.jpg" loading="lazy" width="28" height="28" alt="avatar" />
-            <div class="tags">${(item.category) ? item.category.map(function(cat) {return `<span>#${cat.term}</span> `}).join(''):''}</div>
-          </div>
-          <div class="blabla">
-            <h3>${item.title.$t}</h3>
+        <a class="post" target="_parent" href="${item.link[item.link.length-1].href}">
+          <div class="post__index">${index+1}</div>
+          <div class="post__container img lazyload" data-bg="${(item.media$thumbnail) ? item.media$thumbnail.url : ''}">
+            <div class="post__header">
+              <img src="img/avatar.jpg" loading="lazy" width="28" height="28" alt="avatar" />
+              <div class="tags">${(item.category) ? item.category.map(function(cat) {return `<span>#${cat.term}</span> `}).join(''):''}</div>
+            </div>
+            <div class="blabla">
+              <h3>${item.title.$t}</h3>
+            </div>
           </div>
         </a>
       </template>

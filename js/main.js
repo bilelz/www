@@ -30,6 +30,10 @@ function intersectionHandler(entry) {
   history.replaceState(null, "", `#${entry.target.id}`);
 }
 
+// header
+
+document.getElementById("nbSeasons").textContent = `${new Date().getFullYear() - 2006} seasons`;
+
 // blog
 window.lazySizesConfig = window.lazySizesConfig || {};
 window.lazySizesConfig.loadMode = 1;
@@ -40,7 +44,7 @@ readData = function (data) {
   document.querySelector("#template").innerHTML = "";
   const feed = data.feed.entry.slice(0, 10);
 
-  for (const item of feed) {
+  for (const [index, item] of feed.entries()) {
     // search thumbmail in HTML content
     if (!item.media$thumbnail) {
       var tmp = document.createElement("div");
@@ -55,6 +59,7 @@ readData = function (data) {
       // increase img size & ensure HTTPS
       item.media$thumbnail.url = item.media$thumbnail.url.replace("s72-c", "s300-c").replace("http://", "https://");
     }
+    item.index = index;
     document.querySelector("#template").innerHTML += eval("`" + template + "`");
   }
 };
@@ -71,14 +76,17 @@ function play(event) {
   event.preventDefault();
 
   if (!player) {
+    document.body.setAttribute("playerState", "loading");
     var tag = document.createElement("script");
     tag.src = "https://www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName("script")[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  } else if (player.getIframe() === null) {
+    onYouTubeIframeAPIReady();
   } else {
     if (player.getPlayerState() === YT.PlayerState.PLAYING) {
       player.pauseVideo();
-    } else if (player.getPlayerState() === YT.PlayerState.PAUSED || player.getPlayerState() === YT.PlayerState.CUED) {
+    } else {
       player.playVideo();
       player.getIframe().style.visibility = "visible";
     }
@@ -87,6 +95,7 @@ function play(event) {
 
 var player;
 function onYouTubeIframeAPIReady() {
+  document.body.setAttribute("playerState", "loading");
   player = new YT.Player("player", {
     height: "315",
     width: "560",
@@ -121,12 +130,6 @@ function onPlayerStateChange(event) {
 
 function stop(event) {
   event.preventDefault();
-  player.pauseVideo();
+  player.destroy();
   document.body.removeAttribute("playerState");
-
-  player.getIframe().style.visibility = "hidden";
 }
-
-// setTimeout(() => {
-//   document.getElementById("showTweet").click();
-// }, 3000);

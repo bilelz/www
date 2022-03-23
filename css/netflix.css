@@ -216,8 +216,22 @@ pre {
   flex-direction: column;
 }
 
+.loading {
+  border: 2px solid #ffffff26;
+  border-radius: 50%;
+  border-top: 2px solid red;
+  width: 1rem;
+  height: 1rem;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+  vertical-align: middle;
+  -webkit-box-shadow: 0 0 5px 1px black, inset 0 0 5px 1px black;
+  box-shadow: 0 0 5px 1px black, inset 0 0 5px 1px black;
+}
+
 .pause,
 #close,
+.loading,
 [playerstate="1"] .play {
   display: none;
 }
@@ -225,7 +239,9 @@ pre {
 [playerstate="0"] .play,
 [playerstate="1"] .pause,
 [playerstate="1"] #close,
-[playerstate="2"] #close {
+[playerstate="2"] #close,
+[playerstate="loading"] .loading,
+[playerstate="-1"] .loading {
   display: inline-block;
 }
 
@@ -235,7 +251,7 @@ pre {
 }
 
 [playerstate="1"] .hide-when-playing {
-  animation-duration: 5s;
+  animation-duration: 1.5s;
   animation-name: fadeOut;
   animation-fill-mode: forwards;
 }
@@ -359,5 +375,23 @@ pre {
     opacity: 1;
 
     visibility: visible;
+  }
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
