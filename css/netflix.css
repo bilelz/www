@@ -76,6 +76,7 @@ section {
   height: 100vh;
   min-height: 700px;
   padding-top: 2.5rem;
+  transition: opacity 1s;
 }
 
 section.header {
@@ -150,6 +151,11 @@ h1 {
 
 .inline-block {
   display: inline-block;
+}
+
+[data-bg] {
+  opacity: 0;
+  transition: 0.3s;
 }
 
 .over span {
@@ -297,9 +303,9 @@ pre {
   background-position: center center;
 }
 
-.no-webp #📝 {
+/* .no-webp #📝 {
   background-image: url(../img/gouraya_1200.jpg);
-}
+} */
 
 #☕ {
   /* background: url(../img/coffee.webp) no-repeat; */

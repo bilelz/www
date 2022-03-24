@@ -30,7 +30,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  height: 450px;
+  height: 350px;
   margin: 0 2rem;
 }
 
@@ -51,6 +51,7 @@
 }
 
 .post__index {
+  display: none;
   font-size: 200px;
   color: #f5f5f5;
   text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgb(0 0 0 / 10%), 0 0 5px rgb(0 0 0 / 10%),
@@ -135,6 +136,25 @@ h3 {
 .post:focus ~ .post,
 .post:hover ~ .post {
   transform: translateX(10%);
+}
+
+.post:first-child:hover,
+.post:first-child:focus,
+.post:first-child.active {
+  transform: scale(1.2) translateX(10%);
+  z-index: 2;
+}
+
+.post:first-child:focus ~ .post,
+.post:first-child:hover ~ .post {
+  transform: translateX(20%);
+}
+
+.post:last-child:hover,
+.post:last-child:focus,
+.post:last-child.active {
+  transform: scale(1.2) translateX(-10%);
+  z-index: 2;
 }
 
 .post:hover,

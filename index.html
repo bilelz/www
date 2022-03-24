@@ -65,10 +65,10 @@ THE WEB
 
             <div class="social-container">
               <div class="video-btn">
-                <a href="#" id="play" onclick="play(event)"
+                <a href="https://www.youtube.com/watch?v=uGEFVMdoG74&t=225" id="play" onclick="play(event)"
                   ><span class="play">▶ Play</span> <span class="pause">⏸ Pause</span> <span class="loading"></span>
                 </a>
-                <a href="#" id="close" onclick="stop(event)">❌ Close </a>
+                <a href="#" id="close" onclick="stop(event)">⏹ Stop </a>
               </div>
               <div class="social hide-when-playing">
                 <a href="https://twitter.com/bilelz">
@@ -103,7 +103,7 @@ THE WEB
       </div>
     </section>
 
-    <section id="📝" class="lazyload" data-bg="img/queyras_1200.webp">
+    <section id="📝">
       <div class="container">
         <h2 class="anchor">Blog</h2>
       </div>
@@ -116,7 +116,7 @@ THE WEB
       <template>
         <a class="post" target="_parent" href="${item.link[item.link.length-1].href}">
           <div class="post__index">${index+1}</div>
-          <div class="post__container img lazyload" data-bg="${(item.media$thumbnail) ? item.media$thumbnail.url : ''}">
+          <div class="post__container img" data-bg="${(item.media$thumbnail) ? item.media$thumbnail.url : ''}">
             <div class="post__header">
               <img src="img/avatar.jpg" loading="lazy" width="28" height="28" alt="avatar" />
               <div class="tags">${(item.category) ? item.category.map(function(cat) {return `<span>#${cat.term}</span> `}).join(''):''}</div>
@@ -128,7 +128,7 @@ THE WEB
         </a>
       </template>
     </section>
-    <section id="☕" class="lazyload" data-bg="img/coffee.webp">
+    <section id="☕" data-bg="img/coffee.webp">
       <div class="container">
         <h2 class="anchor">☕ Coffee</h2>
 
@@ -171,9 +171,6 @@ THE WEB
       }
     </script>
     <script src="js/main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/plugins/unveilhooks/ls.unveilhooks.min.js"></script>
-
     <script src="https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readData"></script>
   </body>
 </html>

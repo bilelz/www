@@ -6,7 +6,6 @@ webP.onload = webP.onerror = () => {
   }
 };
 
-const sections = document.querySelectorAll("section");
 const config = {
   rootMargin: "0px",
   threshold: [0.25, 0.5, 0.75, 1.0],
@@ -20,18 +19,26 @@ const observer = new IntersectionObserver(function (entries, self) {
   });
 }, config);
 
+const sections = document.querySelectorAll("section");
 sections.forEach((section) => {
   observer.observe(section);
 });
 
 function intersectionHandler(entry) {
-  document.querySelector("nav a.active").classList.remove("active");
-  document.querySelector(`nav a[href='#${entry.target.id}']`).classList.add("active");
-  history.replaceState(null, "", `#${entry.target.id}`);
+  if (entry.target.tagName === "SECTION") {
+    document.querySelector("nav a.active").classList.remove("active");
+    document.querySelector(`nav a[href='#${entry.target.id}']`).classList.add("active");
+    history.replaceState(null, "", `#${entry.target.id}`);
+  }
+
+  // lazy-load backgroundImage
+  if (entry.target.getAttribute("data-bg")) {
+    entry.target.style.backgroundImage = `url('${entry.target.getAttribute("data-bg")}')`;
+    entry.target.removeAttribute("data-bg");
+  }
 }
 
 // header
-
 document.getElementById("nbSeasons").textContent = `${new Date().getFullYear() - 2006} seasons`;
 
 // blog
@@ -62,6 +69,11 @@ readData = function (data) {
     item.index = index;
     document.querySelector("#template").innerHTML += eval("`" + template + "`");
   }
+
+  const blogPosts = document.querySelectorAll(".post [data-bg]");
+  blogPosts.forEach((post) => {
+    observer.observe(post);
+  });
 };
 
 function handleScroll() {
