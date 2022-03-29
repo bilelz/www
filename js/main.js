@@ -89,10 +89,20 @@ function play(event) {
 
   if (!player) {
     document.body.setAttribute("playerState", "loading");
-    var tag = document.createElement("script");
+    let tag = document.createElement("script");
     tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName("script")[0];
+    tag.id = "ytScript";
+
+    document.getElementById("ytScript") && document.getElementById("ytScript").remove();
+
+    const firstScriptTag = document.getElementsByTagName("script")[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    setTimeout(() => {
+      if (!document.getElementById("ytScript") || !!!document.getElementById("ytScript").getAttribute("loaded")) {
+        document.body.setAttribute("playerState", "error");
+      }
+    }, 5000);
   } else if (player.getIframe() === null) {
     onYouTubeIframeAPIReady();
   } else {
@@ -107,7 +117,9 @@ function play(event) {
 
 var player;
 function onYouTubeIframeAPIReady() {
+  document.getElementById("ytScript").setAttribute("loaded", "true");
   document.body.setAttribute("playerState", "loading");
+
   player = new YT.Player("player", {
     height: "315",
     width: "560",
@@ -125,19 +137,18 @@ function onYouTubeIframeAPIReady() {
       start: 225,
     },
     events: {
-      onReady: onPlayerReady,
-      onStateChange: onPlayerStateChange,
+      onReady: (event) => {
+        event.target.mute();
+        event.target.playVideo();
+      },
+      onStateChange: (event) => {
+        document.body.setAttribute("playerState", event.data);
+      },
+      onError: () => {
+        document.body.setAttribute("playerState", "error");
+      },
     },
   });
-}
-
-function onPlayerReady(event) {
-  event.target.mute();
-  event.target.playVideo();
-}
-
-function onPlayerStateChange(event) {
-  document.body.setAttribute("playerState", event.data);
 }
 
 function stop(event) {

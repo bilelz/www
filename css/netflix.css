@@ -229,17 +229,19 @@ pre {
 
 body:not([playerstate]) .video-btn > a:first-child,
 body[playerstate="loading"] .video-btn > a:first-child {
-  background: white;
+  background-color: white;
   color: black;
-  box-shadow: 0 0 0px 0 transparent, inset 0 0 0 0 red;
+  box-shadow: 0 0 0px 2px transparent;
+  transition: 0.15s ease-in-out;
 }
 
 body:not([playerstate]) .video-btn > a:first-child:hover,
 body:not([playerstate]) .video-btn > a:first-child:focus,
 body[playerstate="loading"] .video-btn > a:first-child,
 body[playerstate="-1"] .video-btn > a:first-child {
+  background-color: red;
   color: white;
-  box-shadow: 0 0 0 2px red, inset 0 0 0 24px red;
+  box-shadow: 0 0 0 2px red;
 }
 
 .loading {
@@ -258,6 +260,7 @@ body[playerstate="-1"] .video-btn > a:first-child {
 .pause,
 #close,
 .loading,
+.error,
 [playerstate="1"] .play {
   display: none;
 }
@@ -267,7 +270,8 @@ body[playerstate="-1"] .video-btn > a:first-child {
 [playerstate="1"] #close,
 [playerstate="2"] #close,
 [playerstate="loading"] .loading,
-[playerstate="-1"] .loading {
+[playerstate="-1"] .loading,
+[playerstate="error"] .error {
   display: inline-block;
 }
 
