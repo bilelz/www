@@ -28,7 +28,7 @@ function intersectionHandler(entry) {
   if (entry.target.tagName === "SECTION") {
     document.querySelector("nav a.active").classList.remove("active");
     document.querySelector(`nav a[href='#${entry.target.id}']`).classList.add("active");
-    history.replaceState(null, "", `#${entry.target.id}`);
+    // history.replaceState(null, "", `#${entry.target.id}`);
   }
 
   // lazy-load backgroundImage
