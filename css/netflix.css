@@ -101,7 +101,7 @@ section.header {
 
 .presentation {
   height: 100%;
-  background-image: linear-gradient(270deg, transparent 25%, var(--bg-presentation) 75%, var(--bg-presentation));
+  background-image: linear-gradient(90deg, var(--bg-presentation), transparent 75%);
   color: white;
   padding-top: calc(2 * var(--navbar-height));
   box-sizing: border-box;
