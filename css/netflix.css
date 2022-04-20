@@ -85,9 +85,9 @@ section.header {
   /* padding-top: 0; */
   height: auto;
   --navbar-height: 68px;
-  height: 100vh;
-  min-height: 700px;
-  margin-bottom: calc(-1 * var(--navbar-height));
+  /* height: 100vh; */
+  /* min-height: 700px; */
+  /* margin-bottom: calc(-1 * var(--navbar-height)); */
   background-image: url(../img/Bliss_1200.webp);
   background-size: cover;
   background-position: center center;
@@ -113,6 +113,7 @@ section.header {
   align-content: flex-start;
   position: relative;
   z-index: 2;
+  padding-bottom: 4rem;
 }
 
 #player-container {
@@ -339,6 +340,7 @@ body[playerstate="-1"] .video-btn > a:first-child {
   background-size: cover;
   background-position: top center;
   background-color: var(--bg-coffee);
+  padding-bottom: 16rem;
 }
 
 .no-webp #☕ {

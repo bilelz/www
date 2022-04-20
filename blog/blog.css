@@ -21,7 +21,7 @@
       align-items: center;
   } */
 
-#template {
+.template {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   display: flex;
@@ -30,6 +30,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
+  align-content: flex-start;
   height: 350px;
   margin: 0 2rem;
 }

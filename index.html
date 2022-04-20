@@ -58,6 +58,7 @@ THE WEB
               <span class="secondary">2006</span>
               <span class="level">PG-3</span>
               <span class="secondary" id="nbSeasons">16 Seasons</span>
+              <span class="quality">VanillaJS</span>
               <span class="quality">4K</span>
               <span class="quality">2.0</span>
               <span class="quality">VOSTFR</span>
@@ -106,11 +107,20 @@ THE WEB
 
     <section id="📝">
       <div class="container">
-        <h2 class="anchor">Blog</h2>
+        <h2>Blog | <em>Last posts</em></h2>
       </div>
-      <div id="template">
+      <div id="blog-posts" class="template">
         Loading from
         <a href="https://bilelz.blogspot.com" target="_parent">blog.bilelz.fr</a>
+        ...
+      </div>
+
+      <div class="container">
+        <h2 class="anchor">Blog | <em>my favorite wallpapers</em></h2>
+      </div>
+      <div id="blog-wallpaper" class="template">
+        Loading from
+        <a href="https://bilelz.blogspot.com/search/label/wallpaper" target="_parent">bilelz.blogspot.com/search/label/wallpaper</a>
         ...
       </div>
 
@@ -172,6 +182,7 @@ THE WEB
       }
     </script>
     <script src="js/main.js"></script>
-    <script src="https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readData"></script>
+    <script src="https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogPosts"></script>
+    <script src="https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogWallpaper&max-results=5&q=wallpaper"></script>
   </body>
 </html>
