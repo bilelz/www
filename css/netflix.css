@@ -82,13 +82,9 @@ section {
 }
 
 section.header {
-  /* padding-top: 0; */
   height: auto;
   --navbar-height: 68px;
-  /* height: 100vh; */
-  /* min-height: 700px; */
-  /* margin-bottom: calc(-1 * var(--navbar-height)); */
-  background-image: url(../img/Bliss_1200.webp);
+  background-image: url(../img/queyras_flip_1200.jpg);
   background-size: cover;
   background-position: center center;
   padding: 0;
@@ -96,7 +92,7 @@ section.header {
 }
 
 .no-webp section.header {
-  background-image: url(../img/Bliss_1200.jpg);
+  background-image: url(../img/queyras_flip_1200.jpg);
 }
 
 .presentation {
@@ -126,17 +122,6 @@ section.header {
   overflow: hidden;
 }
 
-@media only screen and (max-width: 600px) {
-  .section.header {
-    min-height: 700px;
-  }
-  .presentation .container {
-    flex-direction: column;
-  }
-  #player-container {
-    top: 96px;
-  }
-}
 #iframe-container {
   position: relative;
   padding-top: 56.25%;
@@ -155,6 +140,22 @@ h1 {
   font-size: 2em;
   margin: 0;
   padding: 0;
+  white-space: pre;
+}
+
+@media only screen and (max-width: 600px) {
+  .section.header {
+    min-height: 700px;
+  }
+  .presentation .container {
+    flex-direction: column;
+  }
+  #player-container {
+    top: 96px;
+  }
+  h1 {
+    white-space: normal;
+  }
 }
 
 .inline-block {
@@ -313,11 +314,11 @@ body[playerstate="-1"] .video-btn > a:first-child {
 }
 
 .quality {
-  color: #d8d3d0;
-  box-shadow: 0 0 0 1px #d8d3d0;
+  color: #000000;
   padding: 2px 5px;
   border-radius: 2px;
   display: inline-block;
+  background-color: #ffffff9c;
 }
 
 .twitter {
