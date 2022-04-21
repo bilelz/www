@@ -135,7 +135,7 @@ section.header {
 }
 
 h1 {
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-family: "Comic Sans MS", "Comic Sans", monospace;
   font-style: italic;
   font-size: 2em;
   margin: 0;
