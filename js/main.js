@@ -48,6 +48,7 @@ window.lazySizesConfig.expand = 0;
 
 const template = document.querySelector("template").innerHTML;
 
+const allPosts = [];
 readBlogPosts = function (data) {
   readData(data, "#blog-posts");
 };
@@ -75,10 +76,12 @@ readData = function (data, target) {
       item.media$thumbnail.url = item.media$thumbnail.url.replace("s72", "s300").replace("http://", "https://");
     }
     item.index = index;
+    item.id = item.id.$t.replace("tag:blogger.com,1999:", "").replace(/\./g, "-");
     document.querySelector(target).innerHTML += eval("`" + template + "`");
+    allPosts.push(item);
   }
 
-  const blogPosts = document.querySelectorAll(".post [data-bg]");
+  const blogPosts = document.querySelectorAll(target + " .post [data-bg]");
   blogPosts.forEach((post) => {
     observer.observe(post);
   });
@@ -163,4 +166,24 @@ function stop(event) {
   event.preventDefault();
   player.destroy();
   document.body.removeAttribute("playerState");
+}
+
+const dialog = document.getElementById("dialog");
+
+dialog.addEventListener("close", function onClose() {
+  document.body.classList.remove("dialog-open");
+  document.querySelector("dialog article").innerHTML = "";
+});
+
+function showModal(id, event) {
+  event.preventDefault();
+  const post = allPosts.find((item) => item.id === id);
+  console.log("post", post);
+  if (post) {
+    document.querySelector("dialog article").innerHTML = post.content.$t;
+    document.querySelector("dialog h3").innerHTML = post.title.$t;
+    document.querySelector("dialog footer a").href = post.link.find((l) => l.rel === "alternate").href;
+  }
+  dialog.showModal();
+  document.body.classList.add("dialog-open");
 }

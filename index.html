@@ -121,7 +121,7 @@
       </div>
 
       <template>
-        <a class="post" target="_parent" href="${item.link[item.link.length-1].href}">
+        <a class="post" target="_parent" href="${item.link[item.link.length-1].href}" id="${item.id}" onclick="showModal(this.id, event); ">
           <div class="post__index">${index+1}</div>
           <div class="post__container img" data-bg="${(item.media$thumbnail) ? item.media$thumbnail.url : ''}">
             <div class="post__header">
@@ -162,6 +162,19 @@
         </form>
       </div>
     </section>
+    <dialog id="dialog" modal-mode="mega">
+      <div>
+        <header>
+          <h3>titre</h3>
+          <button autofocus type="button" onclick="this.closest('dialog').close('cancel')">❌ Close</button>
+        </header>
+        <article></article>
+        <footer>
+          <a href="." target="_blank">Read in the blog ></a>
+          <button autofocus type="button" onclick="this.closest('dialog').close('cancel')">❌ Close</button>
+        </footer>
+      </div>
+    </dialog>
 
     <script>
       if ("serviceWorker" in navigator) {
@@ -178,9 +191,9 @@
       }
     </script>
     <script src="js/main.js"></script>
-    <!-- <script src="https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogPosts"></script>
-    <script src="https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogWallpaper&max-results=5&q=wallpaper"></script> -->
-    <script src="blog/posts.js"></script>
-    <script src="blog/wallpaper.js"></script>
+    <script src="https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogPosts"></script>
+    <script src="https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogWallpaper&max-results=5&q=wallpaper"></script>
+    <!-- <script src="blog/posts.js"></script>
+    <script src="blog/wallpaper.js"></script> -->
   </body>
 </html>
