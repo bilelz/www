@@ -176,14 +176,18 @@ dialog.addEventListener("close", function onClose() {
 });
 
 function showModal(id, event) {
-  event.preventDefault();
+  if (!!!document.createElement("dialog").showModal) {
+    // support test
+    return;
+  }
+
   const post = allPosts.find((item) => item.id === id);
-  console.log("post", post);
   if (post) {
+    event.preventDefault();
     document.querySelector("dialog article").innerHTML = post.content.$t;
     document.querySelector("dialog h3").innerHTML = post.title.$t;
     document.querySelector("dialog footer a").href = post.link.find((l) => l.rel === "alternate").href;
+    dialog.showModal();
+    document.body.classList.add("dialog-open");
   }
-  dialog.showModal();
-  document.body.classList.add("dialog-open");
 }
