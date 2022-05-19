@@ -173,16 +173,10 @@
     <link rel="stylesheet" href="blog/blog.css" />
     <script>
       if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("sw.js").then(
-          function () {
-            console.log("Service worker registered");
-          },
-          function (error) {
-            console.log("CLIENT: service worker registration failure.", error);
-          }
+        navigator.serviceWorker.register("/sw.js").then(
+          function () {},
+          function () {}
         );
-      } else {
-        console.log("CLIENT: service worker is not supported.");
       }
     </script>
     <script src="js/main.js"></script>
