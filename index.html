@@ -2,20 +2,22 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <title>👨‍💻 Bilelz - PWA</title>
+    <title>Bilelz - website</title>
     <meta name="description" content="Bilelz - progressive wep app" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="apple-touch-icon" href="img/flo-192.png" />
-    <!-- Place favicon.ico in the root directory 
-    https://www.flaticon.com/free-icon/plant_2497597
--->
+    <link rel="apple-touch-icon" href="img/android/android-launchericon-192-192.png" />
+    <link rel="icon" type="image/png" href="img/android/android-launchericon-96-96.png" sizes="96x96" />
 
     <link rel="stylesheet" href="css/netflix.css" />
 
     <meta name="theme-color" content="#fafafa" />
     <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="stylesheet" href="blog/blog.css" />
+    <meta property="og:title" content="Bilelz - website" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Bilelz, the web developer" />
+    <meta property="og:url" content="https://bilelz.github.io/" />
+    <meta property="og:image" content="https://bilelz.github.io/img/illustration.png" />
   </head>
 
   <body onscroll="handleScroll()">
@@ -28,17 +30,9 @@
         <!-- <a href="#🏡">Accueil</a> -->
         <a href="#📝">Blog</a>
         <a href="#☕">Coffee</a>
-
-        <!-- <button type="button" onclick="document.querySelector('html').classList.toggle('revert')">
-          <span class="visible-light" title="See the dark side">🌙</span>
-          <span class="visible-dark" title="See the light">💡</span>
-        </button>
-        <img src="img/avatar.jpg" loading="lazy" width="48" height="48" alt="avatar" /> -->
       </div>
     </nav>
     <section class="header" id="🏡">
-      <!-- <div class="container sticky"></div> -->
-
       <div class="presentation">
         <div class="container">
           <div class="tadam">
@@ -176,6 +170,7 @@
       </div>
     </dialog>
 
+    <link rel="stylesheet" href="blog/blog.css" />
     <script>
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("sw.js").then(

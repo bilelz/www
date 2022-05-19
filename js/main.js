@@ -76,7 +76,7 @@ readData = function (data, target) {
       item.media$thumbnail.url = item.media$thumbnail.url.replace("s72", "s300").replace("http://", "https://");
     }
     item.index = index;
-    item.id = item.id.$t.replace("tag:blogger.com,1999:", "").replace(/\./g, "-");
+    item.id = target.replace("#", "") + "_" + item.id.$t.replace("tag:blogger.com,1999:", "").replace(/\./g, "-");
     document.querySelector(target).innerHTML += eval("`" + template + "`");
     allPosts.push(item);
   }
