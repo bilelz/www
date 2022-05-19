@@ -87,7 +87,7 @@ section {
 section.header {
   height: auto;
   --navbar-height: 68px;
-  background-image: url(../img/queyras_flip_1200.jpg);
+  background-image: url(../img/queyras_flip_1200.webp);
   background-size: cover;
   background-position: center center;
   padding: 0;
