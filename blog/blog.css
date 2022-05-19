@@ -82,6 +82,7 @@ dialog {
   border-radius: 2rem;
   box-shadow: -1px 4px 14px 2px #3e3e3e;
   max-width: 100%;
+  background-color: rgb(255 255 255 / 90%);
 }
 dialog img {
   max-width: 100%;
