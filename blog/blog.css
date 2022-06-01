@@ -103,6 +103,10 @@ dialog article {
   box-shadow: var(--shadow-2);
   z-index: 1;
   padding: 1rem;
+  width: 100%;
+}
+dialog article p {
+  width: 100%;
 }
 dialog header,
 dialog footer {
