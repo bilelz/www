@@ -35,6 +35,13 @@
   margin: 0 2rem;
 }
 
+@media only screen and (max-width: 600px) {
+  .template {
+    width: calc(100% - 1rem);
+    margin: 0 0.5rem;
+  }
+}
+
 .post {
   display: flex;
   flex-direction: row;

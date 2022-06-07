@@ -155,9 +155,6 @@ h1 {
 }
 
 @media only screen and (max-width: 600px) {
-  .section.header {
-    min-height: 700px;
-  }
   .presentation .container {
     flex-direction: column;
   }
@@ -166,6 +163,14 @@ h1 {
   }
   h1 {
     white-space: normal;
+  }
+
+  section {
+    margin: 1rem 0.5rem;
+  }
+  section.header {
+    margin-right: 0;
+    margin-left: 0;
   }
 }
 
@@ -365,6 +370,7 @@ dialog footer {
   background-size: cover;
   background-position: top center;
   background-color: var(--bg-coffee);
+  color: white;
   padding-bottom: 16rem;
 }
 
@@ -384,10 +390,10 @@ dialog footer {
   padding: 2em;
   border-radius: 2em;
   text-align: center;
-  min-height: 250px;
-  min-width: 320px;
-  width: 50%;
+  width: 320px;
   box-sizing: border-box;
+  height: auto;
+  max-width: 100%;
 }
 
 [type="number"],
