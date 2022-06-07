@@ -26,9 +26,8 @@ sections.forEach((section) => {
 
 function intersectionHandler(entry) {
   if (entry.target.tagName === "SECTION") {
-    document.querySelector("nav a.active").classList.remove("active");
-    document.querySelector(`nav a[href='#${entry.target.id}']`).classList.add("active");
-    // history.replaceState(null, "", `#${entry.target.id}`);
+    document.querySelector("nav a.active") && document.querySelector("nav a.active").classList.remove("active");
+    document.querySelector(`nav a[href='#${entry.target.id}']`) && document.querySelector(`nav a[href='#${entry.target.id}']`).classList.add("active");
   }
 
   // lazy-load backgroundImage
@@ -184,7 +183,7 @@ function showModal(id, event) {
   const post = allPosts.find((item) => item.id === id);
   if (post) {
     event.preventDefault();
-    document.querySelector("dialog article").innerHTML = post.content.$t;
+    document.querySelector("dialog article").innerHTML = post.content.$t.replaceAll("<img", '<img loading="lazy"').replaceAll("http://", "https://");
     document.querySelector("dialog h3").innerHTML = post.title.$t;
     document.querySelector("dialog footer a").href = post.link.find((l) => l.rel === "alternate").href;
     dialog.showModal();
