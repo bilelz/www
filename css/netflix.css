@@ -68,7 +68,8 @@ nav .brand {
   font-weight: bold;
 }
 
-nav a {
+nav a,
+nav a:visited {
   color: white;
   text-decoration: none;
 }
