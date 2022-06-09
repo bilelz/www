@@ -1,6 +1,7 @@
 :root {
   --bg-presentation: #222222;
   --bg-coffee: #ad8d73;
+  --max-width: 1390px;
 }
 body {
   scrollbar-width: thin;
@@ -30,7 +31,7 @@ html {
 }
 
 .container {
-  max-width: 900px;
+  max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 1em;
   box-sizing: border-box;
@@ -88,7 +89,8 @@ section {
   padding: 0.5rem 0 2.5rem 0;
   transition: opacity 1s;
   border-radius: 1rem;
-  margin: 1rem;
+  margin: 1rem auto;
+  max-width: var(--max-width);
 }
 
 section.header {
@@ -99,6 +101,8 @@ section.header {
   background-position: center center;
   padding: 0;
   margin-top: calc(-1 * var(--navbar-height));
+  max-width: 100%;
+  border-radius: 0;
 }
 
 .no-webp section.header {
@@ -112,7 +116,6 @@ section.header {
   padding-top: calc(2 * var(--navbar-height));
   box-sizing: border-box;
   position: relative;
-  border-radius: 1rem;
 }
 
 .presentation .container {
