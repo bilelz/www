@@ -27,7 +27,16 @@ sections.forEach((section) => {
 function intersectionHandler(entry) {
   if (entry.target.tagName === "SECTION") {
     document.querySelector("nav a.active") && document.querySelector("nav a.active").classList.remove("active");
-    document.querySelector(`nav a[href='#${entry.target.id}']`) && document.querySelector(`nav a[href='#${entry.target.id}']`).classList.add("active");
+
+    if (document.querySelector(`nav a[href='#${entry.target.id}']`)) {
+      document.querySelector(`nav a[href='#${entry.target.id}']`).classList.add("active");
+    }
+
+    if (entry.target.id) {
+      document.body.setAttribute("nav", entry.target.id);
+    } else {
+      document.body.removeAttribute("nav");
+    }
   }
 
   // lazy-load backgroundImage

@@ -59,12 +59,19 @@ nav {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   box-shadow: 0px 0px 50px rgb(0 0 0 / 75%);
+  transition: 0.2s ease-in-out;
+}
+
+.scrolled[nav="📝"] nav {
+  background-color: rgb(229 168 136 / 50%);
+}
+.scrolled[nav="📝"] nav a {
+  color: black;
 }
 
 nav a {
   padding: 1em;
   display: inline-block;
-  text-shadow: 0 0px 10px var(--body-bg-color);
 }
 
 nav .brand {
@@ -84,7 +91,7 @@ nav a:active {
 }
 
 nav a.active {
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid currentColor;
 }
 
 section {
