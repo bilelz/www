@@ -1,0 +1,119 @@
+.wrap {
+  perspective: calc(var(--cube-width) * 3);
+  --cube-width: 70vw;
+  --cube-height: 70vh;
+  perspective-origin: center calc(var(--cube-width) / 2);
+  margin: 15vh 15vw;
+}
+.cube {
+  position: relative;
+  width: var(--cube-width);
+  transform-style: preserve-3d;
+  transition: 1s ease-in-out;
+
+  /* animation: spin 50s infinite linear; */
+}
+
+#right:target ~ .wrap .cube {
+  transform: rotateY(-90deg);
+}
+#back:target ~ .wrap .cube {
+  transform: rotateY(180deg);
+}
+#random:target ~ .wrap .cube {
+  transform: rotateY(calc(180deg + 360deg));
+}
+#left:target ~ .wrap .cube {
+  transform: rotateY(90deg);
+}
+#bottom:target ~ .wrap .cube {
+  transform: rotateY(00deg) rotateX(90deg);
+}
+
+.cube > div {
+  position: absolute;
+  width: var(--cube-width);
+  height: var(--cube-height);
+  /* width: 100vw;
+  height: 100vh; */
+  box-shadow: 0 0 10px black;
+  overflow: auto;
+  transition: 0.3s;
+}
+.back {
+  background-color: rgb(0 0 255 / 76%);
+  transform: translateZ(calc(-1 * var(--cube-width) / 2)) rotateY(180deg);
+}
+.right {
+  background-color: white;
+  transform: rotateY(-270deg) translateX(calc(var(--cube-width) / 2));
+  transform-origin: top right;
+}
+.left {
+  background-color: rgb(230 230 250 / 85%);
+  transform: rotateY(270deg) translateX(calc(-1 * var(--cube-width) / 2));
+  transform-origin: center left;
+}
+.top {
+  background-color: rgb(0 128 128 / 75%);
+  transform: rotateX(-90deg) translateY(calc(-1 * var(--cube-width) / 2));
+  transform-origin: top center;
+}
+.bottom {
+  background-color: rgb(138 43 226 / 75%);
+  transform: rotateX(90deg) translateY(calc(var(--cube-width) / 2));
+  transform-origin: bottom center;
+}
+.front {
+  background-color: #000000d6;
+  color: white;
+  transform: translateZ(calc(var(--cube-width) / 2));
+
+  z-index: 1;
+}
+
+.front,
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+@keyframes spin {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.users {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.users a {
+  color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  transition: 0.15s;
+}
+.users a:hover,
+.users a:focus {
+  box-shadow: 0 0 0 1px white, inset 0 0 0 0 white;
+}
+.users a:active {
+  box-shadow: 0 0 0 5px white, inset 0 0 0 5px #a5a5a5;
+}
+
+.users-avatar {
+  font-size: 46px;
+}

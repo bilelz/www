@@ -95,8 +95,8 @@ readData = function (data, target) {
   });
 };
 
-function handleScroll() {
-  if (window.scrollY > 12) {
+function handleScroll(target = window) {
+  if (target.scrollY > 12 || target.scrollTop > 12) {
     document.body.classList.add("scrolled");
   } else {
     document.body.classList.remove("scrolled");
