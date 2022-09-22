@@ -36,6 +36,7 @@
   box-shadow: 0 0 10px black;
   overflow: auto;
   transition: 0.3s;
+  z-index: 1;
 }
 
 .front {
@@ -57,7 +58,7 @@
   /* z-index: 1; */
 }
 .left {
-  background-color: rgb(255 235 59 / 56%);
+  background-color: rgb(255 152 0 / 89%);
   transform: rotateY(-90deg) translateX(calc(-1 * var(--cube-width) / 2));
   transform-origin: center left;
   /* z-index: 1; */
