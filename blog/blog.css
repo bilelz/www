@@ -56,6 +56,8 @@
   margin: 3px;
   position: relative;
   z-index: 1;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .post__index {
