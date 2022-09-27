@@ -83,7 +83,6 @@ html {
   scroll-behavior: smooth;
 }
 
-
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -154,7 +153,7 @@ a:hover {
   background-color: var(--border-color);
 }
 
-nav>div {
+nav > div {
   max-width: 900px;
   padding: 0 1em;
 
@@ -239,7 +238,7 @@ a:focus {
   /* transform: translateZ(1.5rem); */
 }
 
-.cube>span,
+.cube > span,
 .cube::after,
 .cube::before {
   display: block;
@@ -311,13 +310,13 @@ a:focus {
   top: 0;
 }
 
-#internets>div {
+#internets > div {
   display: flex;
   justify-content: space-around;
 }
 
 @media only screen and (max-width: 600px) {
-  #internets>div {
+  #internets > div {
     flex-direction: column;
   }
 }

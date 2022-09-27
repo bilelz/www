@@ -34,9 +34,14 @@
   width: var(--cube-width);
   height: var(--cube-height);
   box-shadow: 0 0 10px black;
-  overflow: auto;
+  /* overflow: hidden; */
   transition: 0.3s;
   z-index: 1;
+}
+
+#webdev {
+  overflow: auto;
+  height: 100vh;
 }
 
 .front {

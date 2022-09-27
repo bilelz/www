@@ -46,6 +46,18 @@ function intersectionHandler(entry) {
   }
 }
 
+//navbar
+document.querySelectorAll("nav a").forEach((item) => {
+  item.addEventListener("click", (event) => {
+    const target = event.target.getAttribute("href");
+    const targetElement = document.querySelector("section" + target);
+    if (targetElement) {
+      event.preventDefault();
+      document.getElementById("webdev").scrollTo({ top: targetElement.offsetTop - 60, behavior: "smooth" });
+    }
+  });
+});
+
 // header
 document.getElementById("nbSeasons").textContent = `${new Date().getFullYear() - 2006} seasons`;
 

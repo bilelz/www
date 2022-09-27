@@ -72,146 +72,145 @@
             </a>
           </div>
         </div>
-        <div class="right" onscroll="handleScroll(this)">
-          <nav class="sticky hide-when-playing">
-            <div class="container">
-              <a href="#front">⬅</a>
-
-              <a href="#🏡" class="brand active" onclick="event.preventDefault()">
-                <!-- <span>Bilelz.fr</span> -->
-                <span>B</span><span>i</span><span>l</span><span>e</span><span>l</span><span>z</span>
-              </a>
-              <!-- <a href="#🏡">Accueil</a> -->
-              <a href="#📝" onclick="event.preventDefault()">📝</a>
-              <a href="#☕" onclick="event.preventDefault()">☕</a>
-            </div>
-          </nav>
-          <section class="header" id="🏡">
-            <div class="presentation">
+        <div class="right">
+          <div id="webdev" onscroll="handleScroll(this)">
+            <nav class="sticky hide-when-playing">
               <div class="container">
-                <div class="tadam">
-                  <div class="over hide-when-playing">
-                    <img src="img/avatar_48.jpg" loading="lazy" width="24" height="24" alt="avatar" />
-                    <span>Website</span>
-                  </div>
-                  <!-- prettier-ignore -->
-                  <h1 class="hide-when-playing pre">THE WEB 
+                <a href="#front">⬅</a>
+
+                <a href="#🏡" class="brand active"> Bilelz </a>
+                <!-- <a href="#🏡">Accueil</a> -->
+                <a href="#📝">📝</a>
+                <a href="#☕">☕</a>
+              </div>
+            </nav>
+            <section class="header" id="🏡">
+              <div class="presentation">
+                <div class="container">
+                  <div class="tadam">
+                    <div class="over hide-when-playing">
+                      <img src="img/avatar_48.jpg" loading="lazy" width="24" height="24" alt="avatar" />
+                      <span>Website</span>
+                    </div>
+                    <!-- prettier-ignore -->
+                    <h1 class="hide-when-playing pre">THE WEB 
           DEVELOPER</h1>
-                  <div class="tags hide-when-playing">
-                    <span class="match">100% Match</span>
-                    <span class="secondary">2006</span>
-                    <span class="level">PG-3</span>
-                    <span class="secondary" id="nbSeasons">16 Seasons</span>
-                    <span class="quality">VanillaJS</span>
-                    <span class="quality">4K</span>
-                    <span class="quality">2.0</span>
-                    <span class="quality">VOSTFR</span>
-                  </div>
-
-                  <div class="social-container">
-                    <div class="video-btn">
-                      <a href="https://www.youtube.com/watch?v=uGEFVMdoG74&t=225" id="play" onclick="play(event)"
-                        ><span class="play">▶ Play</span> <span class="pause">⏸ Pause</span> <span class="loading"></span>
-                        <span class="error">❗ Youtube KO?</span>
-                      </a>
-                      <a href="#" id="close" onclick="stop(event)">⏹ Stop </a>
+                    <div class="tags hide-when-playing">
+                      <span class="match">100% Match</span>
+                      <span class="secondary">2006</span>
+                      <span class="level">PG-3</span>
+                      <span class="secondary" id="nbSeasons">16 Seasons</span>
+                      <span class="quality">4K</span>
+                      <span class="quality">2.0</span>
+                      <span class="quality">VOSTFR</span>
+                      <span class="quality">VanillaJS</span>
                     </div>
-                    <div class="social hide-when-playing">
-                      <a href="https://twitter.com/bilelz">
-                        <span><span class="rainbow">🐦 Twitter</span></span>
-                      </a>
 
-                      <a href="http://github.com/bilelz">
-                        <span>🐱 Github</span>
-                      </a>
-                      <a href="https://codepen.io/bilelz">
-                        <span>⌨ Codepen</span>
-                      </a>
-                      <a href="https://www.linkedin.com/in/bilelz">
-                        <span>👷‍♂️ Linkedin</span>
-                      </a>
+                    <div class="social-container">
+                      <div class="video-btn">
+                        <a href="https://www.youtube.com/watch?v=uGEFVMdoG74&t=225" id="play" onclick="play(event)"
+                          ><span class="play">▶ Play</span> <span class="pause">⏸ Pause</span> <span class="loading"></span>
+                          <span class="error">❗ Youtube KO?</span>
+                        </a>
+                        <a href="#" id="close" onclick="stop(event)">⏹ Stop </a>
+                      </div>
+                      <div class="social hide-when-playing">
+                        <a href="https://twitter.com/bilelz">
+                          <span><span class="rainbow">🐦 Twitter</span></span>
+                        </a>
+
+                        <a href="http://github.com/bilelz">
+                          <span>🐱 Github</span>
+                        </a>
+                        <a href="https://codepen.io/bilelz">
+                          <span>⌨ Codepen</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/bilelz">
+                          <span>👷‍♂️ Linkedin</span>
+                        </a>
+                      </div>
+                    </div>
+                    <p class="blabla hide-when-playing">
+                      <em>Based on a true story.</em>
+                      <br />Web developer for a very very long time 🦖.<br />
+                      I love building websites with custom CSS and vanilla javascript (like this website by the way).
+                    </p>
+                  </div>
+                </div>
+
+                <div id="player-container">
+                  <div id="iframe-container">
+                    <div id="player"></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section id="📝">
+              <div class="container">
+                <h2>Blog / <em> Last posts </em></h2>
+              </div>
+              <div id="blog-posts" class="template">
+                Loading from
+                <a href="https://bilelz.blogspot.com" target="_parent">blog.bilelz.fr</a>
+                ...
+              </div>
+
+              <div class="container">
+                <h2 class="anchor">Blog / <em>my favorite wallpapers</em></h2>
+              </div>
+              <div id="blog-wallpaper" class="template">
+                Loading from
+                <a href="https://bilelz.blogspot.com/search/label/wallpaper" target="_parent">bilelz.blogspot.com/search/label/wallpaper</a>
+                ...
+              </div>
+
+              <template>
+                <a class="post" target="_parent" href="${item.link[item.link.length-1].href}" id="${item.id}" onclick="showModal(this.id, event); ">
+                  <div class="post__index">${index+1}</div>
+                  <div class="post__container img" data-bg="${(item.media$thumbnail) ? item.media$thumbnail.url : ''}">
+                    <div class="post__header">
+                      <img src="img/avatar_48.jpg" loading="lazy" width="28" height="28" alt="avatar" />
+                      <div class="tags">${(item.category) ? item.category.map(function(cat) {return `<span>#${cat.term}</span> `}).join(''):''}</div>
+                    </div>
+                    <div class="blabla">
+                      <h3>${item.title.$t}</h3>
                     </div>
                   </div>
-                  <p class="blabla hide-when-playing">
-                    <em>Based on a true story.</em>
-                    <br />Web developer for a very very long time 🦖.<br />
-                    I love building websites with custom CSS and vanilla javascript (like this website by the way).
+                </a>
+              </template>
+            </section>
+
+            <section id="☕" data-bg="img/coffee.webp">
+              <div class="container">
+                <h2 class="anchor">☕ Coffee</h2>
+
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="coffee">
+                  <input type="hidden" name="cmd" value="_donations" /><input type="hidden" name="business" value="N9M9SHGPGYGWJ" /><input
+                    type="hidden"
+                    name="lc"
+                    value="FR"
+                  />
+                  <input type="hidden" name="item_name" value="Bilelz" /><input type="hidden" name="item_number" value="bilelzfr" /><input
+                    type="hidden"
+                    name="currency_code"
+                    value="EUR"
+                  />
+                  <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted" />
+                  <h2>Cheers!</h2>
+                  <label for="amount"
+                    >You can offer me
+                    <br />
+                    <input type="number" name="amount" id="amount" min="0" value="1" max="99" step="1" />
+                    <span>☕</span>
+                  </label>
+                  <p>
+                    <input type="submit" onclick="this.value='🥳'" />
                   </p>
-                </div>
+                </form>
               </div>
-
-              <div id="player-container">
-                <div id="iframe-container">
-                  <div id="player"></div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section id="📝">
-            <div class="container">
-              <h2>Blog / <em> Last posts </em></h2>
-            </div>
-            <div id="blog-posts" class="template">
-              Loading from
-              <a href="https://bilelz.blogspot.com" target="_parent">blog.bilelz.fr</a>
-              ...
-            </div>
-
-            <div class="container">
-              <h2 class="anchor">Blog / <em>my favorite wallpapers</em></h2>
-            </div>
-            <div id="blog-wallpaper" class="template">
-              Loading from
-              <a href="https://bilelz.blogspot.com/search/label/wallpaper" target="_parent">bilelz.blogspot.com/search/label/wallpaper</a>
-              ...
-            </div>
-
-            <template>
-              <a class="post" target="_parent" href="${item.link[item.link.length-1].href}" id="${item.id}" onclick="showModal(this.id, event); ">
-                <div class="post__index">${index+1}</div>
-                <div class="post__container img" data-bg="${(item.media$thumbnail) ? item.media$thumbnail.url : ''}">
-                  <div class="post__header">
-                    <img src="img/avatar_48.jpg" loading="lazy" width="28" height="28" alt="avatar" />
-                    <div class="tags">${(item.category) ? item.category.map(function(cat) {return `<span>#${cat.term}</span> `}).join(''):''}</div>
-                  </div>
-                  <div class="blabla">
-                    <h3>${item.title.$t}</h3>
-                  </div>
-                </div>
-              </a>
-            </template>
-          </section>
-
-          <section id="☕" data-bg="img/coffee.webp">
-            <div class="container">
-              <h2 class="anchor">☕ Coffee</h2>
-
-              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="coffee">
-                <input type="hidden" name="cmd" value="_donations" /><input type="hidden" name="business" value="N9M9SHGPGYGWJ" /><input
-                  type="hidden"
-                  name="lc"
-                  value="FR"
-                />
-                <input type="hidden" name="item_name" value="Bilelz" /><input type="hidden" name="item_number" value="bilelzfr" /><input
-                  type="hidden"
-                  name="currency_code"
-                  value="EUR"
-                />
-                <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted" />
-                <h2>Cheers!</h2>
-                <label for="amount"
-                  >You can offer me
-                  <br />
-                  <input type="number" name="amount" id="amount" min="0" value="1" max="99" step="1" />
-                  <span>☕</span>
-                </label>
-                <p>
-                  <input type="submit" onclick="this.value='🥳'" />
-                </p>
-              </form>
-            </div>
-          </section>
+            </section>
+          </div>
         </div>
         <div class="left">
           <div class="users">
