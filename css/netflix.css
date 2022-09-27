@@ -50,8 +50,7 @@ nav {
   top: 0;
   z-index: 3;
   background-color: transparent;
-  -webkit-backdrop-filter: blur(0);
-  backdrop-filter: blur(0);
+
   box-shadow: 0 0 0 transparent;
   transition: 0.3s ease-in-out;
 }
@@ -60,6 +59,12 @@ nav {
   font-size: 2rem;
   line-height: 1;
   padding: 1rem 0 1rem 0;
+}
+@supports (backdrop-filter: blur(0)) or (-webkit-backdrop-filter: blur(0)) {
+  nav {
+    -webkit-backdrop-filter: blur(0);
+    backdrop-filter: blur(0);
+  }
 }
 
 .scrolled nav {

@@ -26,6 +26,15 @@
     <meta name="twitter:title" content="Bilelz - website" />
     <meta name="twitter:description" content="Bilelz, the web developer" />
     <meta name="twitter:image" content="https://bilelz.github.io/img/illustration.png" />
+    <script>
+      function handleScroll(target = window) {
+        if (target.scrollY > 12 || target.scrollTop > 12) {
+          document.body.classList.add("scrolled");
+        } else {
+          document.body.classList.remove("scrolled");
+        }
+      }
+    </script>
   </head>
 
   <body onscroll="handleScroll()">
