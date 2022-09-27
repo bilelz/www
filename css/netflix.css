@@ -51,7 +51,7 @@ nav {
   z-index: 3;
   background-color: transparent;
   -webkit-backdrop-filter: blur(0);
-  backdrop-filter: blur(1);
+  backdrop-filter: blur(0);
   box-shadow: 0 0 0 transparent;
   transition: 0.3s ease-in-out;
 }
