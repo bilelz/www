@@ -13,16 +13,16 @@
   transform: translateZ(-50vw);
 }
 
-#right:target ~ .wrap .cube {
+#right:checked ~ .wrap .cube {
   transform: translateZ(-50vw) rotateY(-90deg);
 }
-#back:target ~ .wrap .cube {
+#back:checked ~ .wrap .cube {
   transform: translateZ(-50vw) rotateY(180deg);
 }
-#random:target ~ .wrap .cube {
+#random:checked ~ .wrap .cube {
   transform: translateZ(-50vw) rotateY(calc(-90deg + 720deg));
 }
-#left:target ~ .wrap .cube {
+#left:checked ~ .wrap .cube {
   transform: translateZ(-50vw) rotateY(90deg);
 }
 #bottom:target ~ .wrap .cube {
@@ -102,20 +102,75 @@
   color: white;
 }
 
-.users a {
+.users label {
   color: white;
+  cursor: pointer;
   padding: 1rem;
   border-radius: 1rem;
   transition: 0.15s;
 }
-.users a:hover,
-.users a:focus {
+.users label:hover,
+.users label:focus {
   box-shadow: 0 0 0 1px white, inset 0 0 0 0 white;
 }
-.users a:active {
+.users label:active {
   box-shadow: 0 0 0 5px white, inset 0 0 0 5px #a5a5a5;
 }
 
 .users-avatar {
   font-size: 46px;
+}
+
+.left li {
+  opacity: 0;
+  font-size: 2rem;
+  list-style: none;
+  animation: show 1s forwards ease-in-out;
+}
+
+.left li:nth-child(1) {
+  animation-delay: 0s;
+  animation: hide 2s forwards ease-in-out;
+}
+.left li:nth-child(2) {
+  animation-delay: 1s;
+}
+.left li:nth-child(3) {
+  animation-delay: 1.5s;
+}
+.left label {
+  opacity: 0;
+  animation: show 1s forwards ease-in-out;
+  animation-delay: 2s;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: scale(0.5) translateY(10rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes hide {
+  from {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+body > label,
+body > input[type="radio"] {
+  display: none;
 }

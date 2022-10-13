@@ -203,3 +203,9 @@ function showModal(id, event) {
     document.body.classList.add("dialog-open");
   }
 }
+
+//showtime
+document.getElementById("left").checked = true;
+setTimeout(() => {
+  document.getElementById("front").checked = true;
+}, 2500);

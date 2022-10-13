@@ -38,54 +38,69 @@
   </head>
 
   <body onscroll="handleScroll()">
-    <span id="front"></span>
-    <span id="back"></span>
+    <label for="front">front</label>
+    <input type="radio" name="side" id="front" value="front" />
+
+    <label for="back">back</label>
+    <input type="radio" name="side" id="back" value="back" />
+
+    <label for="right">right</label>
+    <input type="radio" name="side" id="right" value="right" />
+
+    <label for="left">left</label>
+    <input type="radio" name="side" id="left" value="left" checked />
+
+    <label for="random">random</label>
+    <input type="radio" name="side" id="random" value="random" />
+
+    <!-- <span id="front"></span>
+    <span id="back"></span> -->
     <!-- <span id="top"></span>
     <span id="bottom"></span> -->
-    <span id="left"></span>
+    <!-- <span id="left"></span>
     <span id="right"></span>
-    <span id="random"></span>
+    <span id="random"></span> -->
     <div class="wrap">
       <div class="cube">
         <div class="front">
           <h2>Who's watching?</h2>
 
           <div class="users">
-            <a href="#left">
+            <label for="left">
               <div class="users-avatar">👈</div>
               Left
-            </a>
+            </label>
 
-            <a href="#back">
+            <label for="back">
               <div class="users-avatar">🐱‍🐉</div>
               Friend #1
-            </a>
+            </label>
 
-            <a href="#random">
+            <label for="random">
               <div class="users-avatar">🎢</div>
               Random
-            </a>
-            <a href="#right">
+            </label>
+            <label for="right">
               <img src="img/avatar.jpg" loading="lazy" width="64" height="64" alt="avatar" />
               <br />
               Bilelz
-            </a>
+            </label>
           </div>
         </div>
         <div class="back">
           <h2>Hello 🐱‍🐉 Friend #1</h2>
           <div class="users">
-            <a href="#front">
+            <label for="front">
               <div class="users-avatar">🏠</div>
               Go home
-            </a>
+            </label>
           </div>
         </div>
         <div class="right">
           <div id="webdev" onscroll="handleScroll(this)">
             <nav class="sticky hide-when-playing">
               <div class="container">
-                <a href="#front" id="back-btn">🔙</a>
+                <label for="front" id="back-btn">🔙</label>
 
                 <a href="#🏡" class="brand active"> Bilelz </a>
                 <!-- <a href="#🏡">Accueil</a> -->
@@ -223,14 +238,20 @@
         </div>
         <div class="left">
           <div class="users">
-            <a href="#back">
+            <label for="back">
               <div class="users-avatar">👈</div>
               Left
-            </a>
-            <a href="#front">
+            </label>
+
+            <ul>
+              <li>Loading...</li>
+              <li>Welcome 👋</li>
+              <li>Let's go!</li>
+            </ul>
+            <label for="front">
               <div class="users-avatar">👉</div>
               Right
-            </a>
+            </label>
           </div>
         </div>
         <!-- <div class="top">top</div>-->
