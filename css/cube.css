@@ -2,12 +2,15 @@
   perspective: calc(var(--cube-width) * 3);
   --cube-width: 100vw;
   --cube-height: 100vh;
+  width: var(--cube-width);
+  height: var(--cube-height);
   perspective-origin: center;
   /* margin: 15vh 15vw; */
 }
 .cube {
   position: relative;
   width: var(--cube-width);
+  height: var(--cube-height);
   transform-style: preserve-3d;
   transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateZ(-50vw);
@@ -33,7 +36,7 @@
   position: absolute;
   width: var(--cube-width);
   height: var(--cube-height);
-  box-shadow: 0 0 10px black;
+  /* box-shadow: 0 0 10px black; */
   /* overflow: hidden; */
   transition: 0.3s;
   z-index: 1;
@@ -42,6 +45,12 @@
 #webdev {
   overflow: auto;
   height: 100vh;
+}
+
+@-moz-document url-prefix() {
+  #webdev {
+    overflow: visible;
+  }
 }
 
 .front {

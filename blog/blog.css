@@ -29,6 +29,9 @@
 .template {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
   display: flex;
   width: calc(100% - 4rem);
   flex-direction: column;
