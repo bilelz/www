@@ -19,10 +19,10 @@ const observer = new IntersectionObserver(function (entries, self) {
   });
 }, config);
 
-const sections = document.querySelectorAll("section");
-sections.forEach((section) => {
-  observer.observe(section);
-});
+// const sections = document.querySelectorAll("section");
+// sections.forEach((section) => {
+//   observer.observe(section);
+// });
 
 function intersectionHandler(entry) {
   if (entry.target.tagName === "SECTION") {
@@ -101,10 +101,10 @@ readData = function (data, target) {
     allPosts.push(item);
   }
 
-  const blogPosts = document.querySelectorAll(target + " .post [data-bg]");
-  blogPosts.forEach((post) => {
-    observer.observe(post);
-  });
+  // const blogPosts = document.querySelectorAll(target + " .post [data-bg]");
+  // blogPosts.forEach((post) => {
+  //   observer.observe(post);
+  // });
 };
 
 function play(event) {
@@ -189,7 +189,7 @@ dialog.addEventListener("close", function onClose() {
 
 function showModal(id, event) {
   if (!!!document.createElement("dialog").showModal) {
-    // support test
+    // feature detection
     return;
   }
 
@@ -201,6 +201,7 @@ function showModal(id, event) {
     document.querySelector("dialog footer a").href = post.link.find((l) => l.rel === "alternate").href;
     dialog.showModal();
     document.body.classList.add("dialog-open");
+    document.querySelector("#dialog article").scrollTo({ top: 0, behavior: "smooth" });
   }
 }
 
@@ -217,6 +218,21 @@ function playAnim() {
     document.getElementById("front").checked = true;
   }, 3000);
 }
+
+document.querySelectorAll("#right, #random").forEach((e) => {
+  e.addEventListener("change", (event) => {
+    if (event.target.checked) {
+      setTimeout(() => {
+        document.querySelector("#webdev").scrollTo({ top: 0, behavior: "smooth" });
+      }, 300);
+
+      const blogPosts = document.querySelectorAll("[data-bg]");
+      blogPosts.forEach((post) => {
+        observer.observe(post);
+      });
+    }
+  });
+});
 
 //showtime
 playAnim();
