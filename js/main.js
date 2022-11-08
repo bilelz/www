@@ -204,8 +204,19 @@ function showModal(id, event) {
   }
 }
 
+function playAnim() {
+  document.getElementById("left").checked = true;
+
+  document.querySelectorAll(".run-animation").forEach((i) => {
+    i.classList.remove("run-animation");
+    void i.offsetWidth; // https://css-tricks.com/restart-css-animation/
+    i.classList.add("run-animation");
+  });
+
+  setTimeout(() => {
+    document.getElementById("front").checked = true;
+  }, 3000);
+}
+
 //showtime
-document.getElementById("left").checked = true;
-setTimeout(() => {
-  document.getElementById("front").checked = true;
-}, 2500);
+playAnim();

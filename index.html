@@ -66,22 +66,22 @@
           <h2>Who's watching?</h2>
 
           <div class="users">
-            <label for="left">
+            <label for="left" class="btn-action">
               <div class="users-avatar">👈</div>
               Left
             </label>
 
-            <label for="back">
+            <label for="back" class="btn-action">
               <div class="users-avatar">🐱‍🐉</div>
               Friend #1
             </label>
 
-            <label for="random">
+            <label for="random" class="btn-action">
               <div class="users-avatar">🎢</div>
               Random
             </label>
-            <label for="right">
-              <img src="img/avatar.jpg" loading="lazy" width="64" height="64" alt="avatar" />
+            <label for="right" class="btn-action">
+              <img src="img/avatar.jpg" loading="lazy" alt="avatar" />
               <br />
               Bilelz
             </label>
@@ -90,7 +90,7 @@
         <div class="back">
           <h2>Hello 🐱‍🐉 Friend #1</h2>
           <div class="users">
-            <label for="front">
+            <label for="front" class="btn-action">
               <div class="users-avatar">🏠</div>
               Go home
             </label>
@@ -237,17 +237,20 @@
         </div>
         <div class="left">
           <div class="users">
-            <label for="back">
+            <label for="back" class="run-animation btn-action">
               <div class="users-avatar">👈</div>
               Left
             </label>
 
             <ul>
-              <li>Loading...</li>
-              <li>Welcome 👋</li>
-              <li>Let's go!</li>
+              <li class="run-animation">Loading...</li>
+              <li class="run-animation">Welcome 👋</li>
+              <li class="run-animation">Let's go!</li>
+              <li class="run-animation">
+                <button type="button" onclick="playAnim()" class="btn-action">🔄 Replay</button>
+              </li>
             </ul>
-            <label for="front">
+            <label for="front" class="run-animation btn-action">
               <div class="users-avatar">👉</div>
               Right
             </label>
@@ -282,10 +285,12 @@
       }
     </script>
     <script src="js/main.js"></script>
-    <script src="https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogPosts"></script>
-    <script src="https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogWallpaper&max-results=5&q=wallpaper"></script>
+    <script src="blog/posts.js"></script>
+    <!-- -->
+    <script src="blog/wallpaper.js"></script>
+    <!-- -->
 
-    <!-- <script src="blog/posts.js"></script> -->
-    <!-- <script src="blog/wallpaper.js"></script> -->
+    <script src="https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogPosts"></script>
+    <script src="https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogWallpaper&max-results=10&category=wallpaper"></script>
   </body>
 </html>
