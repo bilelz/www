@@ -101,10 +101,10 @@ readData = function (data, target) {
     allPosts.push(item);
   }
 
-  // const blogPosts = document.querySelectorAll(target + " .post [data-bg]");
-  // blogPosts.forEach((post) => {
-  //   observer.observe(post);
-  // });
+  const blogPosts = document.querySelectorAll(target + " .post [data-bg]");
+  blogPosts.forEach((post) => {
+    observer.observe(post);
+  });
 };
 
 function play(event) {
@@ -225,6 +225,20 @@ document.querySelectorAll("#right, #random").forEach((e) => {
       setTimeout(() => {
         document.querySelector("#webdev").scrollTo({ top: 0, behavior: "smooth" });
       }, 300);
+
+      if (!document.querySelector('script[src="blog/wallpaper.js"]')) {
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "blog/wallpaper.js";
+        document.head.appendChild(script);
+      }
+
+      if (!document.querySelector('script[src="blog/posts.js"]')) {
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "blog/posts.js";
+        document.head.appendChild(script);
+      }
 
       const blogPosts = document.querySelectorAll("[data-bg]");
       blogPosts.forEach((post) => {
