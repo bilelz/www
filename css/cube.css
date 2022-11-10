@@ -167,10 +167,6 @@
   opacity: 0;
   font-size: 2rem;
   list-style: none;
-
-  text-shadow: 0 1px 0 #dba1a1, 0 2px 0 #d89999, 0 3px 0 #d59292, 0 4px 0 #d28a8a, 0 5px 0 #cf8383, 0 6px 0 #cd7c7c, 0 7px 0 #ca7474, 0 8px 0 #c76d6d,
-    0 0 5px rgb(230 139 139 / 5%), 0 -1px 3px rgb(230 139 139 / 20%), 0 9px 9px rgb(230 139 139 / 30%), 0 12px 12px rgb(230 139 139 / 30%),
-    0 15px 15px rgb(230 139 139 / 30%);
 }
 
 .run-animation {
