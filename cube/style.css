@@ -41,7 +41,7 @@ body {
   align-items: center;
 
   -webkit-overflow-scrolling: touch;
-  overflow: hidden;
+  overflow-y: hidden;
   height: 100%;
 }
 
