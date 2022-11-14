@@ -46,7 +46,9 @@ body {
 #back:checked ~ .wrap .back .cube-content,
 #left:checked ~ .wrap .left .cube-content,
 #front:checked ~ .wrap .front .cube-content,
-#right:checked ~ .wrap .right .cube-content {
+#front:checked ~ .wrap .front .cube-content,
+#right:checked ~ .wrap .right .cube-content,
+#random:checked ~ .wrap .right .cube-content {
   overflow: auto;
 }
 
