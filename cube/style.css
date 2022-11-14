@@ -1,7 +1,23 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: -webkit-fill-available;
+  /* height: 100vh; */
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  min-height: -webkit-fill-available;
+  height: 100vh;
+  height: 100%;
+}
+
 .wrap {
   perspective: calc(var(--cube-width) * 3);
   --cube-width: 100vw;
-  --cube-height: 100vh;
+  --cube-height: 100%;
   width: var(--cube-width);
   height: var(--cube-height);
   perspective-origin: center;
@@ -22,8 +38,16 @@
   justify-content: flex-start;
   flex-wrap: nowrap;
   align-items: center;
-  overflow: auto;
+
+  overflow: hidden;
   height: 100%;
+}
+
+#back:checked ~ .wrap .back .cube-content,
+#left:checked ~ .wrap .left .cube-content,
+#front:checked ~ .wrap .front .cube-content,
+#right:checked ~ .wrap .right .cube-content {
+  overflow: auto;
 }
 
 .cube > .cube-face {
@@ -35,6 +59,7 @@
   box-shadow: inset 0 0 0px 9px #ffa200;
   padding: 1rem;
 }
+
 #right:checked ~ .wrap .cube {
   transform: translateZ(-50vw) rotateY(-90deg);
 }
@@ -117,16 +142,7 @@ label.active {
 * {
   box-sizing: border-box;
 }
-body,
-html {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
-}
+
 body > label,
 body > input {
   display: none;
