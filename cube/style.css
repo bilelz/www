@@ -9,6 +9,7 @@ html {
   overflow: hidden;
 }
 body {
+  -webkit-overflow-scrolling: touch;
   min-height: -webkit-fill-available;
   height: 100vh;
   height: 100%;
@@ -39,6 +40,7 @@ body {
   flex-wrap: nowrap;
   align-items: center;
 
+  -webkit-overflow-scrolling: touch;
   overflow: hidden;
   height: 100%;
 }
@@ -49,7 +51,8 @@ body {
 #front:checked ~ .wrap .front .cube-content,
 #right:checked ~ .wrap .right .cube-content,
 #random:checked ~ .wrap .right .cube-content {
-  overflow: auto;
+  overflow-y: scroll;
+  /* overflow-y: auto; */
 }
 
 .cube > .cube-face {
