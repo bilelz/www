@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cube</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <label for="back">back</label>
+    <input type="radio" name="side" id="back" value="back" />
+    <label for="left">left</label>
+    <input type="radio" name="side" id="left" value="left" />
+    <label for="front">front</label>
+    <input type="radio" name="side" id="front" value="front" checked />
+
+    <label for="right">right</label>
+    <input type="radio" name="side" id="right" value="right" />
+
+    <label for="random">random</label>
+    <input type="radio" name="side" id="random" value="random" />
+
+    <div class="wrap">
+      <div class="cube">
+        <div class="front cube-face">
+          <div class="cube-content">
+            <h2>front</h2>
+
+            <label for="back">back</label>
+            <label for="left">left</label>
+            <label for="front" class="active">front</label>
+            <label for="right">right</label>
+
+            <label for="random">random</label>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos doloremque, id corporis earum voluptates tempore reiciendis rem culpa atque,
+              error unde nisi excepturi facilis, quo modi cum fuga. Nisi, optio.
+            </p>
+          </div>
+        </div>
+        <div class="back cube-face">
+          <div class="cube-content">
+            <h2>back</h2>
+            <label for="back" class="active">back</label>
+            <label for="left">left</label>
+            <label for="front">front</label>
+            <label for="right">right</label>
+
+            <label for="random">random</label>
+          </div>
+        </div>
+        <div class="right cube-face">
+          <div class="cube-content">
+            <h2>right</h2>
+            <label for="back">back</label>
+            <label for="left">left</label>
+            <label for="front">front</label>
+            <label for="right" class="active">right</label>
+
+            <label for="random">random</label>
+          </div>
+        </div>
+        <div class="left cube-face">
+          <div class="cube-content">
+            <h2>left</h2>
+
+            <label for="back">back</label>
+            <label for="left" class="active">left</label>
+            <label for="front">front</label>
+            <label for="right">right</label>
+
+            <label for="random">random</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
