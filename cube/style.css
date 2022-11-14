@@ -41,8 +41,9 @@ body {
   align-items: center;
 
   -webkit-overflow-scrolling: touch;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   height: 100%;
+  min-height: 0;
 }
 
 #back:checked ~ .wrap .back .cube-content,
@@ -51,8 +52,8 @@ body {
 #front:checked ~ .wrap .front .cube-content,
 #right:checked ~ .wrap .right .cube-content,
 #random:checked ~ .wrap .right .cube-content {
-  overflow-y: scroll;
-  /* overflow-y: auto; */
+  /* overflow-y: scroll; */
+  overflow-y: auto !important;
 }
 
 .cube > .cube-face {
