@@ -3,7 +3,7 @@
   --body-color: black;
   --bg-presentation: #222222;
   --bg-coffee: #ad8d73;
-  --max-width: 1390px;
+  --max-width: 1024px;
 }
 
 body,
@@ -107,6 +107,8 @@ nav .brand {
 }
 
 nav > div {
+  max-width: var(--max-width);
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

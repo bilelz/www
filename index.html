@@ -226,7 +226,7 @@
               <div class="container">
                 <h2 class="anchor">☕ Coffee</h2>
 
-                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="coffee">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="coffee">
                   <input type="hidden" name="cmd" value="_donations" /><input type="hidden" name="business" value="N9M9SHGPGYGWJ" /><input
                     type="hidden"
                     name="lc"
@@ -242,11 +242,11 @@
                   <label for="amount"
                     >You can offer me
                     <br />
-                    <input type="number" name="amount" id="amount" min="0" value="1" max="99" step="1" />
+                    <input type="number" name="amount" id="amount" min="1" value="0" max="99" step="1" required />
                     <span>☕</span>
                   </label>
                   <p>
-                    <input type="submit" onclick="this.value='🥳'" />
+                    <input type="submit" class="btn-action" onclick="if(this.parentElement.parentElement.checkValidity()) this.value='🥳'" />
                   </p>
                 </form>
               </div>
