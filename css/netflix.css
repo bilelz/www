@@ -72,9 +72,14 @@ nav {
 
 #back-btn {
   cursor: pointer;
-  font-size: 2rem;
-  line-height: 1;
-  padding: 1rem 0 1rem 0;
+  font-size: 1.25rem;
+  padding: 0.75rem 1rem;
+  line-height: 0.75;
+  text-align: center;
+}
+
+#back-btn span {
+  font-size: 0.8rem;
 }
 
 .scrolled nav {
@@ -101,20 +106,28 @@ nav .brand {
   font-weight: bold;
 }
 
+nav > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+}
+
 nav a,
 nav a:visited {
   color: white;
   text-decoration: none;
 }
 
-nav a:hover,
+/* nav a:hover,
 nav a:focus,
 nav a:active {
   text-decoration: underline;
-}
+} */
 
 nav a.active {
-  border-bottom: 2px solid currentColor;
+  border-bottom: 2px solid white;
 }
 
 section {

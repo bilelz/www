@@ -105,14 +105,14 @@ label {
   font-size: 2rem;
   transition: 0.3s;
 }
-/* #right:checked ~ .wrap .cube .cube-face.right,
+#right:checked ~ .wrap .cube .cube-face.right,
 #back:checked ~ .wrap .cube .cube-face.back,
 #front:checked ~ .wrap .cube .cube-face.front,
 #random:checked ~ .wrap .cube .cube-face.right,
 #left:checked ~ .wrap .cube .cube-face.left,
 #bottom:checked ~ .wrap .cube .cube-face.bottom {
   z-index: 2;
-} */
+}
 
 .front {
   background-color: #0000006e;

@@ -19,17 +19,16 @@ const observer = new IntersectionObserver(function (entries, self) {
   });
 }, config);
 
-// const sections = document.querySelectorAll("section");
-// sections.forEach((section) => {
-//   observer.observe(section);
-// });
-
 function intersectionHandler(entry) {
   if (entry.target.tagName === "SECTION") {
-    document.querySelector("nav a.active") && document.querySelector("nav a.active").classList.remove("active");
+    const currentActive = document.querySelector("nav a.active");
 
-    if (document.querySelector(`nav a[href='#${entry.target.id}']`)) {
-      document.querySelector(`nav a[href='#${entry.target.id}']`).classList.add("active");
+    if (currentActive && currentActive.getAttribute("href") !== `#${entry.target.id}`) {
+      currentActive.classList.remove("active");
+
+      if (document.querySelector(`nav a[href='#${entry.target.id}']`)) {
+        document.querySelector(`nav a[href='#${entry.target.id}']`).classList.add("active");
+      }
     }
 
     if (entry.target.id) {
@@ -229,6 +228,10 @@ document.querySelectorAll("#front, #random").forEach((e) => {
       const blogPosts = document.querySelectorAll("[data-bg]");
       blogPosts.forEach((post) => {
         observer.observe(post);
+      });
+      const sections = document.querySelectorAll("section");
+      sections.forEach((section) => {
+        observer.observe(section);
       });
     }
   });
