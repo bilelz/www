@@ -38,17 +38,16 @@
   </head>
 
   <body>
+    <label for="back">back</label>
+    <input type="radio" name="side" id="back" value="back" checked />
+
+    <label for="left">left</label>
+    <input type="radio" name="side" id="left" value="left" />
     <label for="front">front</label>
     <input type="radio" name="side" id="front" value="front" />
 
-    <label for="back">back</label>
-    <input type="radio" name="side" id="back" value="back" />
-
     <label for="right">right</label>
     <input type="radio" name="side" id="right" value="right" />
-
-    <label for="left">left</label>
-    <input type="radio" name="side" id="left" value="left" checked />
 
     <label for="random">random</label>
     <input type="radio" name="side" id="random" value="random" />
@@ -62,43 +61,61 @@
     <span id="random"></span> -->
     <div class="wrap">
       <div class="cube">
-        <div class="front">
-          <h2>Who's watching?</h2>
+        <div class="back cube-face">
+          <div class="cube-content welcome">
+            <h2>&nbsp;</h2>
+            <div class="users">
+              <label for="right" class="run-animation btn-action">
+                <div class="users-avatar">👈</div>
+                Left
+              </label>
 
-          <div class="users">
-            <label for="left" class="btn-action">
-              <div class="users-avatar">👈</div>
-              Left
-            </label>
-            <label for="back" class="btn-action">
-              <div class="users-avatar">🐱‍🐉</div>
-              Friend #1
-            </label>
-            <label for="right" class="btn-action">
-              <img src="img/avatar_64.jpg" loading="lazy" alt="avatar" />
-              <br />
-              Bilelz
-            </label>
-            <label for="random" class="btn-action">
-              <div class="users-avatar">🎢</div>
-              Random
-            </label>
+              <ul>
+                <li class="run-animation">Loading...</li>
+                <li class="run-animation">Welcome 👋</li>
+                <li class="run-animation">Let's go!</li>
+                <li class="run-animation">
+                  <button type="button" onclick="playAnim()" class="btn-action">🔄 Replay</button>
+                </li>
+              </ul>
+              <label for="left" class="run-animation btn-action">
+                <div class="users-avatar">👉</div>
+                Right
+              </label>
+            </div>
           </div>
         </div>
-        <div class="back">
-          <h2>Hello 🐱‍🐉 Friend #1</h2>
-          <div class="users">
-            <label for="front" class="btn-action">
-              <div class="users-avatar">🏠</div>
-              Go home
-            </label>
+        <div class="left cube-face">
+          <div class="cube-content">
+            <h2>Who's watching?</h2>
+
+            <div class="users">
+              <label for="back" class="btn-action">
+                <div class="users-avatar">👈</div>
+                Left
+              </label>
+              <label for="back" class="btn-action">
+                <div class="users-avatar">🐱‍🐉</div>
+                Friend #1
+              </label>
+              <label for="front" class="btn-action">
+                <img src="img/avatar_64.jpg" loading="lazy" alt="avatar" />
+                <br />
+                Bilelz
+              </label>
+              <label for="random" class="btn-action">
+                <div class="users-avatar">🎢</div>
+                Random
+              </label>
+            </div>
           </div>
         </div>
-        <div class="right">
-          <div id="webdev" onscroll="handleScroll(this)">
+
+        <div class="front cube-face">
+          <div class="cube-content" id="webdev" onscroll="handleScroll(this)">
             <nav class="sticky hide-when-playing">
               <div class="container">
-                <label for="front" id="back-btn">🔙</label>
+                <label for="left" id="back-btn">🔙</label>
 
                 <a href="#🏡" class="brand active"> Bilelz </a>
                 <!-- <a href="#🏡">Accueil</a> -->
@@ -233,28 +250,16 @@
             </section>
           </div>
         </div>
-        <div class="left">
-          <h2>&nbsp;</h2>
+        <div class="right cube-face">
+          <h2>Hello 🐱‍🐉 Friend #1</h2>
           <div class="users">
-            <label for="back" class="run-animation btn-action">
-              <div class="users-avatar">👈</div>
-              Left
-            </label>
-
-            <ul>
-              <li class="run-animation">Loading...</li>
-              <li class="run-animation">Welcome 👋</li>
-              <li class="run-animation">Let's go!</li>
-              <li class="run-animation">
-                <button type="button" onclick="playAnim()" class="btn-action">🔄 Replay</button>
-              </li>
-            </ul>
-            <label for="front" class="run-animation btn-action">
-              <div class="users-avatar">👉</div>
-              Right
+            <label for="left" class="btn-action">
+              <div class="users-avatar">🏠</div>
+              Go home
             </label>
           </div>
         </div>
+
         <!-- <div class="top">top</div>-->
         <!-- <div class="bottom">bottom</div> -->
       </div>

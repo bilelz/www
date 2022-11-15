@@ -205,7 +205,7 @@ function showModal(id, event) {
   }
 }
 
-document.querySelectorAll("#right, #random").forEach((e) => {
+document.querySelectorAll("#front, #random").forEach((e) => {
   e.addEventListener("change", (event) => {
     if (event.target.checked) {
       setTimeout(() => {
@@ -235,7 +235,7 @@ document.querySelectorAll("#right, #random").forEach((e) => {
 });
 
 function playAnim() {
-  document.getElementById("left").checked = true;
+  document.getElementById("back").checked = true;
 
   document.querySelectorAll(".run-animation").forEach((i) => {
     i.classList.remove("run-animation");
@@ -244,7 +244,7 @@ function playAnim() {
   });
 
   setTimeout(() => {
-    document.getElementById("front").checked = true;
+    document.getElementById("left").checked = true;
   }, 3000);
 }
 
