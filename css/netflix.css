@@ -227,9 +227,9 @@ h1 {
     white-space: normal;
   }
 
-  section {
+  /* section {
     margin: 1rem 0.5rem;
-  }
+  } */
   section.header {
     margin-right: 0;
     margin-left: 0;
