@@ -60,13 +60,22 @@ nav {
   transition: 0.3s ease-in-out;
 }
 
-@media only screen and (max-width: 600px) {
-  nav {
-    top: auto;
-    bottom: 0;
-    background-color: rgb(0 0 0 / 50%);
-    backdrop-filter: blur(10px);
-    box-shadow: 0px 0px 50px rgb(0 0 0 / 75%);
+nav.footer {
+  top: auto;
+  bottom: 0;
+  background-color: rgb(0 0 0 / 50%);
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 0px 50px rgb(0 0 0 / 75%);
+}
+
+@media only screen and (min-width: 600px) {
+  nav.footer {
+    display: none;
+  }
+}
+@media only screen and (max-height: 700px) {
+  nav.footer {
+    display: none;
   }
 }
 
@@ -93,7 +102,8 @@ nav {
 .scrolled[nav="📝"] nav {
   background-color: rgb(229 168 136 / 50%);
 }
-.scrolled[nav="📝"] nav a {
+.scrolled[nav="📝"] nav a,
+.scrolled[nav="📝"] nav label {
   color: black;
 }
 
@@ -414,6 +424,13 @@ body[playerstate="-1"] .video-btn > a:first-child {
     );
   background-color: #131313;
   color: white;
+  max-width: 100%;
+}
+
+@media (min-width: 1024px) {
+  #📝 {
+    max-width: calc(100% - 1rem);
+  }
 }
 
 #☕ {

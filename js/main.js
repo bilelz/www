@@ -21,14 +21,30 @@ const observer = new IntersectionObserver(function (entries, self) {
 
 function intersectionHandler(entry) {
   if (entry.target.tagName === "SECTION") {
-    const currentActive = document.querySelector("nav a.active");
+    // const currentActive = document.querySelector("nav a.active");
+    const currentActiveList = document.querySelectorAll("nav a.active");
 
-    if (currentActive && currentActive.getAttribute("href") !== `#${entry.target.id}`) {
-      currentActive.classList.remove("active");
+    // if (currentActive && currentActive.getAttribute("href") !== `#${entry.target.id}`) {
+    //   currentActive.classList.remove("active");
 
-      if (document.querySelector(`nav a[href='#${entry.target.id}']`)) {
-        document.querySelector(`nav a[href='#${entry.target.id}']`).classList.add("active");
-      }
+    //   if (document.querySelector(`nav a[href='#${entry.target.id}']`)) {
+    //     document.querySelector(`nav a[href='#${entry.target.id}']`).classList.add("active");
+    //   }
+    // }
+
+    if (currentActiveList && currentActiveList.length > 0) {
+      currentActiveList.forEach((currentActive) => {
+        if (currentActive && currentActive.getAttribute("href") !== `#${entry.target.id}`) {
+          currentActive.classList.remove("active");
+
+          const buttonList = document.querySelectorAll(`nav a[href='#${entry.target.id}']`);
+          if (buttonList && buttonList.length > 0) {
+            buttonList.forEach((btn) => {
+              btn.classList.add("active");
+            });
+          }
+        }
+      });
     }
 
     if (entry.target.id) {
