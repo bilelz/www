@@ -222,8 +222,6 @@ h1 {
   font-family: "Comic Sans MS", "Comic Sans", monospace;
   font-style: italic;
   font-size: 2em;
-  margin: 0;
-  padding: 0;
   white-space: pre;
 }
 
@@ -405,6 +403,7 @@ body[playerstate="-1"] .video-btn > a:first-child {
 .quality {
   color: #000000;
   padding: 2px 5px;
+  margin-top: 5px;
   border-radius: 2px;
   display: inline-block;
   background-color: #ffffff9c;

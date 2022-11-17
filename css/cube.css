@@ -87,6 +87,10 @@
 #right:checked ~ .wrap .cube {
   transform: translateZ(-50vw) rotateY(-90deg);
 }
+#right-bis:checked ~ .wrap .cube {
+  transform: translateZ(-50vw) rotateY(270deg);
+}
+
 #back:checked ~ .wrap .cube {
   transform: translateZ(-50vw) rotateY(180deg);
 }
@@ -101,6 +105,7 @@
 }
 
 #right:checked ~ .wrap .cube .cube-face.right,
+#right-bis:checked ~ .wrap .cube .cube-face.right,
 #back:checked ~ .wrap .cube .cube-face.back,
 #front:checked ~ .wrap .cube .cube-face.front,
 #random:checked ~ .wrap .cube .cube-face.front,

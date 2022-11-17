@@ -255,10 +255,9 @@ dialog[open] {
 }
 
 .img {
-  /* height: 150px; */
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: midnightblue;
+  background-color: #ffffff47;
 }
 
 .post__container .blabla {
