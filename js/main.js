@@ -220,6 +220,16 @@ function showModal(id, event) {
   }
 }
 
+document.getElementById("left").addEventListener("change", (event) => {
+  if (event.target.checked) {
+    const bgImgList = document.querySelectorAll("[data-bg]:not([data-observed])");
+    bgImgList.forEach((item) => {
+      item.setAttribute("data-observed", "true");
+      observer.observe(item);
+    });
+  }
+});
+
 document.querySelectorAll("#front, #random").forEach((e) => {
   e.addEventListener("change", (event) => {
     if (event.target.checked) {
@@ -234,20 +244,23 @@ document.querySelectorAll("#front, #random").forEach((e) => {
         document.head.appendChild(script);
       }
 
-      if (!document.querySelector('script[src="blog/posts.js"]')) {
+      if (!document.querySelector('script[src="blog/default.js"]')) {
         const script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "blog/posts.js";
+        script.src = "blog/default.js";
         document.head.appendChild(script);
       }
 
-      const blogPosts = document.querySelectorAll("[data-bg]");
-      blogPosts.forEach((post) => {
-        observer.observe(post);
+      const bgImgList = document.querySelectorAll("[data-bg]:not([data-observed])");
+      bgImgList.forEach((item) => {
+        item.setAttribute("data-observed", "true");
+        observer.observe(item);
       });
-      const sections = document.querySelectorAll("section");
-      sections.forEach((section) => {
-        observer.observe(section);
+
+      const sections = document.querySelectorAll("section:not([data-observed])");
+      sections.forEach((item) => {
+        item.setAttribute("data-observed", "true");
+        observer.observe(item);
       });
     }
   });
@@ -264,6 +277,7 @@ function playAnim() {
 
   setTimeout(() => {
     document.getElementById("left").checked = true;
+    document.getElementById("left").dispatchEvent(new Event("change"));
   }, 3000);
 }
 
