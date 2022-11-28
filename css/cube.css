@@ -58,7 +58,7 @@
 
 .left {
   background-color: rgb(217 175 217 / 50%);
-  background-image: linear-gradient(to top, rgb(48 207 208 / 90%) 0%, rgb(51 8 103 / 90%) 100%);
+  background-image: linear-gradient(to top, rgb(0 0 0 / 90%) 0%, rgb(51 8 103 / 90%) 100%);
   transform: rotateY(-90deg) translateX(calc(-1 * var(--cube-width) / 2));
   transform-origin: center left;
 }
@@ -157,15 +157,9 @@
   border-radius: 100%;
 }
 
-@media only screen and (max-width: 600px) {
-  .users-avatar {
-    font-size: 32px;
-  }
-
-  .btn-action img {
-    width: 40px;
-    height: 40px;
-  }
+.left h2 {
+  font-size: 3rem;
+  font-weight: lighter;
 }
 
 .welcome ul {
@@ -175,8 +169,27 @@
 
 .welcome li {
   opacity: 0;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   list-style: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .users-avatar {
+    font-size: 32px;
+  }
+
+  .btn-action img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .left h2 {
+    font-size: 1.5rem;
+  }
+
+  .welcome li {
+    font-size: 1.5rem;
+  }
 }
 
 .run-animation {
