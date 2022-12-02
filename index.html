@@ -73,7 +73,7 @@
 
               <ul>
                 <li class="run-animation">Loading...</li>
-                <li class="run-animation">Welcome 👋</li>
+                <li class="run-animation">Welcomee 👋</li>
                 <li class="run-animation">Let's go!</li>
                 <li class="run-animation">
                   <button type="button" onclick="playAnim()" class="btn-action">🔄 Replay</button>
@@ -285,6 +285,16 @@
                     <input type="submit" class="btn-action" onclick="if(this.parentElement.parentElement.checkValidity()) this.value='🥳'" />
                   </p>
                 </form>
+                <button
+                  type="button"
+                  onclick="navigator.serviceWorker.ready.then((registration) => {
+                registration.update();
+              });"
+                  class="btn-action"
+                >
+                  <div class="users-avatar">up</div>
+                  Update app
+                </button>
               </div>
             </section>
           </div>
