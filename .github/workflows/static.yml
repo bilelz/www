@@ -32,10 +32,14 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v2
+      - run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      - run: echo ${{ steps.date.outputs.date }}
       - run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
-      - run: echo ${{ steps.vars.outputs.sha_short }}
       - run: echo ${{ github.sha }}
-      - run: sed -i 's/_CACHE_BUSTER_/'${{ steps.vars.outputs.sha_short }}'/g' index.html
+      - run: echo '{"packageVersion":"1.0.0", "date":"'$CI_JOB_STARTED_AT'", "branch":"'${{ github.head_ref }}'", "env":"'${{github.env}}'", "gitUrl":"'${{github.repositoryUrl}}'"}'
+      - run: echo '{"packageVersion":"1.0.0", "date":"'$CI_JOB_STARTED_AT'", "branch":"'${{ github.head_ref }}'", "env":"'${{github.env}}'", "gitUrl":"'${{github.repositoryUrl}}'"}' > version.json
+
+      - run: sed -i 's/_GIT_COMMIT_SHA_/'${{ github.sha }}'/g' index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
