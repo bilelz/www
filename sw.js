@@ -1,5 +1,5 @@
 // are you looking for a pwa?
-const cacheName = "Bilelz_v1.3.1";
+const cacheName = "Bilelz_v1.3.2";
 // prettier-ignore
 const assets = ["/", "/index.html", 
                 "/css/netflix.css", "/css/cube.css", "/blog/blog.css", 
