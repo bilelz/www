@@ -40,6 +40,7 @@ jobs:
       - run: echo '{"packageVersion":"1.0.0", "date":"'$CI_JOB_STARTED_AT'", "branch":"'${{ github.head_ref }}'", "env":"'${{github.env}}'", "gitUrl":"'${{github.repositoryUrl}}'"}' > version.json
 
       - run: sed -i 's/_GIT_COMMIT_SHA_/'${{ github.sha }}'/g' index.html
+      - run: sed -i 's/_GIT_COMMIT_SHA_/'${{ github.sha }}'/g' sw.js 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
