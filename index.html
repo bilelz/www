@@ -73,7 +73,7 @@
 
               <ul>
                 <li class="run-animation">Loading...</li>
-                <li class="run-animation">Welcomee 👋</li>
+                <li class="run-animation">Welcomedd 👋</li>
                 <li class="run-animation">Let's go!</li>
                 <li class="run-animation">
                   <button type="button" onclick="playAnim()" class="btn-action">🔄 Replay</button>
@@ -169,9 +169,9 @@
                       <span>Website</span>
                     </div>
                     <h1 class="hide-when-playing">
-                      <img src="img/theweb.svg" alt="the web" />
+                      <img src="img/theweb.svg" alt="THE WEB" />
                       <br />
-                      <img src="img/developer.svg" alt="developer" id="developer" />
+                      <img src="img/developer.svg" alt="DEVELOPER" id="developer" />
                     </h1>
                     <div class="tags hide-when-playing">
                       <span class="match">100% Match</span>
@@ -332,14 +332,52 @@
       </div>
     </dialog>
 
+    <div id="newVersion">
+      <h4>🌟 New Update available! 🌟</h4>
+      <div>
+        <div>Reload the webapp to see the latest juicy changes.</div>
+        <button type="button" class="btn-action" onclick="document.location.reload()">Refresh</button>
+      </div>
+    </div>
+
     <link rel="stylesheet" href="blog/blog.css" />
     <script>
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("/sw.js").then(
-          function () {},
-          function () {}
-        );
-      }
+      window.isUpdateAvailable = new Promise(function (resolve, reject) {
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then((reg) => {
+              reg.onupdatefound = () => {
+                const installingWorker = reg.installing;
+                installingWorker.onstatechange = () => {
+                  switch (installingWorker.state) {
+                    case "installed":
+                      if (navigator.serviceWorker.controller) {
+                        // new update available
+                        resolve(true);
+                      } else {
+                        // no update available
+                        resolve(false);
+                      }
+                      break;
+                  }
+                };
+              };
+            })
+            .catch((err) => console.error("[SW ERROR]", err));
+        }
+      });
+
+      window["isUpdateAvailable"].then((isAvailable) => {
+        if (isAvailable) {
+          console.log({
+            message: "New Update available! Reload the webapp to see the latest juicy changes.",
+            position: "bottom",
+            showCloseButton: true,
+          });
+          document.getElementById("newVersion").classList.add("show");
+        }
+      });
     </script>
     <script src="js/main.js"></script>
     <!-- <script src="blog/default.js"></script> -->

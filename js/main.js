@@ -281,5 +281,5 @@ function playAnim() {
   }, 3000);
 }
 
-//showtime
+// showtime
 playAnim();

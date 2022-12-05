@@ -1,5 +1,5 @@
 // are you looking for a pwa?
-const cacheName = "Bilelz_v4";
+const cacheName = "Bilelz_v1.3.1";
 // prettier-ignore
 const assets = ["/", "/index.html", 
                 "/css/netflix.css", "/css/cube.css", "/blog/blog.css", 
@@ -56,19 +56,19 @@ self.addEventListener("fetch", function (event) {
       var cache = await caches.open(cacheName);
       var cachedFiles = await cache.match(event.request);
       if (cachedFiles) {
-        console.log("✈cache find!", cachedFiles.url);
+        console.log("✈cache find!", cachedFiles.url, cachedFiles);
         return cachedFiles;
       } else {
         try {
           console.log("cache not find ", event.request.url);
           var response = await fetch(event.request);
           await cache.put(event.request, response.clone());
-          console.log("👍 cached", cachedFiles.url);
+          console.log("👍 cached", event.request.url);
 
           return response;
         } catch (e) {
           /* ... */
-          console.error("fetch error :/", e);
+          console.error("fetch error :/", event.request.url, e);
         }
       }
     })()
