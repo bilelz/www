@@ -32,7 +32,10 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v2
-      - run: sed -i 's/_CACHE_BUSTER_/'$CI_COMMIT_SHORT_SHA'/g' index.html
+      - run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      - run: echo ${{ steps.vars.outputs.sha_short }}
+      - run: echo ${{ github.sha }}
+      - run: sed -i 's/_CACHE_BUSTER_/'${{ steps.vars.outputs.sha_short }}'/g' index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
