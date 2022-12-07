@@ -298,7 +298,9 @@ function playAnim() {
 }
 
 // showtime
-playAnim();
+if (document.location.port === "443") {
+  playAnim();
+}
 
 // CSP grrrrrrrr : https://content-security-policy.com/unsafe-hashes/
 document.getElementById("webdev").addEventListener("scroll", (event) => {

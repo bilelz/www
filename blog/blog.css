@@ -159,9 +159,7 @@ dialog article p {
   width: 100%;
   margin: 0.5rem 0;
 }
-dialog h3 {
-  text-shadow: none;
-}
+
 dialog header,
 dialog footer {
   display: flex;
@@ -276,13 +274,9 @@ dialog[open] {
 }
 
 h3 {
-  /* background-image: linear-gradient(to top left, #673ab7, #00bcd4); */
   margin: 0;
   padding: 0 5px;
-  font-size: 24px;
   font-weight: lighter;
-  text-shadow: 0px 0px 12px black;
-  font-family: monospace, comic sans ms, arial;
 }
 
 @media only screen and (min-width: 600px) {
