@@ -72,6 +72,7 @@
   scroll-snap-align: start;
   scroll-snap-stop: always;
   border-radius: 2rem;
+  text-decoration: none;
 }
 
 .post:first-child {
@@ -316,10 +317,6 @@ h3 {
   .post.active .post__index {
     transform: translateX(5%);
   }
-}
-
-a {
-  text-decoration: none;
 }
 
 .lazyload,

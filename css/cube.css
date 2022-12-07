@@ -140,6 +140,10 @@
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5), inset 0 0 0 0 rgba(255, 255, 255, 0.5);
 }
 
+.shadow {
+  box-shadow: 0 2px 1px -1px #0003, 0 1px 1px 2px #00000024, 0 1px 3px #0000001f;
+}
+
 .btn-action:hover,
 .btn-action:focus {
   box-shadow: 0 0 0 1px white, inset 0 0 0 0 white;
