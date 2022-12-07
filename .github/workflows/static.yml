@@ -52,13 +52,7 @@ jobs:
       - name: Set shortSha
         id: sha
         run: echo "SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-      - run: echo '{"packageVersion":"1.0.0", 
-      "date":"${{ steps.date.outputs.NOW }}", 
-      "branch":"${{ github.ref_name }}", 
-      "sha":"${{ github.sha }}",
-      "shortSha":"${{ steps.sha.outputs.SHORT }}",
-      "run_id":"${{github.run_id}}"
-      "env":"${{github.env}}", "git":"${{github.repositoryUrl}}"}' > version.json
+      - run: echo '{"packageVersion":"1.0.0", "date":"${{ steps.date.outputs.NOW }}", "branch":"${{ github.ref_name }}", "sha":"${{ github.sha }}", "shortSha":"${{ steps.sha.outputs.SHORT }}", "run_id":"${{github.run_id}}", "env":"${{github.env}}", "git":"${{github.repositoryUrl}}"}' > version.json
       - run: echo ${{github}}
       - run: cat version.json
       - run: sed -i 's/_GIT_COMMIT_SHA_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' index.html
