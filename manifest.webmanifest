@@ -1,0 +1,25 @@
+{
+  "name": "Bilelz  Website",
+  "short_name": "Bilelz",
+  "description": "Bilelz - personal website",
+  "start_url": "/?homescreen=1",
+  "id": "/?homescreen=1",
+  "display": "standalone",
+  "lang": "fr",
+  "theme_color": "gold",
+  "background_color": "#000000",
+  "icons": [
+    {
+      "src": "img/android/android-launchericon-512-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/android/android-launchericon-192-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    }
+  ]
+}
