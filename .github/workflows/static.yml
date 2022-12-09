@@ -59,7 +59,7 @@ jobs:
 
       # Cache buster everything
       - run: sed -i 's/_GIT_COMMIT_SHA_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' index.html
-      - run: sed -i 's/_GIT_COMMIT_SHA_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' main.js
+      - run: sed -i 's/_GIT_COMMIT_SHA_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' js/main.js
       - run: sed -i 's/_GIT_COMMIT_SHA_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' sw.js
 
       # Get the latest posts from blogger
