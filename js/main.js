@@ -236,8 +236,18 @@ function showModal(id, event) {
 
 document.getElementById("left").addEventListener("change", (event) => {
   if (event.target.checked) {
-    const bgImgList = document.querySelectorAll("[data-bg]:not([data-observed])");
-    bgImgList.forEach((item) => {
+    const defaultPosts = document.querySelector('script[data-src="blog/default.js?v=_GIT_COMMIT_SHA_"]:not([src])');
+    if (defaultPosts) {
+      defaultPosts.setAttribute("src", defaultPosts.getAttribute("data-src"));
+    }
+
+    const wallpaperPosts = document.querySelector('script[data-src="blog/wallpaper.js?v=_GIT_COMMIT_SHA_"]:not([src])');
+    if (wallpaperPosts) {
+      wallpaperPosts.setAttribute("src", wallpaperPosts.getAttribute("data-src"));
+    }
+
+    const sections = document.querySelectorAll("section:not([data-observed])");
+    sections.forEach((item) => {
       item.setAttribute("data-observed", "true");
       observer.observe(item);
     });
@@ -251,26 +261,8 @@ document.querySelectorAll("#front, #random").forEach((e) => {
         document.querySelector("#webdev").scrollTo({ top: 0, behavior: "smooth" });
       }, 300);
 
-      const defaultPosts = document.querySelector('script[data-src="blog/default.js?v=_GIT_COMMIT_SHA_"]');
-      if (defaultPosts) {
-        defaultPosts.setAttribute("src", defaultPosts.getAttribute("data-src"));
-        defaultPosts.removeAttribute("data-src");
-      }
-
-      const wallpaper = document.querySelector('script[data-src="blog/wallpaper.js?v=_GIT_COMMIT_SHA_"]');
-      if (wallpaper) {
-        wallpaper.setAttribute("src", wallpaper.getAttribute("data-src"));
-        wallpaper.removeAttribute("data-src");
-      }
-
       const bgImgList = document.querySelectorAll("[data-bg]:not([data-observed])");
       bgImgList.forEach((item) => {
-        item.setAttribute("data-observed", "true");
-        observer.observe(item);
-      });
-
-      const sections = document.querySelectorAll("section:not([data-observed])");
-      sections.forEach((item) => {
         item.setAttribute("data-observed", "true");
         observer.observe(item);
       });
