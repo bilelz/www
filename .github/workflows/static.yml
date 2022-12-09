@@ -63,10 +63,10 @@ jobs:
       - run: sed -i 's/_GIT_COMMIT_SHA_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' sw.js
 
       # Get the latest posts from blogger
-      - run: curl -o default.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogPosts"
-      - run: sed  -i '1i /*${{ steps.date.outputs.NOW }}*/' default.js
-      - run: curl -o wallpaper.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogWallpaper&max-results=10&category=wallpaper"
-      - run: sed  -i '1i /*${{ steps.date.outputs.NOW }}*/' wallpaper.js
+      - run: curl -o blog/default.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogPosts"
+      - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' blog/default.js
+      - run: curl -o blog/wallpaper.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogWallpaper&max-results=10&category=wallpaper"
+      - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' blog/wallpaper.js
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
