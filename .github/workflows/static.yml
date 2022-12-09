@@ -46,6 +46,8 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v2
+
+      # Set variables
       - name: Set date.NOW
         id: date
         run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_OUTPUT
@@ -54,8 +56,17 @@ jobs:
         run: echo "SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - run: echo '{"date":"${{ steps.date.outputs.NOW }}", "branch":"${{ github.ref_name }}", "sha":"${{ github.sha }}", "shortSha":"${{ steps.sha.outputs.SHORT }}", "job":"${{github.server_url}}/${{github.repository}}/actions/runs/${{github.run_id}}", "repositoryUrl":"${{github.repositoryUrl}}"}' > version.json
       - run: cat version.json
+
+      # Cache buster everything
       - run: sed -i 's/_GIT_COMMIT_SHA_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' index.html
+      - run: sed -i 's/_GIT_COMMIT_SHA_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' main.js
       - run: sed -i 's/_GIT_COMMIT_SHA_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' sw.js
+
+      # Get the latest posts from blogger
+      - run: curl -o default.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogPosts"
+      - run: sed  -i '1i /*${{ steps.date.outputs.NOW }}*/' default.js
+      - run: curl -o wallpaper.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogWallpaper&max-results=10&category=wallpaper"
+      - run: sed  -i '1i /*${{ steps.date.outputs.NOW }}*/' wallpaper.js
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1

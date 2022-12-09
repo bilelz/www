@@ -251,20 +251,16 @@ document.querySelectorAll("#front, #random").forEach((e) => {
         document.querySelector("#webdev").scrollTo({ top: 0, behavior: "smooth" });
       }, 300);
 
-      if (!document.querySelector('script[src="blog/wallpaper.js"]')) {
-        const script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = "blog/wallpaper.js";
-        script.nonce = "9cd2b8a2-753f-11ed-a1eb-0242ac120002";
-        document.head.appendChild(script);
+      const defaultPosts = document.querySelector('script[data-src="blog/default.js?v=_GIT_COMMIT_SHA_"]');
+      if (defaultPosts) {
+        defaultPosts.setAttribute("src", defaultPosts.getAttribute("data-src"));
+        defaultPosts.removeAttribute("data-src");
       }
 
-      if (!document.querySelector('script[src="blog/default.js"]')) {
-        const script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = "blog/default.js";
-        script.nonce = "9cd2b8a2-753f-11ed-a1eb-0242ac120002";
-        document.head.appendChild(script);
+      const wallpaper = document.querySelector('script[data-src="blog/wallpaper.js?v=_GIT_COMMIT_SHA_"]');
+      if (wallpaper) {
+        wallpaper.setAttribute("src", wallpaper.getAttribute("data-src"));
+        wallpaper.removeAttribute("data-src");
       }
 
       const bgImgList = document.querySelectorAll("[data-bg]:not([data-observed])");
