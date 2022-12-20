@@ -53,7 +53,7 @@ jobs:
         run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_OUTPUT
       - name: Set dateFormatted.NOW
         id: dateFormatted
-        run: echo "NOW=$(date +'%A %d %B %Y @ %H:%M:%S(UTC%z)')" >> $GITHUB_OUTPUT
+        run: echo "NOW=$(date +'%A\ %d\ %B\ %Y\ @\ %H:%M:%S\(UTC%z\)')" >> $GITHUB_OUTPUT
       - name: Set shortSha
         id: sha
         run: echo "SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
