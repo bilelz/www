@@ -249,9 +249,15 @@ body > input[type="radio"] {
   display: none;
 }
 
-.cube-face.right label:first-child {
+.hidden {
   visibility: hidden;
 }
+.cube-face.right ul {
+  text-align: left;
+  list-style: none;
+  padding: 0;
+}
+
 .cube-face.right label:nth-child(2) {
   background-color: #ffffffbf;
 }

@@ -236,12 +236,12 @@ function showModal(id, event) {
 
 document.getElementById("left").addEventListener("change", (event) => {
   if (event.target.checked) {
-    const defaultPosts = document.querySelector('script[data-src="blog/default.js?v=_GIT_COMMIT_SHA_"]:not([src])');
+    const defaultPosts = document.querySelector('script[data-src="blog/default.js?v=_COMMIT_SHA_AND_DATE_"]:not([src])');
     if (defaultPosts) {
       defaultPosts.setAttribute("src", defaultPosts.getAttribute("data-src"));
     }
 
-    const wallpaperPosts = document.querySelector('script[data-src="blog/wallpaper.js?v=_GIT_COMMIT_SHA_"]:not([src])');
+    const wallpaperPosts = document.querySelector('script[data-src="blog/wallpaper.js?v=_COMMIT_SHA_AND_DATE_"]:not([src])');
     if (wallpaperPosts) {
       wallpaperPosts.setAttribute("src", wallpaperPosts.getAttribute("data-src"));
     }

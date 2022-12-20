@@ -1,5 +1,5 @@
 // are you looking for a pwa?
-const cacheName = "Bilelz_v2-_GIT_COMMIT_SHA_";
+const cacheName = "Bilelz__COMMIT_SHA_AND_DATE_";
 // prettier-ignore
 const assets = ["/", "/index.html", 
                 "/css/netflix.css", "/css/cube.css", "/blog/blog.css", 
