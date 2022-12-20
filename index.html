@@ -31,8 +31,8 @@
     <meta property="og:description" content="Bilelz, the web developer" />
     <meta property="og:url" content="https://bilelz.github.io/" />
     <meta property="og:image" content="https://bilelz.github.io/img/preview.jpg" />
-    <meta property="og:image:width" content="720">
-    <meta property="og:image:height" content="500">
+    <meta property="og:image:width" content="720" />
+    <meta property="og:image:height" content="500" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@bilelz" />
@@ -247,7 +247,7 @@
               </div>
 
               <template>
-                <a class="post" target="_blank" href="${item.link[item.link.length-1].href}" id="${item.id}">
+                <a class="post" rel="noreferrer" target="_blank" href="${item.link[item.link.length-1].href}" id="${item.id}">
                   <div class="post__index">${index+1}</div>
                   <div class="post__container img" data-bg="${(item.media$thumbnail) ? item.media$thumbnail.url : ''}">
                     <div class="post__header">
