@@ -241,6 +241,7 @@ ul li.run-animation:nth-child(4) {
 
   to {
     opacity: 0;
+    transform: translateY(-2.5rem);
   }
 }
 
@@ -255,7 +256,6 @@ body > input[type="radio"] {
 .cube-face.right ul {
   text-align: left;
   list-style: none;
-  padding: 0;
 }
 
 .cube-face.right label:nth-child(2) {

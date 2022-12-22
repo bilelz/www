@@ -47,7 +47,10 @@ jobs:
         run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_OUTPUT
       - name: Set dateFormatted.NOW
         id: dateFormatted
-        run: echo "NOW=$(date +'%A\ %d\ %B\ %Y\ @\ %H:%M:%S\(%Z%:::z\)')" >> $GITHUB_OUTPUT
+        run: echo "NOW=$(date +'%A\ %d\ %B\ %Y')" >> $GITHUB_OUTPUT
+      - name: Set hourFormatted.NOW
+        id: hourFormatted
+        run: echo "NOW=$(date +'%H:%M:%S\(%Z%:::z\)')" >> $GITHUB_OUTPUT
       - name: Set shortSha
         id: sha
         run: echo "SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
@@ -58,6 +61,7 @@ jobs:
       - run: sed -i 's/_COMMIT_SHA_AND_DATE_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' index.html
       - run: sed -i 's/_GIT_SHORT_SHA_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' index.html
       - run: sed -i 's/_DATE_FORMATTED_/'${{ steps.dateFormatted.outputs.NOW }}'/g' index.html
+      - run: sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' index.html
 
       - run: sed -i 's/_COMMIT_SHA_AND_DATE_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' js/main.js
       - run: sed -i 's/_GIT_COMMIT_SHA_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' sw.js
