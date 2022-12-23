@@ -64,7 +64,7 @@ jobs:
       - run: sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' index.html
 
       - run: sed -i 's/_COMMIT_SHA_AND_DATE_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' js/main.js
-      - run: sed -i 's/_GIT_COMMIT_SHA_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' sw.js
+      - run: sed -i 's/_COMMIT_SHA_AND_DATE_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' sw.js
 
       # Use CLI tools to minify, overwriting existing files
       - run: for i in ./js/*.js; do terser $i --compress -o $i; done
