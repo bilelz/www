@@ -59,7 +59,7 @@ jobs:
 
       # Cache buster everything
       - run: sed -i 's/_COMMIT_SHA_AND_DATE_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' index.html
-      - run: sed -i 's/_GIT_SHORT_SHA_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' index.html
+      - run: sed -i 's/_GIT_SHORT_SHA_/'${{ steps.sha.outputs.SHORT }}'/g' index.html
       - run: sed -i 's/_DATE_FORMATTED_/'${{ steps.dateFormatted.outputs.NOW }}'/g' index.html
       - run: sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' index.html
 
