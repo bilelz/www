@@ -37,8 +37,16 @@ self.addEventListener("activate", (event) => {
       );
     })
   );
-  console.log("OFFLINE OK");
+
+  self.clients.matchAll({ includeUncontrolled: true, type: "window" }).then((clients) => {
+    clients.forEach((client) => client.postMessage("offline OK"));
+  });
 });
+
+self.addEventListener("message", (event) => {
+  console.log("SW received", event.type, event.data);
+});
+
 const cacheFirst = async (request) => {
   const responseFromCache = await caches.match(request);
   if (responseFromCache) {

@@ -23,7 +23,10 @@
 
 :root {
   --post-height: 250px;
-  --post-zoom-effect: 1.2;
+  --post-zoom-effect: 1;
+}
+.m-0 {
+  margin: 0;
 }
 
 .template {
@@ -281,6 +284,9 @@ h3 {
 }
 
 @media only screen and (min-width: 600px) {
+  :root {
+    --post-zoom-effect: 1.2;
+  }
   .post:focus ~ .post,
   .post:hover ~ .post {
     transform: translateX(10%);

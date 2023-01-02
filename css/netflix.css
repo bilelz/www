@@ -82,7 +82,7 @@ nav.footer {
   }
 }
 
-#back-btn {
+.back-btn {
   cursor: pointer;
   font-size: 1.25rem;
   padding: 0.75rem 1rem 0.75rem 0;
@@ -95,11 +95,11 @@ nav.footer {
   flex-direction: row;
 }
 
-#back-btn span {
+.back-btn span {
   font-size: 0.8rem;
   margin-left: -1em;
 }
-#back-btn svg {
+.back-btn svg {
   fill: currentColor;
   width: 2rem;
 }
@@ -159,7 +159,7 @@ section {
   padding: 0.5rem 0 2.5rem 0;
   transition: opacity 1s;
   border-radius: 1rem;
-  margin: 1rem auto;
+  margin: 0.25rem auto;
   width: 100%;
   max-width: var(--max-width);
 }
@@ -616,4 +616,17 @@ body[playerstate="-1"] .video-btn > a:first-child {
 #newVersion button {
   margin: 0 0 0 0.5rem;
   background: #ffffffc9;
+}
+
+.info-offline,
+#offline-security-announcement {
+  display: none;
+}
+
+body.offline-available .info-offline {
+  display: inline-block;
+}
+
+body.is-offline #offline-security-announcement {
+  display: inline-block;
 }

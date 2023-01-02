@@ -6,6 +6,34 @@ webP.onload = webP.onerror = () => {
   }
 };
 
+// offline part
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.addEventListener("message", function (event) {
+    console.log("client received: ", event.type, event.data);
+
+    if (event.data == "offline OK") {
+      document.body.classList.add("offline-available");
+      localStorage.setItem("offline", "available");
+    }
+  });
+}
+if (localStorage.getItem("offline")) {
+  document.body.classList.add("offline-available");
+}
+if (!navigator.onLine) {
+  document.body.classList.add("is-offline");
+}
+
+window.onoffline = (event) => {
+  document.body.classList.add("is-offline");
+};
+window.ononline = (event) => {
+  document.body.classList.remove("is-offline");
+};
+
+// endof : offline part
+
 const config = {
   rootMargin: "0px",
   threshold: [0.25, 0.5, 0.75, 1.0],
@@ -286,8 +314,11 @@ function playAnim() {
 }
 
 // showtime
-if (document.location.hostname !== "localhost" && document.location.hostname !== "127.0.0.1") {
+if (!localStorage.getItem("offline")) {
   playAnim();
+} else {
+  document.getElementById("left").checked = true;
+  document.getElementById("left").dispatchEvent(new Event("change"));
 }
 
 // CSP grrrrrrrr : https://content-security-policy.com/unsafe-hashes/
@@ -322,4 +353,25 @@ document.getElementById("form").addEventListener("submit", () => {
   if (this.checkValidity()) {
     document.querySelector('form [type="submit"]').value = "🥳";
   }
+});
+
+// clear data cached / unregister service worker / clear localStorage
+document.getElementById("clearData").addEventListener("click", () => {
+  localStorage.clear();
+  if ("serviceWorker" in navigator) {
+    caches.keys().then(function (cacheNames) {
+      cacheNames.forEach(function (cacheName) {
+        caches.delete(cacheName);
+      });
+    });
+
+    navigator.serviceWorker.getRegistrations().then(function (registrations) {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+
+  document.querySelector(".info-offline") && document.querySelector(".info-offline").remove();
+  document.getElementById("offline-security-announcement") && document.getElementById("offline-security-announcement").remove();
 });

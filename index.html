@@ -103,16 +103,18 @@
                 <div class="users-avatar">🐱‍🚀</div>
                 Tech. user
               </label>
+              <label for="random" class="btn-action">
+                <div class="users-avatar">🎢</div>
+                Random
+              </label>
               <label for="front" class="btn-action">
                 <img src="img/android/android-launchericon-96-96.png" loading="lazy" alt="avatar" />
                 <br />
                 Bilelz
               </label>
-              <label for="random" class="btn-action">
-                <div class="users-avatar">🎢</div>
-                Random
-              </label>
             </div>
+
+            <p id="offline-security-announcement">✈️ You're offline but you're in a safe place 👨‍✈️</p>
           </div>
         </div>
 
@@ -120,7 +122,7 @@
           <div class="cube-content" id="webdev">
             <nav class="sticky hide-when-playing">
               <div>
-                <label for="left" id="back-btn" title="Back">
+                <label for="left" class="back-btn" title="Back">
                   <!-- prettier-ignore -->
                   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve" > <metadata>Svg Vector Icons : http://www.onlinewebfonts.com/icon</metadata><g><path d="M720.1,990L237.8,507.7c-15.3-15.3-15.3-38.3,0-53.6L720.1,10l53.6,53.6L318.2,480.9l455.5,455.5L720.1,990z"/></g></svg>
                   <br />
@@ -135,7 +137,7 @@
             </nav>
             <nav class="footer hide-when-playing">
               <div>
-                <label for="left" id="back-btn" title="Back">
+                <label for="left" class="back-btn" title="Back">
                   <!-- prettier-ignore -->
                   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve" > <metadata>Svg Vector Icons : http://www.onlinewebfonts.com/icon</metadata><g><path d="M720.1,990L237.8,507.7c-15.3-15.3-15.3-38.3,0-53.6L720.1,10l53.6,53.6L318.2,480.9l455.5,455.5L720.1,990z"/></g></svg>
                   <span>back</span>
@@ -208,7 +210,7 @@
 
             <section id="📝">
               <div class="container">
-                <h2 class="anchor">Blog / <em>my favorite wallpapers</em></h2>
+                <h2 class="anchor m-0">Blog / <em>my favorite wallpapers</em></h2>
               </div>
               <div id="blog-wallpaper" class="template">
                 Loading from
@@ -298,8 +300,11 @@
               <li>👀 I don't track you</li>
               <li>🚀 Last build: <strong>_DATE_FORMATTED_</strong> @ _HOUR_FORMATTED_</li>
               <li>🎨 Version : <a href="version.json?v=_GIT_SHORT_SHA_" target="_blank">_GIT_SHORT_SHA_</a></li>
+              <li class="info-offline">✈️ Mode offline available</li>
             </ul>
             <div>
+              <button type="button" id="clearData" class="btn-action shadow">Clear site data</button>
+              |
               <button type="button" id="checkUpdate" class="btn-action shadow">Check update</button>
               <button type="button" id="displayNotif" class="btn-action shadow">Display update notification</button>
             </div>
@@ -356,6 +361,8 @@
                   }
                 };
               };
+              const sw = reg.installing || reg.waiting || reg.active;
+              sw.postMessage("Hello from the client");
             })
             .catch((err) => console.error("[SW ERROR]", err));
         }
