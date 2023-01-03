@@ -14,13 +14,16 @@ if ("serviceWorker" in navigator) {
 
     if (event.data == "offline OK") {
       document.body.classList.add("offline-available");
-      localStorage.setItem("offline", "available");
     }
   });
 }
-if (localStorage.getItem("offline")) {
-  document.body.classList.add("offline-available");
-}
+(async () => {
+  const cachedData = await caches.open("Bilelz__COMMIT_SHA_AND_DATE_");
+  const hasCachedData = (await cachedData.keys()).length > 0;
+  if (hasCachedData) {
+    document.body.classList.add("offline-available");
+  }
+})();
 if (!navigator.onLine) {
   document.body.classList.add("is-offline");
 }
@@ -314,12 +317,16 @@ function playAnim() {
 }
 
 // showtime
-if (!localStorage.getItem("offline")) {
-  playAnim();
-} else {
-  document.getElementById("left").checked = true;
-  document.getElementById("left").dispatchEvent(new Event("change"));
-}
+(async () => {
+  const cachedData = await caches.open("Bilelz__COMMIT_SHA_AND_DATE_");
+  const hasCachedData = (await cachedData.keys()).length > 0;
+  if (hasCachedData) {
+    document.getElementById("left").checked = true;
+    document.getElementById("left").dispatchEvent(new Event("change"));
+  } else {
+    playAnim();
+  }
+})();
 
 // CSP grrrrrrrr : https://content-security-policy.com/unsafe-hashes/
 document.getElementById("webdev").addEventListener("scroll", (event) => {
@@ -355,23 +362,21 @@ document.getElementById("form").addEventListener("submit", () => {
   }
 });
 
-// clear data cached / unregister service worker / clear localStorage
-document.getElementById("clearData").addEventListener("click", () => {
-  localStorage.clear();
+// clear data cached / unregister service worker
+document.getElementById("clearData").addEventListener("click", async () => {
   if ("serviceWorker" in navigator) {
-    caches.keys().then(function (cacheNames) {
-      cacheNames.forEach(function (cacheName) {
-        caches.delete(cacheName);
-      });
-    });
+    const cacheNames = await caches.keys();
+    for (let cacheName of cacheNames) {
+      caches.delete(cacheName);
+    }
 
-    navigator.serviceWorker.getRegistrations().then(function (registrations) {
-      for (let registration of registrations) {
-        registration.unregister();
-      }
-    });
+    const registrations = await navigator.serviceWorker.getRegistrations();
+    for (let registration of registrations) {
+      registration.unregister();
+    }
+
+    document.body.classList.remove("offline-available");
   }
 
-  document.querySelector(".info-offline") && document.querySelector(".info-offline").remove();
-  document.getElementById("offline-security-announcement") && document.getElementById("offline-security-announcement").remove();
+  document.location.reload();
 });
