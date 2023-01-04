@@ -75,9 +75,9 @@ jobs:
 
       # Get the latest posts from blogger
       - run: curl -o js/default.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogPosts"
-      - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' blog/default.js
+      - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' js/default.js
       - run: curl -o js/wallpaper.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogWallpaper&max-results=10&category=wallpaper"
-      - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' blog/wallpaper.js
+      - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' js/wallpaper.js
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
