@@ -256,6 +256,15 @@ body > input[type="radio"] {
 .cube-face.right ul {
   text-align: left;
   list-style: none;
+  padding: 0;
+}
+.cube-face.right li {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 2rem;
 }
 
 .cube-face.right label:nth-child(2) {

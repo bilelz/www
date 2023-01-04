@@ -630,3 +630,10 @@ body.offline-available .info-offline {
 body.is-offline #offline-security-announcement {
   display: inline-block;
 }
+
+.f2 {
+  font-size: 2rem;
+}
+.f1-5 {
+  font-size: 1.5rem;
+}
