@@ -2,7 +2,7 @@
 const cacheName = "Bilelz__COMMIT_SHA_AND_DATE_";
 // prettier-ignore
 const assets = ["/", "/index.html", 
-                "/css/netflix.css", "/css/cube.css", "/blog/blog.css", 
+                "/css/main.css", "/css/cube.css", "/css/blog.css", 
                 "/js/main.js",
                 "/img/android/android-launchericon-96-96.png"];
 

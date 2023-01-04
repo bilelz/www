@@ -61,7 +61,9 @@ jobs:
       - run: sed -i 's/_COMMIT_SHA_AND_DATE_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' index.html
       - run: sed -i 's/_GIT_SHORT_SHA_/'${{ steps.sha.outputs.SHORT }}'/g' index.html
       - run: sed -i 's/_DATE_FORMATTED_/'${{ steps.dateFormatted.outputs.NOW }}'/g' index.html
+      - run: sed -i 's/_DATE_FORMATTED_/'${{ steps.dateFormatted.outputs.NOW }}'/g' img/version.svg
       - run: sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' index.html
+      - run: sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' img/version.svg
 
       - run: sed -i 's/_COMMIT_SHA_AND_DATE_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' js/main.js
       - run: sed -i 's/_COMMIT_SHA_AND_DATE_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' sw.js
@@ -73,9 +75,9 @@ jobs:
       - run: html-minifier index.html --collapse-whitespace --remove-comments --minify-js true -o index.html
 
       # Get the latest posts from blogger
-      - run: curl -o blog/default.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogPosts"
+      - run: curl -o js/default.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogPosts"
       - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' blog/default.js
-      - run: curl -o blog/wallpaper.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogWallpaper&max-results=10&category=wallpaper"
+      - run: curl -o js/wallpaper.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogWallpaper&max-results=10&category=wallpaper"
       - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' blog/wallpaper.js
 
       - name: Upload artifact

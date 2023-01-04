@@ -267,13 +267,13 @@ function showModal(id, event) {
 
 document.getElementById("left").addEventListener("change", (event) => {
   if (event.target.checked) {
-    const defaultPosts = document.querySelector('script[data-src="blog/default.js?v=_COMMIT_SHA_AND_DATE_"]:not([src])');
-    if (defaultPosts) {
+    const defaultPosts = document.getElementById("blog-posts-js");
+    if (defaultPosts && !defaultPosts.hasAttribute("src")) {
       defaultPosts.setAttribute("src", defaultPosts.getAttribute("data-src"));
     }
 
-    const wallpaperPosts = document.querySelector('script[data-src="blog/wallpaper.js?v=_COMMIT_SHA_AND_DATE_"]:not([src])');
-    if (wallpaperPosts) {
+    const wallpaperPosts = document.getElementById("wallpaper-posts-js");
+    if (wallpaperPosts && !wallpaperPosts.hasAttribute("src")) {
       wallpaperPosts.setAttribute("src", wallpaperPosts.getAttribute("data-src"));
     }
 

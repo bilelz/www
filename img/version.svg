@@ -1,0 +1,13 @@
+<svg   xmlns="http://www.w3.org/2000/svg">
+ <style>
+    text {
+      font: italic 1rem -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    } 
+    .bold{
+        font: bold 1rem -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    }
+  </style>
+
+  <text x="0" y="1rem"  class="bold">_DATE_FORMATTED_ </text> 
+  <text x="0" y="2rem">@_HOUR_FORMATTED_</text> 
+</svg>
