@@ -71,7 +71,6 @@ jobs:
       # Use CLI tools to minify, overwriting existing files
       - run: for i in ./js/*.js; do terser $i --compress -o $i; done
       - run: for i in ./css/*.css; do csso $i -o $i; done
-      - run: for i in ./blog/*.css; do csso $i -o $i; done
       - run: html-minifier index.html --collapse-whitespace --remove-comments --minify-js true -o index.html
 
       # Get the latest posts from blogger
