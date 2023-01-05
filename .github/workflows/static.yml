@@ -102,9 +102,9 @@ jobs:
         run: |
           git config user.name "${{github.repository_owner}}"
           git config --global user.email "${{github.repository_owner}}@users.noreply.github.com"
-          cp -rf  img/date_template.svg img/date.svg
-          sed -i 's/_DATE_FORMATTED_/'${{ steps.dateFormatted.outputs.NOW }}'/g' img/date.svg
-          sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' img/date.svg
-          git add img/date.svg
-          git commit -m "🏁 up [skip ci]"
+          cp -rf  readme_template.md readme.md
+          sed -i 's/_DATE_FORMATTED_/'${{ steps.dateFormatted.outputs.NOW }}'/g' readme.md
+          sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' readme.md
+          git add readme.md
+          git commit -m "docs(readme): ✏️ update [skip ci]"
           git push
