@@ -31,7 +31,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        token: ${{ secrets.PAT }} # `GH_PAT` is a secret that contains your PAT
+        with:
+          token: ${{ secrets.PAT }} # `GH_PAT` is a secret that contains your PAT
       # Install CLI tools
       - uses: actions/setup-node@v3
         with:
