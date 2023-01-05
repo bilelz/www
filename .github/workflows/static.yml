@@ -88,18 +88,18 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
 
-      - name: Checkout private tools
+      - name: Checkout assets repo
         uses: actions/checkout@v3
         with:
           repository: bilelz/bilelz.github.io
           token: ${{ secrets.PAT }} # `GH_PAT` is a secret that contains your PAT
           ref: assets
 
-      - name: Update version image
+      - name: Update date.svg
         run: |
           git config user.name "${{github.repository_owner}}"
           git config --global user.email "${{github.repository_owner}}@users.noreply.github.com"
-          yes | cp -rf  date_template.svg date.svg
+          cp -rf  date_template.svg date.svg
           sed -i 's/_DATE_FORMATTED_/'${{ steps.dateFormatted.outputs.NOW }}'/g' date.svg
           sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' date.svg
           git add date.svg
