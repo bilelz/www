@@ -93,7 +93,7 @@ jobs:
         with:
           repository: bilelz/bilelz.github.io
           # token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains your PAT
-          path: assets
+          ref: assets
 
       - name: Update version image
         run: |
