@@ -99,8 +99,8 @@ jobs:
 
       - name: Update date.svg
         run: |
-          # git config user.name "${{github.repository_owner}}"
-          # git config --global user.email "${{github.repository_owner}}@users.noreply.github.com"
+          git config user.name "${{github.repository_owner}}"
+          git config --global user.email "${{github.repository_owner}}@users.noreply.github.com"
           cp -rf  img/date_template.svg img/date.svg
           sed -i 's/_DATE_FORMATTED_/'${{ steps.dateFormatted.outputs.NOW }}'/g' img/date.svg
           sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' img/date.svg
