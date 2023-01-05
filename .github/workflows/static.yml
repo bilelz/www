@@ -81,7 +81,7 @@ jobs:
 
       - name: Update version image
         run: |
-          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.name "bilelz"
           git config --global user.email "bilelz@users.noreply.github.com"
           git checkout assets
           sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' date_template.svg > date.svg
