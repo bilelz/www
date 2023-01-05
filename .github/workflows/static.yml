@@ -79,16 +79,6 @@ jobs:
       - run: curl -o js/wallpaper.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogWallpaper&max-results=10&category=wallpaper"
       - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' js/wallpaper.js
 
-      - name: Update version image
-        run: |
-          git config --global user.name "bilelz"
-          git config --global user.email "bilelz@users.noreply.github.com"
-          git checkout origin/assets
-          sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' date_template.svg > date.svg
-          git date.svg
-          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-          git push
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
@@ -97,3 +87,20 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+
+      - name: Checkout private tools
+        uses: actions/checkout@v3
+        with:
+          repository: bilelz/bilelz.github.io
+          # token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains your PAT
+          path: assets
+
+        # - name: Update version image
+        # run: |
+        #   git config --global user.name "bilelz"
+        #   git config --global user.email "bilelz@users.noreply.github.com"
+        #   git checkout origin/assets
+        #   sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' date_template.svg > date.svg
+        #   git date.svg
+        #   git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+        #   git push
