@@ -1,3 +1,6 @@
+[![Deploy static content to Pages](https://github.com/bilelz/bilelz.github.io/actions/workflows/static.yml/badge.svg)](https://github.com/bilelz/bilelz.github.io/actions/workflows/static.yml)
+
+
 # Hello world
 
 - 👨‍💻 Built with HTML5 & VanillaJS
