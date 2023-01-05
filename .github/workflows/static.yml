@@ -104,6 +104,6 @@ jobs:
           cp -rf  img/date_template.svg img/date.svg
           sed -i 's/_DATE_FORMATTED_/'${{ steps.dateFormatted.outputs.NOW }}'/g' img/date.svg
           sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' img/date.svg
-          git add date.svg
+          git add img/date.svg
           git commit -m "🏁 up #nobuild"
           git push
