@@ -99,8 +99,9 @@ jobs:
         run: |
           git config user.name "${{github.repository_owner}}"
           git config --global user.email "${{github.repository_owner}}@users.noreply.github.com"
-          sed -i 's/_DATE_FORMATTED_/'${{ steps.dateFormatted.outputs.NOW }}'/g' date_template.svg > date.svg
-          sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' date.svg > date.svg
+          yes | cp -rf  date_template.svg date.svg
+          sed -i 's/_DATE_FORMATTED_/'${{ steps.dateFormatted.outputs.NOW }}'/g' date.svg
+          sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' date.svg
           git add date.svg
           git commit -m "🏁 up"
           git push
