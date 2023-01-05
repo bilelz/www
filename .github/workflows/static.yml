@@ -78,16 +78,16 @@ jobs:
       - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' js/default.js
       - run: curl -o js/wallpaper.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogWallpaper&max-results=10&category=wallpaper"
       - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' js/wallpaper.js
-       
+
       - name: Update version image
-          run: |
-            git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
-            git config --global user.email "bilelz@users.noreply.github.com"
-            git checkout assets
-            sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' date_template.svg > date.svg
-            git date.svg
-            git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-            git push
+        run: |
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "bilelz@users.noreply.github.com"
+          git checkout assets
+          sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' date_template.svg > date.svg
+          git date.svg
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git push
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
@@ -97,4 +97,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
- 
