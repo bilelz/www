@@ -78,15 +78,7 @@ jobs:
       - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' js/default.js
       - run: curl -o js/wallpaper.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogWallpaper&max-results=10&category=wallpaper"
       - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' js/wallpaper.js
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          # Upload entire repository
-          path: "."
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+       
       - name: Update version image
           run: |
             git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
@@ -96,3 +88,13 @@ jobs:
             git date.svg
             git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
             git push
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload entire repository
+          path: "."
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+ 
