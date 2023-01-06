@@ -380,3 +380,20 @@ document.getElementById("clearData").addEventListener("click", async () => {
 
   document.location.reload();
 });
+
+// stats
+fetch("js/languages.json?v=_COMMIT_SHA_AND_DATE_")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (responseJSON) {
+    const total = Object.values(responseJSON).reduce((partialSum, a) => partialSum + a, 0);
+
+    for (const [key, value] of Object.entries(responseJSON)) {
+      const percent = Math.round((value * 100) / total);
+      const element = document.querySelector(`#stat-${key.toLocaleLowerCase()} .percent`);
+      if (element) {
+        element.textContent = `${percent}%`;
+      }
+    }
+  });

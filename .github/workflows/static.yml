@@ -81,6 +81,9 @@ jobs:
       - run: curl -o js/wallpaper.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogWallpaper&max-results=10&category=wallpaper"
       - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' js/wallpaper.js
 
+      #get stats
+      - run: curl -o js/languages.json "https://api.github.com/repos/bilelz/bilelz.github.io/languages"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:

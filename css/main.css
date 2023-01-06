@@ -414,6 +414,51 @@ body[playerstate="-1"] .video-btn > a:first-child {
   display: inline-block;
   background-color: #ffffff9c;
 }
+label.quality {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.css,
+.js,
+.html {
+  font-weight: 600;
+}
+.css span,
+.js span,
+.html span {
+  font-weight: normal;
+}
+.stats {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+.stat {
+  padding: 0.25rem;
+  border-radius: 8px;
+  margin: 5px 5px 0 5px;
+  height: 1.75rem;
+}
+#stat-css {
+  background-color: rgb(86 61 124/ 75%);
+  color: white;
+}
+#stat-javascript {
+  background-color: rgb(227 76 38/ 75%);
+  color: white;
+}
+#stat-html {
+  background-color: rgb(241 224 90 / 75%);
+  display: inline-flex;
+}
+#stat-html svg {
+  height: 2rem;
+  vertical-align: middle;
+}
 
 .twitter {
   width: 200px;
