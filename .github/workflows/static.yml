@@ -82,7 +82,7 @@ jobs:
       - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' js/wallpaper.js
 
       #get stats
-      - run: curl -o js/languages.json "https://api.github.com/repos/bilelz/bilelz.github.io/languages"
+      - run: curl -o js/languages.json "https://api.github.com/repos/bilelz/bilelz.github.io/languages" --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
