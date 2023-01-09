@@ -438,11 +438,12 @@ label.quality {
   align-items: center;
 }
 .stat {
+  box-shadow: 0 0 0 1px #0000001f;
   padding: 0.25rem;
   border-radius: 8px;
-  margin: 5px 5px 0 5px;
-  height: 1.75rem;
+  margin-left: 0.3rem;
 }
+
 #stat-css {
   background-color: rgb(86 61 124/ 75%);
   color: white;
@@ -454,6 +455,12 @@ label.quality {
 #stat-html {
   background-color: rgb(241 224 90 / 75%);
   display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: 1.5rem;
+  overflow: visible;
+  align-content: center;
 }
 #stat-html svg {
   height: 2rem;
