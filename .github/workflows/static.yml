@@ -83,7 +83,13 @@ jobs:
 
       #get stats
       - run: curl -o js/languages.json "https://api.github.com/repos/bilelz/bilelz.github.io/languages" --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
-
+      - run: |
+          curl -o js/languages.json \
+          --request GET  \
+          --url https://api.github.com/repos/bilelz/bilelz.github.io/languages \
+          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --fail
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
