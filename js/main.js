@@ -397,3 +397,75 @@ fetch("js/languages.json?v=_COMMIT_SHA_AND_DATE_")
       }
     }
   });
+
+/* swipe management */
+let touchstartX = 0;
+let touchstartY = 0;
+let touchendX = 0;
+let touchendY = 0;
+
+const gestureZones = document.querySelectorAll(".cube-face");
+
+for (let gestureZone of gestureZones) {
+  gestureZone.addEventListener(
+    "touchstart",
+    (event) => {
+      touchstartX = event.changedTouches[0].screenX;
+      touchstartY = event.changedTouches[0].screenY;
+    },
+    false
+  );
+
+  gestureZone.addEventListener(
+    "touchend",
+    (event) => {
+      touchendX = event.changedTouches[0].screenX;
+      touchendY = event.changedTouches[0].screenY;
+      handleGesture(gestureZone);
+    },
+    false
+  );
+}
+
+function handleGesture(gestureZone) {
+  const diffX = touchstartX - touchendX;
+  const diffY = touchendY - touchstartY;
+
+  if (touchendX < touchstartX) {
+    console.log("Swiped left", diffX);
+    if (Math.abs(diffX) > 50 && Math.abs(diffY) < 50) {
+      const el = gestureZone.querySelector('[data-swipe="right"]');
+      el && el.click();
+    }
+  }
+
+  if (touchendX > touchstartX) {
+    console.log("Swiped right", diffX);
+
+    if (Math.abs(diffX) > 50 && Math.abs(diffY) < 50) {
+      const el = gestureZone.querySelector('[data-swipe="left"]');
+      el && el.click();
+    }
+  }
+}
+
+const nogestureZones = document.querySelectorAll(".template");
+
+for (let nog of nogestureZones) {
+  nog.addEventListener(
+    "touchstart",
+    (event) => {
+      event.stopImmediatePropagation();
+      event.stopPropagation();
+    },
+    false
+  );
+  nog.addEventListener(
+    "touchend",
+    (event) => {
+      event.stopImmediatePropagation();
+      event.stopPropagation();
+    },
+    false
+  );
+}
