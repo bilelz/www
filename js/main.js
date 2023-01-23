@@ -2,7 +2,7 @@ const webP = new Image();
 webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
 webP.onload = webP.onerror = () => {
   if (webP.height !== 2) {
-    document.querySelector("body").classList.add("no-webp");
+    document.body.classList.add("no-webp");
   }
 };
 
@@ -87,8 +87,14 @@ function intersectionHandler(entry) {
 
   // lazy-load backgroundImage
   if (entry.target.getAttribute("data-bg")) {
-    entry.target.style.backgroundImage = `url('${entry.target.getAttribute("data-bg")}')`;
-    entry.target.removeAttribute("data-bg");
+    const supportWebp = !document.body.classList.contains("no-webp");
+    const bgUrl = entry.target.getAttribute("data-bg");
+    const bgExtension = bgUrl.split(".").pop().toLocaleLowerCase().trim();
+
+    if (bgExtension !== "webp" || (bgExtension === "webp" && supportWebp)) {
+      entry.target.style.backgroundImage = `url('${bgUrl}')`;
+      entry.target.removeAttribute("data-bg");
+    }
   }
 }
 
