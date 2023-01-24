@@ -1,3 +1,4 @@
+// test webp support
 const webP = new Image();
 webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
 webP.onload = webP.onerror = () => {
@@ -7,7 +8,6 @@ webP.onload = webP.onerror = () => {
 };
 
 // offline part
-
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.addEventListener("message", function (event) {
     console.log("client received: ", event.type, event.data);
@@ -93,8 +93,8 @@ function intersectionHandler(entry) {
 
     if (bgExtension !== "webp" || (bgExtension === "webp" && supportWebp)) {
       entry.target.style.backgroundImage = `url('${bgUrl}')`;
-      entry.target.removeAttribute("data-bg");
     }
+    entry.target.removeAttribute("data-bg");
   }
 }
 
@@ -319,7 +319,7 @@ function playAnim() {
   setTimeout(() => {
     document.getElementById("left").checked = true;
     document.getElementById("left").dispatchEvent(new Event("change"));
-  }, 3000);
+  }, 3500);
 }
 
 // showtime
@@ -439,7 +439,7 @@ function handleGesture(gestureZone) {
 
   if (touchendX < touchstartX) {
     console.log("Swiped left", diffX);
-    if (Math.abs(diffX) > 50 && Math.abs(diffY) < 50) {
+    if (Math.abs(diffX) > 25 && Math.abs(diffY) < 50) {
       const el = gestureZone.querySelector('[data-swipe="right"]');
       el && el.click();
     }
@@ -448,7 +448,7 @@ function handleGesture(gestureZone) {
   if (touchendX > touchstartX) {
     console.log("Swiped right", diffX);
 
-    if (Math.abs(diffX) > 50 && Math.abs(diffY) < 50) {
+    if (Math.abs(diffX) > 25 && Math.abs(diffY) < 50) {
       const el = gestureZone.querySelector('[data-swipe="left"]');
       el && el.click();
     }

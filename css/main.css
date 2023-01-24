@@ -683,7 +683,7 @@ label.quality {
 }
 
 body.offline-available .info-offline {
-  display: inline-block;
+  display: inline-flex;
 }
 
 body.is-offline #offline-security-announcement {
