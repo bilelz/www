@@ -289,14 +289,14 @@ pre {
 }
 
 .social-container a {
-  padding: 0.5em 1rem;
+  padding: 0.5em;
   background: rgb(0 0 0 / 25%);
   color: white;
   margin: 0.5rem 0.25rem 0 0;
   display: inline-block;
   border-radius: 5px;
   text-decoration: none;
-  min-width: 120px;
+  min-width: 110px;
   backdrop-filter: blur(5px);
   box-shadow: 0 0 0px 0 white;
   transition: box-shadow 0.15s ease-in-out;
