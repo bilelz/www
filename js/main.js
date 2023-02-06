@@ -489,8 +489,8 @@ function handleOrientation(event) {
 beta : ${event.beta} 
 gamma: ${event.gamma}`);
 
-  document.querySelector(".wrap").style.transform = `rotateY(${event.gamma / 3}deg)`;
-  document.getElementById("gamma").textContent = event.gamma;
+  document.querySelector(".wrap").style.transform = `rotateY(${event.gamma / 2}deg)`;
+  document.getElementById("gamma").textContent = event.gamma.toFixed(0);
   // // Because we don't want to have the device upside down
   // // We constrain the x value to the range [-90,90]
   // if (x > 90) {
