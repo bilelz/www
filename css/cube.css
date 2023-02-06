@@ -1,3 +1,9 @@
+body {
+  perspective: calc(var(--cube-width) * 3);
+  --cube-width: 100vw;
+  perspective-origin: center;
+}
+
 .wrap {
   position: relative;
   perspective: calc(var(--cube-width) * 3);
