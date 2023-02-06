@@ -491,8 +491,8 @@ gamma: ${event.gamma}`);
   const beta = event.beta ? (90 - event.beta) / 2 : 0;
   const gamma = event.gamma ? event.gamma / 2 : 0;
 
-  document.querySelector(".wrap").style.transform = `rotateX(${beta}deg) rotateY(${gamma}deg)`;
-  document.getElementById("gamma").textContent = `X(${beta.toFixed(0)}) Y(${gamma.toFixed(0)})`;
+  document.querySelector(".wrap").style.transform = `rotateY(${gamma}deg)`;
+  document.getElementById("gamma").textContent = `${gamma.toFixed(0)}`;
   // // Because we don't want to have the device upside down
   // // We constrain the x value to the range [-90,90]
   // if (x > 90) {
