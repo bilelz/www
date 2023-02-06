@@ -2,6 +2,7 @@ body {
   perspective: calc(var(--cube-width) * 3);
   --cube-width: 100vw;
   perspective-origin: center;
+  overflow: hidden;
 }
 
 .wrap {
@@ -13,6 +14,7 @@ body {
   height: var(--cube-height);
   perspective-origin: center;
   box-sizing: border-box;
+  transition: 0.3s;
 }
 .cube {
   position: relative;
