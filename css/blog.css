@@ -283,46 +283,44 @@ h3 {
   font-weight: lighter;
 }
 
-@media only screen and (min-width: 600px) {
-  :root {
-    --post-zoom-effect: 1.2;
-  }
-  .post:focus ~ .post,
-  .post:hover ~ .post {
-    transform: translateX(10%);
-  }
+:root .no-touchscreen {
+  --post-zoom-effect: 1.2;
+}
+.no-touchscreen .post:focus ~ .post,
+.no-touchscreen .post:hover ~ .post {
+  transform: translateX(10%);
+}
 
-  .post:first-child:hover,
-  .post:first-child:focus,
-  .post:first-child.active {
-    transform: scale(var(--post-zoom-effect)) translateX(10%);
-    z-index: 2;
-  }
+.no-touchscreen .post:first-child:hover,
+.no-touchscreen .post:first-child:focus,
+.no-touchscreen .post:first-child.active {
+  transform: scale(var(--post-zoom-effect)) translateX(10%);
+  z-index: 2;
+}
 
-  .post:first-child:focus ~ .post,
-  .post:first-child:hover ~ .post {
-    transform: translateX(20%);
-  }
+.no-touchscreen .post:first-child:focus ~ .post,
+.no-touchscreen .post:first-child:hover ~ .post {
+  transform: translateX(20%);
+}
 
-  .post:last-child:hover,
-  .post:last-child:focus,
-  .post:last-child.active {
-    transform: scale(var(--post-zoom-effect)) translateX(-10%);
-    z-index: 2;
-  }
+.no-touchscreen .post:last-child:hover,
+.no-touchscreen .post:last-child:focus,
+.no-touchscreen .post:last-child.active {
+  transform: scale(var(--post-zoom-effect)) translateX(-10%);
+  z-index: 2;
+}
 
-  .post:hover,
-  .post:focus,
-  .post.active {
-    transform: scale(var(--post-zoom-effect));
-    z-index: 2;
-  }
+.no-touchscreen .post:hover,
+.no-touchscreen .post:focus,
+.no-touchscreen .post.active {
+  transform: scale(var(--post-zoom-effect));
+  z-index: 2;
+}
 
-  .post:hover .post__index,
-  .post:focus .post__index,
-  .post.active .post__index {
-    transform: translateX(5%);
-  }
+.no-touchscreen .post:hover .post__index,
+.no-touchscreen .post:focus .post__index,
+.no-touchscreen .post.active .post__index {
+  transform: translateX(5%);
 }
 
 .lazyload,

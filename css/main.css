@@ -429,6 +429,9 @@ label.quality {
 .html span {
   font-weight: normal;
 }
+#orientation {
+  display: none;
+}
 .stats > span {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;

@@ -7,6 +7,10 @@ webP.onload = webP.onerror = () => {
   }
 };
 
+if (!("ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0)) {
+  document.body.classList.add("no-touchscreen");
+}
+
 // offline part
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.addEventListener("message", function (event) {
@@ -477,38 +481,17 @@ for (let nog of nogestureZones) {
 }
 
 window.addEventListener("deviceorientation", handleOrientation);
-
+let initialGamma = null;
 function handleOrientation(event) {
-  let x = event.beta; // In degree in the range [-180,180)
-  let y = event.gamma; // In degree in the range [-90,90)
+  const gamma = event.gamma ? (-1 * event.gamma) / 2 : 0;
+  if (initialGamma === null) {
+    initialGamma = gamma;
+  }
+  const relativeGamma = initialGamma ? gamma - initialGamma : gamma;
 
-  // output.textContent = `beta : ${x}\n`;
-  // output.textContent += `gamma: ${y}\n`;
-
-  console.log(`alpha: ${event.alpha}
-beta : ${event.beta} 
-gamma: ${event.gamma}`);
-  const beta = event.beta ? (90 - event.beta) / 2 : 0;
-  const gamma = event.gamma ? event.gamma / 2 : 0;
-
-  document.querySelector(".wrap").style.transform = `rotateY(${gamma}deg)`;
-  document.getElementById("gamma").textContent = `${gamma.toFixed(0)}`;
-  // // Because we don't want to have the device upside down
-  // // We constrain the x value to the range [-90,90]
-  // if (x > 90) {
-  //   x = 90;
-  // }
-  // if (x < -90) {
-  //   x = -90;
-  // }
-
-  // // To make computation easier we shift the range of
-  // // x and y to [0,180]
-  // x += 90;
-  // y += 90;
-
-  // // 10 is half the size of the ball
-  // // It center the positioning point to the center of the ball
-  // ball.style.top = `${(maxY * y) / 180 - 10}px`;
-  // ball.style.left = `${(maxX * x) / 180 - 10}px`;
+  document.querySelector(".wrap").style.transform = `rotateY(${relativeGamma}deg)`;
+  document.getElementById("orientation").style.display = "flex";
+  document.getElementById("orientation-values").textContent = `alpha: ${event.alpha ? event.alpha.toFixed(0) : "∞"} 
+                                                | beta: ${event.beta ? event.beta.toFixed(0) : "∞"} 
+                                                | gamma: ${relativeGamma ? relativeGamma.toFixed(0) : "∞"} `;
 }
