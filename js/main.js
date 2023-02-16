@@ -481,13 +481,31 @@ for (let nog of nogestureZones) {
 }
 
 window.addEventListener("deviceorientation", handleOrientation);
-let initialGamma = null;
+let initialGamma = 0; // peut-etre à remettre à null
+let fromInitialGamma = false;
 function handleOrientation(event) {
   const gamma = event.gamma ? (-1 * event.gamma) / 2 : 0;
   if (initialGamma === null) {
     initialGamma = gamma;
+    console.log({ initialGamma });
   }
+
   const relativeGamma = initialGamma ? gamma - initialGamma : gamma;
+
+  if (!fromInitialGamma && Math.abs(relativeGamma) < 10) {
+    fromInitialGamma = true;
+  }
+
+  if (fromInitialGamma && Math.abs(relativeGamma) > 20) {
+    const direction = relativeGamma > 0 ? "left" : "right";
+    document.getElementById("direction").textContent = direction;
+
+    const side = document.querySelector('[name="side"]:checked').value;
+    const el = document.querySelector(`.${side} [data-swipe="${direction}"]`);
+    el && el.click();
+
+    fromInitialGamma = false;
+  }
 
   document.querySelector(".wrap").style.transform = `rotateY(${relativeGamma}deg)`;
   document.getElementById("orientation").style.display = "flex";
