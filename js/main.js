@@ -481,7 +481,7 @@ for (let nog of nogestureZones) {
 }
 
 window.addEventListener("deviceorientation", handleOrientation);
-let initialGamma = 0; // peut-etre à remettre à null
+let initialGamma = null; // peut-etre à remettre à null
 let fromInitialGamma = false;
 function handleOrientation(event) {
   const gamma = event.gamma ? (-1 * event.gamma) / 2 : 0;
