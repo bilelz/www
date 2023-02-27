@@ -105,7 +105,7 @@ jobs:
       #     token: ${{ secrets.PAT }} # `GH_PAT` is a secret that contains your PAT
       #     ref: assets
 
-      - name: Update date.svg
+      - name: Update date.svg & version.json
         run: |
           git config user.name "${{github.repository_owner}}"
           git config --global user.email "${{github.repository_owner}}@users.noreply.github.com"
@@ -113,14 +113,10 @@ jobs:
           sed -i 's/_DATE_FORMATTED_/'${{ steps.dateFormatted.outputs.NOW }}'/g' readme.md
           sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' readme.md
           git add readme.md
-          git commit -m "docs(readme): ✏️ update [skip ci]"
-          git push
-
-      - name: Update version.json(master branch)
-        run: |
-          git config user.name "${{github.repository_owner}}"
-          git config --global user.email "${{github.repository_owner}}@users.noreply.github.com"
+          run: echo 'json_pp:'
+          run: echo '{"date":"${{ steps.date.outputs.NOW }}", "branch":"${{ github.ref_name }}", "sha":"${{ github.sha }}", "shortSha":"${{ steps.sha.outputs.SHORT }}", "job":"${{github.server_url}}/${{github.repository}}/actions/runs/${{github.run_id}}", "repositoryUrl":"${{github.repositoryUrl}}"}' | json_pp
+          run: echo 'json_pp > version.json'
           run: echo '{"date":"${{ steps.date.outputs.NOW }}", "branch":"${{ github.ref_name }}", "sha":"${{ github.sha }}", "shortSha":"${{ steps.sha.outputs.SHORT }}", "job":"${{github.server_url}}/${{github.repository}}/actions/runs/${{github.run_id}}", "repositoryUrl":"${{github.repositoryUrl}}"}' | json_pp > version.json
           git add version.json
-          git commit -m "build(version): ✏️ update version.json [skip ci]"
+          git commit -m "build(version): ✏️ update readme & version.json [skip ci]"
           git push
