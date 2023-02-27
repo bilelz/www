@@ -56,7 +56,7 @@ jobs:
       - name: Set shortSha
         id: sha
         run: echo "SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-      - run: echo '{"date":"${{ steps.date.outputs.NOW }}", "branch":"${{ github.ref_name }}", "sha":"${{ github.sha }}", "shortSha":"${{ steps.sha.outputs.SHORT }}", "job":"${{github.server_url}}/${{github.repository}}/actions/runs/${{github.run_id}}", "repositoryUrl":"${{github.repositoryUrl}}"}' > version.json
+      - run: echo '{"date":"${{ steps.date.outputs.NOW }}", "branch":"${{ github.ref_name }}", "sha":"${{ github.sha }}", "shortSha":"${{ steps.sha.outputs.SHORT }}", "job":"${{github.server_url}}/${{github.repository}}/actions/runs/${{github.run_id}}", "repositoryUrl":"${{github.repositoryUrl}}"}' | json_pp > version.json
       - run: cat version.json
 
       # Cache buster everything
@@ -114,4 +114,13 @@ jobs:
           sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' readme.md
           git add readme.md
           git commit -m "docs(readme): ✏️ update [skip ci]"
+          git push
+
+      - name: Update version.json(master branch)
+        run: |
+          git config user.name "${{github.repository_owner}}"
+          git config --global user.email "${{github.repository_owner}}@users.noreply.github.com"
+          run: echo '{"date":"${{ steps.date.outputs.NOW }}", "branch":"${{ github.ref_name }}", "sha":"${{ github.sha }}", "shortSha":"${{ steps.sha.outputs.SHORT }}", "job":"${{github.server_url}}/${{github.repository}}/actions/runs/${{github.run_id}}", "repositoryUrl":"${{github.repositoryUrl}}"}'| json_pp > version.json
+          git add version.json
+          git commit -m "build(version): ✏️ update version.json [skip ci]"
           git push
