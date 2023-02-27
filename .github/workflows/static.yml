@@ -113,10 +113,8 @@ jobs:
           sed -i 's/_DATE_FORMATTED_/'${{ steps.dateFormatted.outputs.NOW }}'/g' readme.md
           sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' readme.md
           git add readme.md
-          echo 'json_pp:'
-          echo '{"date":"${{ steps.date.outputs.NOW }}", "branch":"${{ github.ref_name }}", "sha":"${{ github.sha }}", "shortSha":"${{ steps.sha.outputs.SHORT }}", "job":"${{github.server_url}}/${{github.repository}}/actions/runs/${{github.run_id}}", "repositoryUrl":"${{github.repositoryUrl}}"}' | json_pp
-          echo 'json_pp > version.json'
           echo '{"date":"${{ steps.date.outputs.NOW }}", "branch":"${{ github.ref_name }}", "sha":"${{ github.sha }}", "shortSha":"${{ steps.sha.outputs.SHORT }}", "job":"${{github.server_url}}/${{github.repository}}/actions/runs/${{github.run_id}}", "repositoryUrl":"${{github.repositoryUrl}}"}' | json_pp > version.json
+          cat version.json
           git add version.json
-          git commit -m "build(version): ✏️ update readme & version.json [skip ci]"
+          git commit -m "build(versioning): 🏗️ [skip ci]"
           git push
