@@ -1,8 +1,8 @@
 {
    "branch" : "master",
-   "date" : "2023-03-07T16:38:43Z",
-   "job" : "https://github.com/bilelz/www/actions/runs/4356408385",
+   "date" : "2023-03-07T16:45:18Z",
+   "job" : "https://github.com/bilelz/www/actions/runs/4356467322",
    "repositoryUrl" : "git://github.com/bilelz/www.git",
-   "sha" : "67f13ce4af21659ebda6cb7901b973bee3d09eca",
-   "shortSha" : "67f13ce"
+   "sha" : "dc27a78caf5b9411bd86e88954d048a9f5151457",
+   "shortSha" : "dc27a78"
 }
