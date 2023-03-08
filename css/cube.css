@@ -157,7 +157,8 @@ body {
   box-shadow: 0 0 0 1px white, inset 0 0 0 0 white;
 }
 
-.btn-action:active {
+.btn-action:active,
+.btn-action:focus {
   box-shadow: 0 0 0 5px white, inset 0 0 0 5px #a5a5a5;
 }
 

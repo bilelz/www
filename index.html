@@ -70,7 +70,7 @@
           <div class="cube-content welcome">
             <h2>&nbsp;</h2>
             <div class="users">
-              <label for="right" class="run-animation btn-action" data-swipe="left">
+              <label for="right" class="run-animation btn-action" tabindex="0" data-swipe="left">
                 <div class="users-avatar">👈</div>
                 Left
               </label>
@@ -84,7 +84,7 @@
                   <button type="button" id="playAnim" class="btn-action">🔄 Replay</button>
                 </li>
               </ul>
-              <label for="left" class="run-animation btn-action" data-swipe="right">
+              <label for="left" class="run-animation btn-action" tabindex="0" data-swipe="right">
                 <div class="users-avatar">👉</div>
                 Right
               </label>
@@ -96,19 +96,19 @@
             <h2>Who's watching?</h2>
 
             <div class="users">
-              <label for="back" class="btn-action" data-swipe="left">
+              <label for="back" class="btn-action" tabindex="0" data-swipe="left">
                 <div class="users-avatar">👈</div>
                 Left
               </label>
-              <label for="right" class="btn-action">
+              <label for="right" class="btn-action" tabindex="0">
                 <div class="users-avatar">🐱‍🚀</div>
                 Tech. user
               </label>
-              <label for="random" class="btn-action">
+              <label for="random" class="btn-action" tabindex="0">
                 <div class="users-avatar">🎢</div>
                 Random
               </label>
-              <label for="front" class="btn-action" data-swipe="right">
+              <label for="front" class="btn-action" tabindex="0" id="bibi" data-swipe="right">
                 <img src="img/android/android-launchericon-96-96.png" loading="lazy" alt="avatar" />
                 <br />
                 Bilelz
@@ -125,7 +125,7 @@
           <div class="cube-content" id="webdev">
             <nav class="sticky hide-when-playing">
               <div>
-                <label for="left" class="back-btn" title="Back" data-swipe="left">
+                <label for="left" class="back-btn" title="Back" tabindex="0" data-swipe="left">
                   <!-- prettier-ignore -->
                   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve" > <metadata>Svg Vector Icons : http://www.onlinewebfonts.com/icon</metadata><g><path d="M720.1,990L237.8,507.7c-15.3-15.3-15.3-38.3,0-53.6L720.1,10l53.6,53.6L318.2,480.9l455.5,455.5L720.1,990z"/></g></svg>
                   <br />
@@ -140,7 +140,7 @@
             </nav>
             <nav class="footer hide-when-playing">
               <div>
-                <label for="left" class="back-btn" title="Back">
+                <label for="left" class="back-btn" tabindex="0" title="Back">
                   <!-- prettier-ignore -->
                   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve" > <metadata>Svg Vector Icons : http://www.onlinewebfonts.com/icon</metadata><g><path d="M720.1,990L237.8,507.7c-15.3-15.3-15.3-38.3,0-53.6L720.1,10l53.6,53.6L318.2,480.9l455.5,455.5L720.1,990z"/></g></svg>
                   <span>back</span>
@@ -168,7 +168,7 @@
                       <span class="quality">4K</span>
                       <span class="quality">2.0</span>
                       <span class="quality">VOSTFR</span>
-                      <label for="right" class="quality">VanillaJS</label>
+                      <label for="right" class="quality" tabindex="0">VanillaJS</label>
                     </div>
 
                     <div class="social-container">
@@ -262,7 +262,7 @@
                   />
                   <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted" />
                   <h2>Cheers!</h2>
-                  <label for="amount"
+                  <label for="amount" tabindex="0"
                     >You can offer me
                     <br />
                     <input type="number" name="amount" id="amount" min="1" value="0" max="99" step="1" required />
@@ -280,16 +280,16 @@
           <div class="cube-content">
             <h2>Hello World 🐱‍🐉</h2>
             <div class="users">
-              <label for="front" class="btn-action hidden">
+              <label for="front" class="btn-action hidden" tabindex="0">
                 <div class="users-avatar">👈</div>
                 left
               </label>
-              <label for="front" class="btn-action">
+              <label for="front" class="btn-action" tabindex="0">
                 <img src="img/android/android-launchericon-96-96.png" loading="lazy" alt="avatar" />
                 <br />
                 Go to my profile
               </label>
-              <label for="back" class="btn-action" data-swipe="right">
+              <label for="back" class="btn-action" tabindex="0" data-swipe="right">
                 <div class="users-avatar">👉</div>
                 Right
               </label>
@@ -298,11 +298,6 @@
 
             <h3>Technical informations:</h3>
             <ul>
-              <li id="orientation">
-                <span class="f1-5">🧭</span> &nbsp;<span id="orientation-values">░░░</span>
-
-                <span id="direction"></span>
-              </li>
               <li class="stats">
                 <span class="f1-5">👨‍💻</span>
                 <div>
@@ -330,11 +325,18 @@
                 <a href="https://github.com/bilelz/www/blob/master/version.json?v=_GIT_SHORT_SHA_" target="_blank">_GIT_SHORT_SHA_</a>
               </li>
               <li class="info-offline"><span class="f1-5">✈️</span> Offline mode available</li>
+              <li id="orientation">
+                <span class="f1-5">🧭</span> &nbsp;<span id="orientation-values">░░░</span>
+
+                <span id="direction"></span>
+              </li>
             </ul>
             <details>
               <summary>Debug</summary>
               <div>
-                <button type="button" id="clearData" class="btn-action shadow">Clear data & refresh the app</button>
+                <button type="button" id="clearData" class="btn-action shadow">Clear data</button>
+                |
+                <button type="button" id="reload" class="btn-action shadow">Reload the app</button>
                 |
                 <button type="button" id="checkUpdate" class="btn-action shadow">Check update</button>
                 <button type="button" id="displayNotif" class="btn-action shadow">Display update notification</button>

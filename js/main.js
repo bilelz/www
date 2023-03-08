@@ -277,6 +277,8 @@ function showModal(id, event) {
 
 document.getElementById("left").addEventListener("change", (event) => {
   if (event.target.checked) {
+    document.querySelector(".left label[for][tabindex]:last-child").focus();
+
     const defaultPosts = document.getElementById("blog-posts-js");
     if (defaultPosts && !defaultPosts.hasAttribute("src")) {
       defaultPosts.setAttribute("src", defaultPosts.getAttribute("data-src"));
@@ -297,6 +299,7 @@ document.getElementById("left").addEventListener("change", (event) => {
 
 document.querySelectorAll("#front, #random").forEach((e) => {
   e.addEventListener("change", (event) => {
+    document.querySelector(".front label[for][tabindex]:first-child").focus();
     if (event.target.checked) {
       setTimeout(() => {
         document.querySelector("#webdev").scrollTo({ top: 0, behavior: "smooth" });
@@ -323,6 +326,7 @@ function playAnim() {
   setTimeout(() => {
     document.getElementById("left").checked = true;
     document.getElementById("left").dispatchEvent(new Event("change"));
+    timerGoToFront();
   }, 3500);
 }
 
@@ -333,10 +337,21 @@ function playAnim() {
   if (hasCachedData) {
     document.getElementById("left").checked = true;
     document.getElementById("left").dispatchEvent(new Event("change"));
+    timerGoToFront();
   } else {
     playAnim();
   }
 })();
+
+function timerGoToFront() {
+  setTimeout(() => {
+    const side = document.querySelector('[name="side"]:checked').value;
+    if (side && side === "left") {
+      // side 'left' = user's menu
+      document.querySelector("#bibi").click();
+    }
+  }, 3000);
+}
 
 // CSP grrrrrrrr : https://content-security-policy.com/unsafe-hashes/
 document.getElementById("webdev").addEventListener("scroll", (event) => {
@@ -372,6 +387,15 @@ document.getElementById("form").addEventListener("submit", () => {
   }
 });
 
+// a11y for label
+const labels = document.querySelectorAll("label[for][tabindex]");
+
+for (let label of labels) {
+  label.addEventListener("keyup", (event) => {
+    (event.code === "NumpadEnter" || event.code === "Enter" || event.code === "Space") && event.target.click();
+  });
+}
+
 // clear data cached / unregister service worker
 document.getElementById("clearData").addEventListener("click", async () => {
   if ("serviceWorker" in navigator) {
@@ -386,8 +410,12 @@ document.getElementById("clearData").addEventListener("click", async () => {
     }
 
     document.body.classList.remove("offline-available");
-  }
 
+    document.getElementById("clearData").textContent = "Cleared!";
+  }
+});
+
+document.getElementById("reload").addEventListener("click", async () => {
   document.location.reload();
 });
 
