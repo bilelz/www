@@ -1,4 +1,4 @@
-[![Deploy static content to Pages](https://github.com/bilelz/www/actions/workflows/static.yml/badge.svg)](https://github.com/bilelz/www/actions/workflows/static.yml) | 🏗️ Last build:  **Wednesday 08 March 2023** @09:48:07(UTC+00)
+[![Deploy static content to Pages](https://github.com/bilelz/www/actions/workflows/static.yml/badge.svg)](https://github.com/bilelz/www/actions/workflows/static.yml) | 🏗️ Last build:  **Friday 10 March 2023** @18:05:08(UTC+00)
 
 
 # Hello world
