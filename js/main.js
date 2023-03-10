@@ -314,7 +314,7 @@ document.querySelectorAll("#front, #random").forEach((e) => {
   });
 });
 
-function playAnim() {
+function playAnim(incoming = false) {
   document.getElementById("back").checked = true;
 
   document.querySelectorAll(".run-animation").forEach((i) => {
@@ -326,6 +326,9 @@ function playAnim() {
   setTimeout(() => {
     document.getElementById("left").checked = true;
     document.getElementById("left").dispatchEvent(new Event("change"));
+    if (incoming) {
+      document.querySelector("#bibi").classList.add("incoming");
+    }
     timerGoToFront();
   }, 3500);
 }
@@ -339,7 +342,7 @@ function playAnim() {
     document.getElementById("left").dispatchEvent(new Event("change"));
     timerGoToFront();
   } else {
-    playAnim();
+    playAnim(true);
   }
 })();
 
@@ -349,8 +352,9 @@ function timerGoToFront() {
     if (side && side === "left") {
       // side 'left' = user's menu
       document.querySelector("#bibi").click();
+      document.querySelector("#bibi").classList.remove("incoming");
     }
-  }, 3000);
+  }, 4000);
 }
 
 // CSP grrrrrrrr : https://content-security-policy.com/unsafe-hashes/

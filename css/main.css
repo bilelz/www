@@ -699,3 +699,25 @@ body.is-offline #offline-security-announcement {
 .f1-5 {
   font-size: 1.5rem;
 }
+
+@property --percent {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+#bibi.incoming {
+  background: linear-gradient(90deg, white 0, white var(--percent), transparent var(--percent), transparent 100%);
+  animation: rotateColor 4s linear 1 forwards;
+}
+
+@keyframes rotateColor {
+  from {
+    --percent: 0%;
+  }
+
+  to {
+    --percent: 100%;
+    color: black;
+  }
+}
