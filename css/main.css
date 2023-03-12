@@ -644,11 +644,13 @@ label.quality {
 
 #newVersion {
   position: fixed;
+  display: none;
   bottom: 0;
   z-index: 5;
   background: #ff5f6d;
   background: -webkit-linear-gradient(to right, #ffc371, #ff5f6d);
   background: linear-gradient(to right, #ffc371, #ff5f6d);
+  box-shadow: 0px 0px 10px #000000, 0px 0px 10px #ffffff99;
   color: black;
   padding: 1rem;
   border-radius: 1rem 1rem 0 0;
@@ -656,14 +658,26 @@ label.quality {
   margin: 0 auto;
 
   left: calc(50% - 150px);
-  box-shadow: none;
   transform: translateY(100%);
   transition: 0.3s;
 }
 
 #newVersion.show {
-  transform: translateY(0);
-  box-shadow: 0px 0px 10px #000000, 0px 0px 10px #ffffff99;
+  display: block;
+
+  animation: showNewVersion 300ms ease-in-out 1 forwards;
+}
+
+@keyframes showNewVersion {
+  from {
+    display: block;
+    transform: translateY(100%);
+  }
+
+  to {
+    display: block;
+    transform: translateY(0);
+  }
 }
 #newVersion h4 {
   margin: 0;

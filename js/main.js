@@ -314,7 +314,7 @@ document.querySelectorAll("#front, #random").forEach((e) => {
   });
 });
 
-function playAnim(incoming = false) {
+function playAnim() {
   document.getElementById("back").checked = true;
 
   document.querySelectorAll(".run-animation").forEach((i) => {
@@ -326,9 +326,6 @@ function playAnim(incoming = false) {
   setTimeout(() => {
     document.getElementById("left").checked = true;
     document.getElementById("left").dispatchEvent(new Event("change"));
-    if (incoming) {
-      document.querySelector("#bibi").classList.add("incoming");
-    }
     timerGoToFront();
   }, 3500);
 }
@@ -342,11 +339,12 @@ function playAnim(incoming = false) {
     document.getElementById("left").dispatchEvent(new Event("change"));
     timerGoToFront();
   } else {
-    playAnim(true);
+    playAnim();
   }
 })();
 
 function timerGoToFront() {
+  document.querySelector("#bibi").classList.add("incoming");
   setTimeout(() => {
     const side = document.querySelector('[name="side"]:checked').value;
     if (side && side === "left") {
@@ -375,6 +373,9 @@ document.getElementById("close").addEventListener("click", (event) => {
   stop(event);
 });
 document.getElementById("reload").addEventListener("click", () => {
+  document.location.reload();
+});
+document.getElementById("refresh").addEventListener("click", () => {
   document.location.reload();
 });
 document.getElementById("checkUpdate").addEventListener("click", () => {
@@ -417,10 +418,6 @@ document.getElementById("clearData").addEventListener("click", async () => {
 
     document.getElementById("clearData").textContent = "Cleared!";
   }
-});
-
-document.getElementById("reload").addEventListener("click", async () => {
-  document.location.reload();
 });
 
 // stats
