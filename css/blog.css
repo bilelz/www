@@ -74,7 +74,7 @@
   z-index: 1;
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  border-radius: 2rem;
+  /* border-radius: 2rem; */
   text-decoration: none;
 }
 
@@ -264,15 +264,13 @@ dialog[open] {
 
 .post__container .blabla {
   color: white;
-  background-image: linear-gradient(180deg, #0000004d, transparent);
-  -webkit-backdrop-filter: blur(30px);
-  backdrop-filter: blur(30px);
+  background-color: #00000085;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
   display: block;
-  /* margin-bottom: -30px; */
   transition: 0.3s;
   white-space: normal;
   padding: 10px;
-  /* padding-bottom: 40px; */
   width: 100%;
   border-radius: 0 0 2rem 2rem;
 }
