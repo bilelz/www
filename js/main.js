@@ -487,7 +487,7 @@ for (let gestureZone of gestureZones) {
       touchstartX = event.changedTouches[0].screenX;
       touchstartY = event.changedTouches[0].screenY;
     },
-    false
+    { passive: true }
   );
 
   gestureZone.addEventListener(
@@ -532,7 +532,7 @@ for (let nog of nogestureZones) {
       event.stopImmediatePropagation();
       event.stopPropagation();
     },
-    false
+    { passive: true }
   );
   nog.addEventListener(
     "touchend",
