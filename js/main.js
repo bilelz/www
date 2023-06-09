@@ -386,10 +386,21 @@ document.getElementById("checkUpdate").addEventListener("click", () => {
 document.getElementById("displayNotif").addEventListener("click", () => {
   document.getElementById("newVersion").classList.toggle("show");
 });
-document.getElementById("form").addEventListener("submit", () => {
-  if (this.checkValidity()) {
-    document.querySelector('form [type="submit"]').value = "🥳";
+document.getElementById("form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (event.target.checkValidity()) {
+    document.querySelector('form [type="submit"]').value = "Merci 🥳";
+    setTimeout(() => {
+      event.target.submit();
+      document.querySelector('form [type="submit"]').removeAttribute("value");
+    }, 1000);
   }
+});
+
+document.querySelector('[type="number"]').addEventListener("input", (event) => {
+  document.getElementById("☕count").textContent = Array(event.target.valueAsNumber || 1)
+    .fill("☕")
+    .join("");
 });
 
 let deferredPrompt;
