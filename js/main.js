@@ -115,7 +115,7 @@ document.querySelectorAll("nav a").forEach((item) => {
 });
 
 // header
-document.getElementById("nbSeasons").textContent = `${new Date().getFullYear() - 2006} seasons`;
+document.getElementById("nbSeasons").textContent = `${new Date().getFullYear() - 2006} saisons`;
 
 // blog
 window.lazySizesConfig = window.lazySizesConfig || {};
@@ -130,6 +130,11 @@ readBlogPosts = function (data) {
 };
 readBlogWallpaper = function (data) {
   readData(data, "#blog-wallpaper");
+
+  if (data.feed.entry.length > 0 && data.feed.entry[0].media$thumbnail) {
+    const heroBgUrl = data.feed.entry[0].media$thumbnail.url.replace(/s[^\/]+-c/g, "s1200");
+    document.getElementById("🏡").style.backgroundImage = `url('${heroBgUrl}')`;
+  }
 };
 
 readData = function (data, target) {
