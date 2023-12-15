@@ -19,10 +19,17 @@
     "html5",
     "web"
   ],
+  "type": "module",
   "author": "bilelz",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/bilelz/web/issues"
   },
-  "homepage": "https://github.com/bilelz/web#readme"
+  "homepage": "https://github.com/bilelz/web#readme",
+  "dependencies": {
+    "capture-website": "^4.0.0",
+    "imagemin": "^8.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-webp": "^8.0.0"
+  }
 }

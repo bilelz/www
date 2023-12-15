@@ -130,11 +130,6 @@ readBlogPosts = function (data) {
 };
 readBlogWallpaper = function (data) {
   readData(data, "#blog-wallpaper");
-
-  if (data.feed.entry.length > 0 && data.feed.entry[0].media$thumbnail) {
-    const heroBgUrl = data.feed.entry[0].media$thumbnail.url.replace(/s[^\/]+-c/g, "s1200");
-    document.getElementById("🏡").style.backgroundImage = `url('${heroBgUrl}')`;
-  }
 };
 
 readData = function (data, target) {
