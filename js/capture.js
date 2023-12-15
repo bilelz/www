@@ -14,7 +14,7 @@ fetch("https://bilelz.blogspot.com/feeds/posts/default?alt=json&max-results=1&ca
   })
   .then(function (data) {
     if (data.feed.entry.length > 0 && data.feed.entry[0].media$thumbnail) {
-      const heroBgUrl = data.feed.entry[0].media$thumbnail.url.replace(/s[^\/]+-c/g, "s1200");
+      const heroBgUrl = data.feed.entry[0].media$thumbnail.url.replace(/s[^\/]+-c/g, "s1024");
       console.log(heroBgUrl);
 
       const file = fs.createWriteStream("img/hero.jpg");
@@ -28,11 +28,11 @@ fetch("https://bilelz.blogspot.com/feeds/posts/default?alt=json&max-results=1&ca
 
           await imagemin(["img/hero.jpg"], {
             destination: "img",
-            plugins: [imageminWebp({ quality: 75 })],
+            plugins: [imageminWebp({ quality: 50 })],
           });
           await imagemin(["img/hero.jpg"], {
             destination: "img",
-            plugins: [imageminMozjpeg({ quality: 75 })],
+            plugins: [imageminMozjpeg({ quality: 50 })],
           });
 
           await Promise.all([
