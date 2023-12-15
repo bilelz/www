@@ -41,7 +41,7 @@ fetch("https://bilelz.blogspot.com/feeds/posts/default?alt=json&max-results=1&ca
               overwrite: true,
               delay: 3.15,
               width: 540,
-              height: 580,
+              height: 540,
               scaleFactor: 1,
             }),
             await captureWebsite.file("index.html", "img/screenshot2.png", {
@@ -49,7 +49,7 @@ fetch("https://bilelz.blogspot.com/feeds/posts/default?alt=json&max-results=1&ca
               overwrite: true,
               delay: 6,
               width: 540,
-              height: 580,
+              height: 540,
               scaleFactor: 1,
             }),
             await captureWebsite.file("index.html", "img/screenshot3.png", {
@@ -57,7 +57,7 @@ fetch("https://bilelz.blogspot.com/feeds/posts/default?alt=json&max-results=1&ca
               overwrite: true,
               delay: 7.25,
               width: 540,
-              height: 580,
+              height: 540,
               scaleFactor: 1,
             }),
             await captureWebsite.file("index.html", "img/preview.png", {
@@ -65,7 +65,7 @@ fetch("https://bilelz.blogspot.com/feeds/posts/default?alt=json&max-results=1&ca
               overwrite: true,
               delay: 10,
               width: 540,
-              height: 580,
+              height: 540,
               scaleFactor: 1,
               hideElements: ["nav.sticky"],
             }),
