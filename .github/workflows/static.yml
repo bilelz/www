@@ -39,6 +39,7 @@ jobs:
       - run: npm install -g terser
       - run: npm install -g csso-cli
       - run: npm install -g html-minifier
+      - run: npm install
 
       - name: Setup Pages
         uses: actions/configure-pages@v2
@@ -80,6 +81,7 @@ jobs:
       - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' js/default.js
       - run: curl -o js/wallpaper.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogWallpaper&max-results=10&category=wallpaper"
       - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' js/wallpaper.js
+      - run: node .\js\capture.js
 
       #get stats
       - run: |
