@@ -4,6 +4,7 @@ import * as http from "https";
 import imagemin from "imagemin";
 import imageminWebp from "imagemin-webp";
 import imageminMozjpeg from "imagemin-mozjpeg";
+import fetch from "node-fetch";
 
 // const http = require("https"); // or 'https' for https:// URLs
 

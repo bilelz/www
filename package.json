@@ -30,6 +30,7 @@
     "capture-website": "^4.0.0",
     "imagemin": "^8.0.1",
     "imagemin-mozjpeg": "^10.0.0",
-    "imagemin-webp": "^8.0.0"
+    "imagemin-webp": "^8.0.0",
+    "node-fetch": "^3.3.2"
   }
 }
