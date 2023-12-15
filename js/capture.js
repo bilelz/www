@@ -14,7 +14,7 @@ fetch("https://bilelz.blogspot.com/feeds/posts/default?alt=json&max-results=1&ca
   })
   .then(function (data) {
     if (data.feed.entry.length > 0 && data.feed.entry[0].media$thumbnail) {
-      const heroBgUrl = data.feed.entry[0].media$thumbnail.url.replace(/s[^\/]+-c/g, "s1024");
+      const heroBgUrl = data.feed.entry[0].media$thumbnail.url.replace(/s[^\/]+-c/g, "s1200");
       console.log(heroBgUrl);
 
       const file = fs.createWriteStream("img/hero.jpg");
