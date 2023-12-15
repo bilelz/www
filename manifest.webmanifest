@@ -25,25 +25,25 @@
   "screenshots": [
     {
       "form_factor": "narrow",
-      "sizes": "500x720",
+      "sizes": "540x580",
       "src": "/img/preview.png",
       "type": "image/png"
     },
     {
       "form_factor": "narrow",
-      "sizes": "500x720",
+      "sizes": "540x580",
       "src": "/img/screenshot1.png",
       "type": "image/png"
     },
     {
       "form_factor": "narrow",
-      "sizes": "500x720",
+      "sizes": "540x580",
       "src": "/img/screenshot2.png",
       "type": "image/png"
     },
     {
       "form_factor": "narrow",
-      "sizes": "500x720",
+      "sizes": "540x580",
       "src": "/img/screenshot3.png",
       "type": "image/png"
     }
