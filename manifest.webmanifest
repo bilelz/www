@@ -46,6 +46,30 @@
       "sizes": "540x540",
       "src": "/img/screenshot3.png",
       "type": "image/png"
+    },
+    {
+      "form_factor": "wide",
+      "sizes": "1024x540",
+      "src": "/img/preview-wide.png",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "wide",
+      "sizes": "1024x540",
+      "src": "/img/screenshot1-wide.png",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "wide",
+      "sizes": "1024x540",
+      "src": "/img/screenshot2-wide.png",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "wide",
+      "sizes": "1024x540",
+      "src": "/img/screenshot3-wide.png",
+      "type": "image/png"
     }
   ]
 }

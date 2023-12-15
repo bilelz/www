@@ -35,41 +35,80 @@ fetch("https://bilelz.blogspot.com/feeds/posts/default?alt=json&max-results=1&ca
             plugins: [imageminMozjpeg({ quality: 50 })],
           });
 
+          const width = 540;
+          const height = 540;
+          const widthWide = 1024;
+          console.log("start capture", new Date());
+
           await Promise.all([
             await captureWebsite.file("index.html", "img/screenshot1.png", {
               inputType: "url",
               overwrite: true,
               delay: 3.15,
-              width: 540,
-              height: 540,
+              width,
+              height,
+              scaleFactor: 1,
+            }),
+            await captureWebsite.file("index.html", "img/screenshot1-wide.png", {
+              inputType: "url",
+              overwrite: true,
+              delay: 3.15,
+              width: widthWide,
+              height,
               scaleFactor: 1,
             }),
             await captureWebsite.file("index.html", "img/screenshot2.png", {
               inputType: "url",
               overwrite: true,
               delay: 6,
-              width: 540,
-              height: 540,
+              width,
+              height,
+              scaleFactor: 1,
+            }),
+            await captureWebsite.file("index.html", "img/screenshot2-wide.png", {
+              inputType: "url",
+              overwrite: true,
+              delay: 6,
+              width: widthWide,
+              height,
               scaleFactor: 1,
             }),
             await captureWebsite.file("index.html", "img/screenshot3.png", {
               inputType: "url",
               overwrite: true,
               delay: 7.25,
-              width: 540,
-              height: 540,
+              width,
+              height,
+              scaleFactor: 1,
+            }),
+            await captureWebsite.file("index.html", "img/screenshot3-wide.png", {
+              inputType: "url",
+              overwrite: true,
+              delay: 7.25,
+              width: widthWide,
+              height,
               scaleFactor: 1,
             }),
             await captureWebsite.file("index.html", "img/preview.png", {
               inputType: "url",
               overwrite: true,
               delay: 10,
-              width: 540,
-              height: 540,
+              width,
+              height,
+              scaleFactor: 1,
+              hideElements: ["nav.sticky"],
+            }),
+            await captureWebsite.file("index.html", "img/preview-wide.png", {
+              inputType: "url",
+              overwrite: true,
+              delay: 10,
+              width: widthWide,
+              height,
               scaleFactor: 1,
               hideElements: ["nav.sticky"],
             }),
           ]);
+          console.log("end capture", new Date());
         });
       });
     }
