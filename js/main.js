@@ -144,7 +144,10 @@ readData = function (data, target) {
       if (tmp.querySelectorAll("img").length > 0) {
         // increase img size & ensure HTTPS
         item.media$thumbnail = {
-          url: tmp.querySelectorAll("img")[0].src.replace("s72", "s300").replace("http://", "https://"),
+          url: tmp
+            .querySelectorAll("img")[0]
+            .src.replace(/\/s[^\/]+-c\//g, "/s450-c/")
+            .replace("http://", "https://"),
         };
 
         // if (target === "#blog-wallpaper" && index === 0) {
@@ -157,11 +160,15 @@ readData = function (data, target) {
     }
 
     // increase img size & ensure HTTPS
-    item.media$thumbnail.url = item.media$thumbnail.url.replace("s72", "s300").replace("http://", "https://");
+    item.media$thumbnail.url = item.media$thumbnail.url
+      .replace(/\/s[^\/]+-c\//g, "/s450-c/") // exemple : https://blogger.googleusercontent.com/img/b/R29vZ2xl/[.....]/s72-c/PXL_20231209_105450047~2.jpg
+      .replace(/=s[^\/]+-c/g, "=s450-c") // exemple : https://blogger.googleusercontent.com/img/a/[.....]yLTxKJQTq=s72-w640-h482-c
+      .replace("http://", "https://");
 
     item.index = index;
     item.id = target.replace("#", "") + "_" + item.id.$t.replace("tag:blogger.com,1999:", "").replace(/\./g, "-");
     document.querySelector(target).innerHTML += eval("`" + template + "`");
+
     allPosts.push(item);
 
     // waiting the next tick to listen click
@@ -271,6 +278,7 @@ function showModal(id, event) {
   const post = allPosts.find((item) => item.id === id);
   if (post) {
     event.preventDefault();
+    document.querySelector("dialog").style.backgroundImage = `url('${post.media$thumbnail.url}')`;
     document.querySelector("dialog article").innerHTML = post.content.$t.replaceAll("<img", '<img loading="lazy"').replaceAll("http://", "https://");
     document.querySelector("dialog h3").innerHTML = post.title.$t;
     document.querySelector("dialog footer a").href = post.link.find((l) => l.rel === "alternate").href;

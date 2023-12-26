@@ -124,14 +124,16 @@ dialog {
   inset: 0;
   z-index: 3;
   border-radius: 2rem;
-  max-width: 90%;
+  width: 90%;
   background-color: rgb(255 255 255 / 75%);
+  background-repeat: no-repeat;
+  background-size: cover;
   box-shadow: 0 2px 1px -1px #0003, 0 1px 1px 2px #00000024, 0 1px 3px #0000001f;
   border: none;
 }
 dialog img {
   height: inherit;
-  max-width: 100%;
+  max-width: calc(100% - 2em);
 }
 dialog .btn-action {
   padding: 0.5rem;
@@ -145,6 +147,8 @@ dialog > div {
   align-items: flex-start;
   max-block-size: 80vh;
   flex-direction: column;
+  backdrop-filter: blur(10px);
+  background-color: rgb(255 255 255 / 50%);
 }
 dialog article {
   overflow-y: scroll;
@@ -172,6 +176,7 @@ dialog footer {
   padding: 1rem;
   width: 100%;
   box-shadow: 0 0 0px 2px #00000024;
+  background-color: rgb(255 255 255 / 50%);
 }
 dialog footer a {
   color: black;
@@ -186,7 +191,7 @@ dialog:not([open]) {
 }
 
 dialog[modal-mode="mega"]::backdrop {
-  backdrop-filter: blur(25px);
+  backdrop-filter: blur(10px);
 }
 
 @media (max-width: 768px) {
