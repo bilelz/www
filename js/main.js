@@ -578,7 +578,7 @@ function handleGesture(gestureZone) {
 
   if (touchendX < touchstartX) {
     console.log("Swiped left", diffX);
-    if (Math.abs(diffXPercent) > 25 && Math.abs(diffY) < 50) {
+    if (Math.abs(diffXPercent) > 20 && Math.abs(diffY) < 50) {
       const el = gestureZone.querySelector('[data-swipe="right"]');
       el && el.click();
     }
@@ -587,7 +587,7 @@ function handleGesture(gestureZone) {
   if (touchendX > touchstartX) {
     console.log("Swiped right", diffX);
 
-    if (Math.abs(diffXPercent) > 25 && Math.abs(diffY) < 50) {
+    if (Math.abs(diffXPercent) > 20 && Math.abs(diffY) < 50) {
       const el = gestureZone.querySelector('[data-swipe="left"]');
       el && el.click();
     }
