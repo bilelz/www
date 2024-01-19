@@ -502,6 +502,7 @@ fetch("js/languages.json?v=_COMMIT_SHA_AND_DATE_")
 /* swipe management */
 let touchstartX = 0;
 let touchstartY = 0;
+let rotatestartY = 0;
 let touchendX = 0;
 let touchendY = 0;
 
@@ -513,13 +514,55 @@ for (let gestureZone of gestureZones) {
     (event) => {
       touchstartX = event.changedTouches[0].screenX;
       touchstartY = event.changedTouches[0].screenY;
+      switch (document.querySelector('[name="side"]:checked').value) {
+        case "front":
+          rotatestartY = 0;
+          break;
+        case "right":
+          rotatestartY = 270;
+          break;
+        case "back":
+          rotatestartY = 180;
+          break;
+        case "left":
+          rotatestartY = 90;
+          break;
+        case "random":
+          rotatestartY = 720;
+          break;
+        default:
+          break;
+      }
+      console.log("touchstart", document.querySelector('[name="side"]:checked').value, "rotatestartY", rotatestartY);
     },
     { passive: true }
   );
 
   gestureZone.addEventListener(
+    "touchmove",
+    (event) => {
+      const diffX = ((event.changedTouches[0].screenX - touchstartX) * 90) / document.body.clientWidth;
+      const diffY = event.changedTouches[0].screenY - touchstartY;
+
+      console.log(document.querySelector('[name="side"]:checked').value, diffX);
+
+      // if (Math.abs(diffY) < 25) {
+      document.querySelector(".wrap").style.transition = `none`;
+      document.querySelector(".cube").style.transition = `none`;
+      document.querySelector(".cube").style.transform = `translateZ(-50vw) rotateY(${rotatestartY + diffX}deg)`;
+      // } else {
+      //   document.querySelector(".cube").style.transform = `translateZ(-50vw) rotateY(${rotatestartY}deg)`;
+      // }
+    },
+    false
+  );
+
+  gestureZone.addEventListener(
     "touchend",
     (event) => {
+      document.querySelector(".wrap").style.transition = `0.3s`;
+      document.querySelector(".cube").style.transition = `0.3s`;
+      document.querySelector(".cube").style.transform = ``;
       touchendX = event.changedTouches[0].screenX;
       touchendY = event.changedTouches[0].screenY;
       handleGesture(gestureZone);
@@ -530,11 +573,12 @@ for (let gestureZone of gestureZones) {
 
 function handleGesture(gestureZone) {
   const diffX = touchstartX - touchendX;
+  const diffXPercent = ((touchstartX - touchendX) * 100) / document.body.clientWidth;
   const diffY = touchendY - touchstartY;
 
   if (touchendX < touchstartX) {
     console.log("Swiped left", diffX);
-    if (Math.abs(diffX) > 25 && Math.abs(diffY) < 50) {
+    if (Math.abs(diffXPercent) > 25 && Math.abs(diffY) < 50) {
       const el = gestureZone.querySelector('[data-swipe="right"]');
       el && el.click();
     }
@@ -543,7 +587,7 @@ function handleGesture(gestureZone) {
   if (touchendX > touchstartX) {
     console.log("Swiped right", diffX);
 
-    if (Math.abs(diffX) > 25 && Math.abs(diffY) < 50) {
+    if (Math.abs(diffXPercent) > 25 && Math.abs(diffY) < 50) {
       const el = gestureZone.querySelector('[data-swipe="left"]');
       el && el.click();
     }
@@ -562,6 +606,14 @@ for (let nog of nogestureZones) {
     { passive: true }
   );
   nog.addEventListener(
+    "touchmove",
+    (event) => {
+      event.stopImmediatePropagation();
+      event.stopPropagation();
+    },
+    false
+  );
+  nog.addEventListener(
     "touchend",
     (event) => {
       event.stopImmediatePropagation();
@@ -571,7 +623,7 @@ for (let nog of nogestureZones) {
   );
 }
 
-window.addEventListener("deviceorientation", handleOrientation);
+// window.addEventListener("deviceorientation", handleOrientation); // POC
 let initialGamma = null; // peut-etre à remettre à null
 let fromInitialGamma = false;
 function handleOrientation(event) {
