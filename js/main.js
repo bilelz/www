@@ -372,13 +372,17 @@ function timerGoToFront() {
 }
 
 // CSP grrrrrrrr : https://content-security-policy.com/unsafe-hashes/
-document.getElementById("webdev").addEventListener("scroll", (event) => {
-  if (event.target.scrollY > 12 || event.target.scrollTop > 12) {
-    document.body.classList.add("scrolled");
-  } else {
-    document.body.classList.remove("scrolled");
-  }
-});
+document.getElementById("webdev").addEventListener(
+  "scroll",
+  (event) => {
+    if (event.target.scrollY > 12 || event.target.scrollTop > 12) {
+      document.body.classList.add("scrolled");
+    } else {
+      document.body.classList.remove("scrolled");
+    }
+  },
+  { passive: true }
+);
 document.getElementById("playAnim").addEventListener("click", () => {
   playAnim();
 });
@@ -554,7 +558,7 @@ for (let gestureZone of gestureZones) {
       //   document.querySelector(".cube").style.transform = `translateZ(-50vw) rotateY(${rotatestartY}deg)`;
       // }
     },
-    false
+    { passive: true }
   );
 
   gestureZone.addEventListener(
@@ -567,7 +571,7 @@ for (let gestureZone of gestureZones) {
       touchendY = event.changedTouches[0].screenY;
       handleGesture(gestureZone);
     },
-    false
+    { passive: true }
   );
 }
 
@@ -611,7 +615,7 @@ for (let nog of nogestureZones) {
       event.stopImmediatePropagation();
       event.stopPropagation();
     },
-    false
+    { passive: true }
   );
   nog.addEventListener(
     "touchend",
@@ -619,7 +623,7 @@ for (let nog of nogestureZones) {
       event.stopImmediatePropagation();
       event.stopPropagation();
     },
-    false
+    { passive: true }
   );
 }
 
