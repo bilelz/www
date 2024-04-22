@@ -433,10 +433,10 @@ body[playerstate="-1"] .video-btn > a:first-child {
 }
 
 .level {
-  background-color: #454545;
   color: #d8d3d0;
   padding: 2px 5px;
   border-radius: 2px;
+  border: currentColor 1px solid;
 }
 
 .quality {
