@@ -2,117 +2,109 @@
 name: Deploy static content to Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches: ["master"]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT }} # `GH_PAT` is a secret that contains your PAT
-      # Install CLI tools
-      - uses: actions/setup-node@v3
+          token: ${{ secrets.PAT }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: "18"
-      - run: npm install -g terser
-      - run: npm install -g csso-cli
-      - run: npm install -g html-minifier
+
+      - run: npm install -g terser csso-cli html-minifier
       - run: npm install
 
       - name: Setup Pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v5
 
-      # Set variables
+      # Variables
       - name: Set NOW
         id: date
         run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_OUTPUT
+
       - name: Set dateFormatted.NOW
         id: dateFormatted
         run: echo "NOW=$(date +'%A\ %d\ %B\ %Y')" >> $GITHUB_OUTPUT
+
       - name: Set hourFormatted.NOW
         id: hourFormatted
         run: echo "NOW=$(date +'%H:%M:%S\(%Z%:::z\)')" >> $GITHUB_OUTPUT
+
       - name: Set shortSha
         id: sha
         run: echo "SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
       - run: echo '{"date":"${{ steps.date.outputs.NOW }}", "branch":"${{ github.ref_name }}", "sha":"${{ github.sha }}", "shortSha":"${{ steps.sha.outputs.SHORT }}", "job":"${{github.server_url}}/${{github.repository}}/actions/runs/${{github.run_id}}", "repositoryUrl":"${{github.repositoryUrl}}"}' | json_pp > version.json
       - run: cat version.json
 
-      # Cache buster everything
+      # Cache bust
       - run: sed -i 's/_COMMIT_SHA_AND_DATE_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' index.html
       - run: sed -i 's/_GIT_SHORT_SHA_/'${{ steps.sha.outputs.SHORT }}'/g' index.html
       - run: sed -i 's/_DATE_FORMATTED_/'${{ steps.dateFormatted.outputs.NOW }}'/g' index.html
       - run: sed -i 's/_DATE_FORMATTED_/'${{ steps.dateFormatted.outputs.NOW }}'/g' img/version.svg
       - run: sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' index.html
       - run: sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' img/version.svg
-
       - run: sed -i 's/_COMMIT_SHA_AND_DATE_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' js/main.js
       - run: sed -i 's/_COMMIT_SHA_AND_DATE_/'${{ steps.sha.outputs.SHORT }}___${{ steps.date.outputs.NOW }}'/g' sw.js
 
-      # Use CLI tools to minify, overwriting existing files
+      # Minify
       - run: for i in ./js/*.js; do terser $i --compress -o $i; done
       - run: for i in ./css/*.css; do csso $i -o $i; done
       - run: html-minifier index.html --collapse-whitespace --remove-comments --minify-js true -o index.html
 
-      # Get the latest posts from blogger
+      # Get Blogger posts
       - run: curl -o js/default.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogPosts"
       - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' js/default.js
       - run: curl -o js/wallpaper.js "https://bilelz.blogspot.com/feeds/posts/default?alt=json-in-script&callback=readBlogWallpaper&max-results=10&category=wallpaper"
       - run: sed  -i '1i /* ${{ steps.date.outputs.NOW }} */' js/wallpaper.js
       - run: node ./js/capture.js
 
-      #get stats
+      # Repo stats
       - run: |
           curl -o js/languages.json \
           --request GET  \
           --url https://api.github.com/repos/bilelz/www/languages \
           --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
           --fail
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
           path: "."
+
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
-
-      # https://gist.github.com/joncardasis/e6494afd538a400722545163eb2e1fa5
-      # - name: Checkout assets repo
-      #   uses: actions/checkout@v3
-      #   with:
-      #     repository: bilelz/www
-      #     token: ${{ secrets.PAT }} # `GH_PAT` is a secret that contains your PAT
-      #     ref: assets
+        uses: actions/deploy-pages@v4
 
       - name: Update date.svg & version.json
         run: |
           git config user.name "${{github.repository_owner}}"
           git config --global user.email "${{github.repository_owner}}@users.noreply.github.com"
           git pull
-          cp -rf  readme_template.md readme.md
+          cp -rf readme_template.md readme.md
           sed -i 's/_DATE_FORMATTED_/'${{ steps.dateFormatted.outputs.NOW }}'/g' readme.md
           sed -i 's/_HOUR_FORMATTED_/'${{ steps.hourFormatted.outputs.NOW }}'/g' readme.md
           git add readme.md
