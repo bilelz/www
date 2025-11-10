@@ -342,7 +342,7 @@ function playAnim() {
   setTimeout(() => {
     document.getElementById("left").checked = true;
     document.getElementById("left").dispatchEvent(new Event("change"));
-    timerGoToFront();
+    // timerGoToFront();
   }, 3500);
 }
 
@@ -353,7 +353,7 @@ function playAnim() {
   if (hasCachedData) {
     document.getElementById("left").checked = true;
     document.getElementById("left").dispatchEvent(new Event("change"));
-    timerGoToFront();
+    // timerGoToFront();
   } else {
     playAnim();
   }
