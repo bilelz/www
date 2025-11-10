@@ -313,9 +313,9 @@ document.getElementById("left").addEventListener("change", (event) => {
   }
 });
 
-document.querySelectorAll("#front, #random").forEach((e) => {
+document.querySelectorAll("#left, #random").forEach((e) => {
   e.addEventListener("change", (event) => {
-    document.querySelector(".front label[for][tabindex]:first-child").focus();
+    document.querySelector(".left label[for][tabindex]:first-child").focus();
     if (event.target.checked) {
       setTimeout(() => {
         document.querySelector("#webdev").scrollTo({ top: 0, behavior: "smooth" });

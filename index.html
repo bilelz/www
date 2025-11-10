@@ -115,7 +115,7 @@
           <div class="cube-content" id="webdev">
             <nav class="sticky hide-when-playing">
               <div>
-                <label for="back" class="back-btn" title="Back" tabindex="0" data-swipe="back">
+                <label for="back" class="back-btn" title="Back" tabindex="0" data-swipe="left">
                   <!-- prettier-ignore -->
                   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve" > <metadata>Svg Vector Icons : http://www.onlinewebfonts.com/icon</metadata><g><path d="M720.1,990L237.8,507.7c-15.3-15.3-15.3-38.3,0-53.6L720.1,10l53.6,53.6L318.2,480.9l455.5,455.5L720.1,990z"/></g></svg>
                   <br />
@@ -126,16 +126,17 @@
                 <!-- <a href="#🏡">Accueil</a> -->
                 <a href="#📝">📝Blog</a>
                 <a href="#☕">☕Café</a>
+                <label for="front" hidden data-swipe="right"> </label>
               </div>
             </nav>
             <nav class="footer hide-when-playing">
               <div>
-                <label for="left" class="back-btn" tabindex="0" title="Back">
+                <label for="back" class="back-btn" tabindex="0" title="Back">
                   <!-- prettier-ignore -->
                   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve" > <metadata>Svg Vector Icons : http://www.onlinewebfonts.com/icon</metadata><g><path d="M720.1,990L237.8,507.7c-15.3-15.3-15.3-38.3,0-53.6L720.1,10l53.6,53.6L318.2,480.9l455.5,455.5L720.1,990z"/></g></svg>
                   <span>back</span>
                 </label>
-                <label for="right" class="btn-action" hidden tabindex="0" data-swipe="front"> &nbsp; </label>
+                <label for="left" class="btn-action" hidden tabindex="0" data-swipe="left"> &nbsp; </label>
               </div>
             </nav>
             <section class="header" id="🏡" data-bg="img/hero.webp">
@@ -312,9 +313,10 @@
             <h2>Qui est-ce?</h2>
 
             <div class="users">
-              <label for="back" class="btn-action" tabindex="0" data-swipe="left">
-                <div class="users-avatar">👈</div>
-                Left
+              <label for="left" class="btn-action" tabindex="0" id="bibi" data-swipe="left">
+                <img src="img/android/android-launchericon-96-96.png" loading="lazy" alt="avatar" />
+                <br />
+                Bilelz
               </label>
               <label for="right" class="btn-action" tabindex="0">
                 <div class="users-avatar">🐱‍🚀</div>
@@ -324,11 +326,9 @@
                 <div class="users-avatar">🎢</div>
                 Random
               </label>
-
-              <label for="left" class="btn-action" tabindex="0" id="bibi" data-swipe="left">
-                <img src="img/android/android-launchericon-96-96.png" loading="lazy" alt="avatar" />
-                <br />
-                Bilelz
+              <label for="right" class="btn-action" tabindex="0" data-swipe="right">
+                <div class="users-avatar">👉</div>
+                Left
               </label>
             </div>
 
@@ -346,7 +346,7 @@
                 <div class="users-avatar">👈</div>
                 left
               </label>
-              <label for="front" class="btn-action" tabindex="0">
+              <label for="left" class="btn-action" tabindex="0">
                 <img src="img/android/android-launchericon-96-96.png" loading="lazy" alt="avatar" />
                 <br />
                 Go to : 🏠

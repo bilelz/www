@@ -21,7 +21,7 @@ body {
   width: var(--cube-width);
   height: var(--cube-height);
   transform-style: preserve-3d;
-  transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: 1.7s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateZ(-50vw);
   will-change: transform;
 }
