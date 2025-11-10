@@ -6,8 +6,6 @@ import imageminWebp from "imagemin-webp";
 import imageminMozjpeg from "imagemin-mozjpeg";
 import fetch from "node-fetch";
 
-// const http = require("https"); // or 'https' for https:// URLs
-
 fetch("https://bilelz.blogspot.com/feeds/posts/default?alt=json&max-results=1&category=wallpaper")
   .then(function (response) {
     return response.json();
@@ -40,74 +38,68 @@ fetch("https://bilelz.blogspot.com/feeds/posts/default?alt=json&max-results=1&ca
           const widthWide = 1024;
           console.log("start capture", new Date());
 
+          const captureOptions = {
+            inputType: "url",
+            overwrite: true,
+            scaleFactor: 1,
+            launchOptions: {
+              args: ["--no-sandbox", "--disable-setuid-sandbox"],
+            },
+          };
+
           await Promise.all([
-            await captureWebsite.file("index.html", "img/screenshot1.png", {
-              inputType: "url",
-              overwrite: true,
+            captureWebsite.file("index.html", "img/screenshot1.png", {
+              ...captureOptions,
               delay: 3.15,
               width,
               height,
-              scaleFactor: 1,
             }),
-            await captureWebsite.file("index.html", "img/screenshot1-wide.png", {
-              inputType: "url",
-              overwrite: true,
+            captureWebsite.file("index.html", "img/screenshot1-wide.png", {
+              ...captureOptions,
               delay: 3.15,
               width: widthWide,
               height,
-              scaleFactor: 1,
             }),
-            await captureWebsite.file("index.html", "img/screenshot2.png", {
-              inputType: "url",
-              overwrite: true,
+            captureWebsite.file("index.html", "img/screenshot2.png", {
+              ...captureOptions,
               delay: 6,
               width,
               height,
-              scaleFactor: 1,
             }),
-            await captureWebsite.file("index.html", "img/screenshot2-wide.png", {
-              inputType: "url",
-              overwrite: true,
+            captureWebsite.file("index.html", "img/screenshot2-wide.png", {
+              ...captureOptions,
               delay: 6,
               width: widthWide,
               height,
-              scaleFactor: 1,
             }),
-            await captureWebsite.file("index.html", "img/screenshot3.png", {
-              inputType: "url",
-              overwrite: true,
+            captureWebsite.file("index.html", "img/screenshot3.png", {
+              ...captureOptions,
               delay: 7.25,
               width,
               height,
-              scaleFactor: 1,
             }),
-            await captureWebsite.file("index.html", "img/screenshot3-wide.png", {
-              inputType: "url",
-              overwrite: true,
+            captureWebsite.file("index.html", "img/screenshot3-wide.png", {
+              ...captureOptions,
               delay: 7.25,
               width: widthWide,
               height,
-              scaleFactor: 1,
             }),
-            await captureWebsite.file("index.html", "img/preview.png", {
-              inputType: "url",
-              overwrite: true,
+            captureWebsite.file("index.html", "img/preview.png", {
+              ...captureOptions,
               delay: 10,
               width,
               height,
-              scaleFactor: 1,
               hideElements: ["nav.sticky"],
             }),
-            await captureWebsite.file("index.html", "img/preview-wide.png", {
-              inputType: "url",
-              overwrite: true,
+            captureWebsite.file("index.html", "img/preview-wide.png", {
+              ...captureOptions,
               delay: 10,
               width: widthWide,
               height,
-              scaleFactor: 1,
               hideElements: ["nav.sticky"],
             }),
           ]);
+
           console.log("end capture", new Date());
         });
       });
