@@ -406,6 +406,9 @@ document.getElementById("checkUpdate").addEventListener("click", () => {
 document.getElementById("displayNotif").addEventListener("click", () => {
   document.getElementById("newVersion").classList.toggle("show");
 });
+
+/* ☕☕☕☕☕☕*/
+
 document.getElementById("form").addEventListener("submit", (event) => {
   event.preventDefault();
   if (event.target.checkValidity()) {
@@ -418,10 +421,42 @@ document.getElementById("form").addEventListener("submit", (event) => {
 });
 
 document.querySelector('[type="number"]').addEventListener("input", (event) => {
-  document.getElementById("☕count").textContent = Array(event.target.valueAsNumber || 1)
+  const cafes = Array(event.target.valueAsNumber || 1)
     .fill("☕")
     .join("");
+  document.getElementById("☕count").textContent = cafes;
+  window.location.hash = cafes;
 });
+
+window.addEventListener("load", () => {
+  const decoded = decodeURIComponent(window.location.href);
+
+  // Récupérer ce qu’il y a après le #
+  const afterHash = decoded.split("#")[1] || "";
+
+  // Compter les ☕
+  const count = (afterHash.match(/☕/g) || []).length;
+
+  if (count) {
+    document.querySelector('[type="number"]').value = count;
+    document.querySelector('[type="number"]').dispatchEvent(new Event("input"));
+  }
+});
+
+document.getElementById("coffee-share").addEventListener("click", async () => {
+  const cafes = Array(+document.querySelector('[type="number"]').value || 1)
+    .fill("☕")
+    .join("");
+  const url = `${window.location.origin}/#${cafes}`;
+
+  await navigator.clipboard.writeText(url);
+
+  document.getElementById("coffee-share").textContent = "Lien copié!";
+  setTimeout(() => {
+    document.getElementById("coffee-share").textContent = "Partager le lien ☕";
+  }, 3000);
+});
+/* ☕☕☕☕☕☕*/
 
 let deferredPrompt;
 document.getElementById("install").addEventListener("click", async () => {
